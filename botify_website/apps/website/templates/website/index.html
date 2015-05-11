@@ -1,0 +1,186 @@
+{% set title = "Botify | Website crawler & Log analyzer for SEO" %}
+{% set description = "Increase your SEO traffic and revenue with great actionable data" %}
+{% extends "website/includes/base.html" %}
+{% set current_page = "home" %}
+{% block body_class %}home-page{% endblock %}
+{% block content %}
+
+    </div><!--//bg-slider-wrapper--> 
+       <div class="headline-bg homepage-headline-bg">
+    </div><!--//headline-bg-->            
+
+    <section class="promo section section-on-bg">
+        <div class="container text-center">                
+            <h2 class="title">Improve your <span class="highlight">SEO</span> with Data</h2>
+            <p class="intro">Botify crawls your website to increase your traffic and revenue using actionable, reliable and up-to-date data.</p>
+            <p><a class="btn btn-cta btn-cta-primary" href="{{ signup_url }}">Start your free trial now</a></p>   
+        </div><!--//container-->
+        <!-- ******Logos Section****** -->
+        <section class="section press">
+            <div class="container text-center">
+                <p class="text-center stat-users">+ 3,500 users trust Botify. We <i class="fa fa-heart"></i> Our Clients.</p>
+                <ul class="press-list list-inline row">
+                    <li class="col-md-2 col-sm-2 col-xs-4"><a href="/clients/"><img class="img-responsive" src="{{ static("images/partners/expedia.png") }}" alt="Expedia" /></a></li> 
+                    <li class="col-md-2 col-sm-2 col-xs-4"><a href="/clients/"><img class="img-responsive" src="{{ static("images/partners/hotels.png") }}" alt="Hotels" /></a></li>
+                    <li class="col-md-2 col-sm-2 col-xs-4 xs-break"><a href="/clients/"><img class="img-responsive" src="{{ static("images/partners/tomshardware.png") }}" alt="Tom's Hardware" /></a></li>                   
+                    <li class="col-md-2 col-sm-2 col-xs-4"><a href="/clients/"><img class="img-responsive" src="{{ static("images/partners/homeaway.png") }}" alt="Home Away" /></a></li>
+                    <li class="col-md-2 col-sm-2 col-xs-4"><a href="/clients/"><img class="img-responsive" src="{{ static("images/partners/blablacar.png") }}" alt="BlaBlaCar" /></a></li>
+                    <li class="col-md-2 col-sm-2 col-xs-4"><a href="/clients/"><img class="img-responsive" src="{{ static("images/partners/dailymotion.png") }}" alt="Dailymotion" /></a></li>                  
+                </ul><!--//partners-list-->
+                <a href="#begin-content" id="invite-scroll"><i class="fa fa-angle-down"></i></a>                           
+            </div><!--//container-->
+        </section><!--//logos-->
+    </section><!--//promo-->
+    
+    <div class="sections-wrapper">   
+
+         <!-- ******Video Section****** --> 
+         <section class="features-video section section-on-bg" id="begin-content">
+             <div class="container text-center">          
+                 <div class="video-container">
+                     <div class="section main-media">
+                         <div class="media-content" id="media-image">
+                             <p>
+                                 <strong>How Can Botify Help You?</strong><br><br>
+                                 Meet Adam and discover how Botify can help him improve his SEO
+                             </p>
+                             <a class="layer video-layer wistia-popover[height=450,playerColor=7b796a,width=800]" href="//fast.wistia.net/embed/iframe/g6egfpdx32?popover=true">
+                                 <span class="fa-stack">
+                                     <i class="fa fa-circle fa-stack-2x"></i>
+                                     <i class="fa fa-play fa-stack-1x"></i>
+                                 </span>
+                             </a>
+                             <img alt="" src="{{ static("images/screens/adam-video.png") }}" class="illustration" width="800" height="450">
+                         </div>
+                         <div class="media-content" id="media-video">
+                         </div>
+                     </div>
+                 </div><!--//video-container--> 
+             </div><!--//container-->
+         </section><!--//feature-video-->
+
+        <!-- ******Why Section****** -->
+        <section id="why" class="section why">
+            <div class="container">
+                <h2 class="title text-center">How Does Botify Work for You?</h2>
+                <p class="intro text-center">We track every SEO shortcoming so you can spend your time optimizing your website (and celebrating results!)</p>
+                <div class="row item first-item">
+                    <div class="content col-md-4 col-sm-12 col-xs-12">
+                        <h3 class="title">How Can Botify Help You?</h3>
+                        <div class="desc">
+                            <p><strong><i class="fa fa-check"></i>Unlimited Analysis</strong><br>Botify world record: 150,000,000 URLs for a single website. So far, we haven't found the website that will challenge our crawler!</p>
+                            <p><strong><i class="fa fa-check"></i>Share and Collaborate</strong><br>We know that you're not working alone on SEO, so we created easy to use sharing features and a beautiful plugin to highlight every single SEO issue.</p>
+                            <p><strong><i class="fa fa-check"></i>Track and Compare</strong><br>SEO is a serious matter. Track every possible improvement, hunt down possible bugs, compare your crawl results as often as you want.</p>
+                            <p><strong><i class="fa fa-check"></i>Geek settings</strong><br>Customize your analysis in details with our Advanced Settings (we tried to figure out all twisted - thus important - options!)</p>
+                        </div>                     
+                    </div><!--//content-->
+                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+                        <img class="img-responsive" src="{{ static("images/screens/dashboard.png") }}" alt="Report Overview" />
+                        <figcaption class="figure-caption">(Screenshot: Report Overview) </figcaption>
+                    </figure>
+                </div><!--//item-->
+                
+                <h2 class="title text-center">No Matter Your Website’s Size</h2>
+                <p class="intro text-center">Botify simply works. No limitation.</p>
+                <div class="row item second-item">
+                    <div class="content col-md-4 col-sm-12 col-xs-12 col-md-push-8 col-sm-push-0 col-xs-push-0">
+                        <h3 class="title">We Like Them All:<br><span>Small, Medium, and Very VERY Large Websites</span></h3>
+                        <div class="desc">
+                            <p><strong><i class="fa fa-check"></i>Industry Leader or working in your room</strong><br>You may be working for a world industry leader like Expedia or managing your sister's online store, who is making hand-made jewellery in Paris: Botify will provide you with SEO actionable data!</p>
+                            <p><strong><i class="fa fa-check"></i>No matter your website's size, Botify works just as well!</strong><br>Botify is a cloud-based solution, removing all the limitations of desktop software – it can run any time, you can check your reports anywhere, and - thanks to our scaling architecture - launch powerful computing from the tiniest laptop.</p>
+                        </div>                       
+                    </div><!--//content-->
+                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-pull-4 col-sm-pull-0 col-xs-pull-0">
+                        <img class="img-responsive" src="{{ static("images/screens/perfs.jpg") }}" alt="Organic Visits" />
+                        <figcaption class="figure-caption">(Screenshot: Organic Visits) </figcaption>
+                    </figure>
+                </div><!--//item-->
+                
+                <h2 class="title text-center">Real Humans Behind the Machine</h2>
+                <p class="intro text-center">We love what we do and we’re here to help.</p>
+                <div class="row item robots-item">
+                    <div class="content col-md-4 col-sm-12 col-xs-12">
+                        <h3 class="title">We Are (Not) Robots. We're here to help!</h3>
+                        <div class="desc">
+                            <p><strong><i class="fa fa-check"></i>Real humans behind the machine</strong><br>Botify is not only a fantastic robot but also a fantastic team with high-level SEO experts.</p>
+                            <p><strong><i class="fa fa-check"></i>Questions or feedbacks about Botify? Let us know!</strong><br>The application should have no more secrets for you. But if you do have questions, we’re there to help. Just tell us: we provide 24/24 support… with passion!</p>
+                        </div>
+                    </div><!--//content-->
+                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+                        <img class="img-responsive" src="{{ static("images/screens/portraits.png") }}" alt="Portraits" />
+                    </figure>
+                </div><!--//item-->
+                
+                
+                <div class="feature-lead text-center">
+                    <h4 class="title">This may be the beginning of a rewarding relationship!</h4>
+                    <p><a class="btn btn-cta btn-cta-secondary btn-big" href="{{ signup_url }}">Start Your Free Trial Now</a></p>
+                </div>
+            </div><!--//container-->
+        </section><!--//why-->  
+        
+        <!-- ******Testimonials Section****** -->
+        <section class="section testimonials" id="testimonials">
+            <div class="container">
+                <h2 class="title text-center">What Are People Saying About Botify?</h2>
+                <div id="testimonials-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#testimonials-carousel" data-slide-to="1"></li>
+                        <li data-target="#testimonials-carousel" data-slide-to="2"></li>
+                    </ol><!--//carousel-indicators-->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <figure class="profile"><img src="{{ static("images/people/filiwiese.jpg") }}" alt="" /></figure>
+                            <div class="content">
+                                <blockquote>
+                                    <i class="fa fa-quote-left"></i>
+                                    <p>After being used to Google's internal tools to aggregate and investigate data signals on a tremendous scale, Botify quickly became one of our tools of choice when auditing websites.</p>
+                                    <i class="fa fa-quote-right"></i>
+                                </blockquote>
+                                <p class="source">Fili Wiese<br /><span class="title">SEO consultant at SearchBrothers.com</span></p>
+                            </div><!--//content-->                         
+                        </div><!--//item-->                        
+                        <div class="item">
+                            <figure class="profile"><img src="{{ static("images/people/blablacar-avatar.png") }}" alt="" /></figure>
+                            <div class="content">
+                                <blockquote>
+                                    <i class="fa fa-quote-left"></i>
+                                    <p>Botify is easy to customize and allows us to make full use of analysis data through a clever interface.</p>
+                                    <i class="fa fa-quote-right"></i>
+                                </blockquote>
+                                <p class="source">Jerome<br /><span class="title">Blablacar, Paris</span></p>
+                            </div><!--//content-->                         
+                        </div><!--//item-->  
+                        <div class="item">
+                            <figure class="profile"><img src="{{ static("images/people/morpheus-avatar.png") }}" alt="" /></figure>
+                            <div class="content">
+                                <blockquote>
+                                    <i class="fa fa-quote-left"></i>
+                                    <p>In my quest to find the perfect SEO tool, I came across Botify.</p>
+                                    <i class="fa fa-quote-right"></i>
+                                </blockquote>
+                                <p class="source">Tom Conte<br /><span class="title">Morpheus Media, New York</span></p>
+                            </div><!--//content-->                         
+                        </div><!--//item-->                                         
+                    </div><!--//carousel-inner-->
+                    
+                </div><!--//carousel-->
+            </div><!--//container-->
+        </section><!--//testimonials-->          
+                
+        <!-- ******CTA Section****** -->
+        <section id="cta-section" class="section cta-section text-center home-cta-section">
+            <div class="container">
+               <h2 class="title">Ready to boost your SEO traffic and revenue with great actionable data?</h2>
+               <p class="intro">More than <span class="counting">3,500</span> users are optimizing their website with Botify</p>
+               <p><a class="btn btn-cta btn-cta-primary" href="{{ signup_url }}">Start Your Free Trial Now</a></p>
+            </div><!--//container-->
+        </section><!--//cta-section-->
+        
+    </div><!--//section-wrapper-->
+{% endblock %}
+
+{% block footer_js %}
+     <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/popover-v1.js"></script>
+{% endblock %}

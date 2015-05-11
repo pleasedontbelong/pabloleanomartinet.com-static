@@ -1,0 +1,97 @@
+{% extends "website/includes/base.html" %}
+{% block title %}Jobs | Botify{% endblock %}
+{% block body_class %}jobs-page{% endblock %}
+{% block content %}
+
+    <div class="headline-bg jobs-headline-bg">
+    </div><!--//headline-bg-->         
+    
+    <section class="promo section section-on-bg">
+        <div class="container text-center">                
+            <h2 class="title">Join our <span class="highlight">ambitious</span> Team and Project</h2>
+            <p class="intro">We're a Team, we've a Mission but we wont success without complementary talents.</p>
+            <p class="intro">We need you.</p>   
+        </div><!--//container-->
+        <div class="container text-center invite-scroll-container">
+            <a href="#begin-content" id="invite-scroll"><i class="fa fa-angle-down"></i></a>
+        </div>
+    </section><!--//promo-->
+    
+    <!-- ******Content Section****** -->       
+    <section class="section why" id="begin-content">
+        <div class="container">
+            <h2 class="title text-center">Become a Botify's Team Member</h2>
+            <p class="intro text-center">We're looking for Top Talented People with a proven track record in any positions of a Software As a Service (SaaS) company. Check out these opened positions and join the Project.</p>
+            <div class="row item last-item">
+                <div class="content col-md-4 col-sm-12 col-xs-12">
+                    <h3 class="title">Opened Positions</h3>
+                    <div class="desc">
+                        <p>No opened positions right now !</p>
+                    </div>                     
+                </div><!--//content-->
+                <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+                    <img class="img-responsive" src="{{ static("images/screens/working.jpg") }}" alt="Report Overview" />
+                    <figcaption class="figure-caption">Our awesome office </figcaption>
+                </figure>
+            </div><!--//item-->
+        </div><!--//container-->
+    </section><!--//content--> 
+    <hr>
+    <!-- ******Contact Section****** --> 
+    <section class="contact-section section">
+        <div class="container">
+            <h2 class="title text-center">Send us your resume and covering letter</h2>
+            <p class="intro text-center">There is no opened positions that fit your profile but you think your profile and skills could be a real asset for the Botity project. Apply and we'll tell you if there is an opportunity to work together.</p>
+            <form id="contact-form" class="contact-form contact" method="post" action="https://api.botify.com/contact/">
+                <div class="row">
+                    <div class="contact-form-inner col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-0 xs-offset-0">
+                        <div class="row">
+                            {{ csrf() }}
+                            <input type="hidden" name="origin" value="contact">
+                            <input type="hidden" name="lang" value="0">
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                <label class="sr-only" for="cname">Your name</label>
+                                <input type="text" class="form-control" id="cname" name="last_name" placeholder="Your name" minlength="2" required>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                <label class="sr-only" for="cemail">Email address</label>
+                                <input type="email" class="form-control" id="cemail" name="email" placeholder="Your email address" required>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label class="sr-only" for="cmessage">Your message</label>
+                                <textarea class="form-control" id="cmessage" name="text" placeholder="Enter your message" rows="12" required></textarea>
+                            </div>
+                             <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <button type="submit" class="btn btn-block btn-cta btn-cta-primary">Send Message</button>
+                            </div>
+                        </div><!--//row-->
+                    </div>
+                </div><!--//row-->
+                <div id="form-messages"></div>
+            </form><!--//contact-form-->
+            <div id="success-message" class="hide">
+                <p class="text-center">
+                    <span class="fa-stack fa-3x">
+                      <i class="fa fa-circle fa-stack-2x text-success" style="color:#47C9AF;"></i>
+                      <i class="fa fa-check fa-stack-1x" style="color:#fff;"></i>
+                    </span>
+                </p>
+                <h2 class="title text-center">
+                    Your message was sent successfully
+                </h2>
+            </div>
+        </div><!--//container-->
+    </section><!--//contact-section-->
+
+    <!-- ******Emphasis Section****** --> 
+    <section class="emphasis section">
+        <div class="container">
+            <h2 class="title text-center">If you want to apply, you need to know Botify.</h2>
+            <div class="text-center">
+                <p>You want to be a member of the Team but have you discovered the app yet? You may take the free trial and share with us your valuable feedbacks.</p>
+                <a id="show-features" href="{{ signup_url }}" class="btn btn-cta btn-cta-primary">Start Your Free Trial Now</a>
+            </div>
+        </div><!--//container-->        
+    </section><!--//emphasis-->
+{% endblock %}

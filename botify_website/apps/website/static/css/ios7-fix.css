@@ -1,0 +1,114 @@
+
+/** On iOS7, vh and vw doesn't work correctly */
+
+/**
+ * iPad with portrait orientation.
+ * height: 1024px
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+  .bg-slider-wrapper .flexslider .slide {
+    height: 1024px;
+  }
+  .headline-bg {
+    height: 1024px;
+  }
+  .promo {
+    height: 1024px;
+    padding-top: 358px;
+  }
+  .home-page .promo {
+    padding-top: 205px;
+  }
+  .features-video {
+    padding-top: 154px;
+    height: 1024px;
+  }
+  .pricing {
+    padding-top: 154px;
+  }
+  .contact-section {
+    height: 1024px;
+  }
+  .botify-blog-page .blog.container {
+    margin-top: -512px;
+  }
+  .botify-blog-page .promo {
+    padding-top: 256px;
+  }
+}
+
+/**
+ * iPad with landscape orientation.
+ * height: 768px
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+  .bg-slider-wrapper .flexslider .slide {
+    height: 768px;
+  }
+  .headline-bg {
+    height: 768px;
+  }
+  .promo {
+    height: 768px;
+    padding-top: 269px;
+  }
+  .home-page .promo {
+    padding-top: 154px;
+  }
+  .features-video {
+    padding-top: 115px;
+    height: 768px;
+  }
+  .pricing {
+    padding-top: 115px;
+  }
+  .contact-section {
+    height: 768px;
+  }
+  .botify-blog-page .blog.container {
+    margin-top: -384px;
+  }
+  .botify-blog-page .promo {
+    padding-top: 192px;
+  }
+}
+
+/**
+ * iPhone 5
+ * You can also target devices with aspect ratio.
+ * height: 500px
+ */
+@media screen and (device-aspect-ratio: 40/71) {
+  .bg-slider-wrapper .flexslider .slide {
+    height: 500px;
+  }
+  .headline-bg {
+    height: 500px;
+  }
+  .promo {
+    height: 500px;
+    padding-top: 175px;
+  }
+  .home-page .promo {
+    padding-top: 100px;
+  }
+  .features-video {
+    padding-top: 75px;
+    height: 500px;
+  }
+  .pricing {
+    padding-top: 75px;
+  }
+  .contact-section {
+    height: 500px;
+  }
+  .botify-blog-page .blog.container {
+    margin-top: -250px;
+  }
+  .botify-blog-page .promo {
+    padding-top: 125px;
+  }
+  .features-tabbed {
+    padding-top: 140px;
+  }
+}

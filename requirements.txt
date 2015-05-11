@@ -1,0 +1,9 @@
+jingo
+django
+django-medusa
+Jinja2
+django-storages
+boto
+Werkzeug
+django-extensions
+django-pipeline

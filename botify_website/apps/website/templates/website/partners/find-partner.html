@@ -1,0 +1,74 @@
+{% extends "website/includes/base.html" %}
+{% block title %}Botify | Find a partner{% endblock %}
+{% block body_class %}partners-page{% endblock %}
+{% block header_navbar %}
+<li class="nav-item nav-item-cta"><a class="btn btn-cta btn-cta-secondary" href="/contact/">Become Partner</a></li>
+<li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="/partners/find-partner.html">Find a partner</a></li>
+{% endblock %}
+{% block content %}
+    <div class="headline-bg clients-headline-bg">
+    </div><!--//headline-bg-->         
+    
+    <section class="promo section section-on-bg">
+        <div class="container text-center">                
+            <h2 class="title">Find a Botify Certified Partner</h2>
+            <p class="intro">Increase your SEO traffic and revenue with the help of a trusted SEO &amp; Botify expert.</p>
+            <p><a class="btn btn-cta btn-cta-primary" href="/contact/">Find a partner</a></p>   
+        </div><!--//container-->
+        <div class="container text-center invite-scroll-container">
+            <a href="#begin-content" id="invite-scroll"><i class="fa fa-angle-down"></i></a>
+        </div>
+    </section><!--//promo-->
+
+    <!-- ******Content Section****** -->       
+    <section class="section why" id="begin-content">
+        <div class="container">
+            <h2 class="title text-center">Work with the Best</h2>
+            <p class="intro text-center">Botify doesn’t provide consulting, but our Botify Certified Partners do. We trust them 100%.</p>
+            <div class="row item">
+                <div class="content col-md-4 col-sm-12 col-xs-12">
+                    <h3 class="title">Why do we Trust our Botify Certified Partners?</h3>
+                    <div class="desc">
+                        <p><strong><i class="fa fa-check"></i>Real SEO Experts</strong><br>Botify Certified Partners have years of experience optimizing SEO of small and large websites.</p>
+                        <p><strong><i class="fa fa-check"></i>They know how Botify works</strong><br>We don't give the Badge to everyone. Agencies or Freelancers only get the Badge if they succeed with the on-line exam and if they have a significant experience with Botify.</p>
+                        <p><strong><i class="fa fa-check"></i>Look for the badge</strong><br>The badge recognizes companies that excel with Botify and that use Botify best practices.</p>
+                    </div>                     
+                </div><!--//content-->
+                <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+                    <img class="img-responsive" src="{{ static("images/screens/teamworking.jpg") }}" alt="Team working" />
+                    <figcaption class="figure-caption">(Photography: Team Working) </figcaption>
+                </figure>
+            </div><!--//item-->
+            
+            <h2 class="title text-center">The Botify Certified Partners List</h2>
+            <p class="intro text-center">You can contact them directly or ask us for any advice concerning your needs and objectives. You'll find the right Partner for your business.</p>
+            <!-- ******Logos Section****** -->
+            <section class="section press">
+                <div class="container text-center">
+                    <ul class="press-list list-inline row">
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/morpheusmedia.png") }}" alt="Morpheus Media" /></li>
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/searchforesight.png") }}" alt="Search Foresight" /></a></li>
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/netbooster.png") }}" alt="Netbooster" /></a></li>
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/synodiance.png") }}" alt="Synodiance" /></a></li>
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/labelium.png") }}" alt="Labelium" /></a></li>
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/awe.png" ) }}"alt="Awe" /></a></li>
+                    </ul>
+                    <ul class="press-list list-inline row">
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/activis.png") }}" alt="activis" /></a></li>
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/crawlerzone.png") }}" alt="Crawler Zone" /></a></li>
+                        <li class="col-md-2 col-sm-2 col-xs-4"><img class="img-responsive" src="{{ static("images/partners/webguidepartner.png") }}" alt="Webguide Partner" /></a></li>
+                    </ul>                
+                </div><!--//container-->
+            </section><!--//logos-->
+        </div><!--//container-->
+    </section><!--//content--> 
+
+    <!-- ******CTA Section****** -->
+    <section id="cta-section" class="section cta-section text-center home-cta-section">
+        <div class="container">
+           <h2 class="title">Become a Botify Certified Partner Now</h2>
+           <p class="intro">Join the certification program and gain immediate access to information, training resources and online test. We'll be there to help, every step of the way.</p>
+           <p><a class="btn btn-cta btn-cta-primary" href="{{ signup_url }}" target="_blank">Become a Partner Now</a></p>
+        </div><!--//container-->
+    </section><!--//cta-section-->
+{% endblock %}

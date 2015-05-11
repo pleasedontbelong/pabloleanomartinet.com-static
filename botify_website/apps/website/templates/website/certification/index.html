@@ -1,0 +1,68 @@
+{% extends "website/includes/base.html" %}
+{% block title %}Botify Certification{% endblock %}
+{% block body_class %}clients-page{% endblock %}
+{% block content %}
+
+    <div class="headline-bg certification-headline-bg">
+    </div><!--//headline-bg-->         
+    
+    <section class="promo section section-on-bg">
+        <div class="container text-center">                
+            <h2 class="title">Get the Badge</h2>
+            <p class="intro">Freelancers, Students, in-house SEO Managers or Consultants in an agency, you can earn the Botify Badge.</p>
+            <p><a class="btn btn-cta btn-cta-primary" href="/contact/">Earn the Badge</a></p>   
+        </div><!--//container-->
+        <div class="container text-center invite-scroll-container">
+            <a href="#begin-content" id="invite-scroll"><i class="fa fa-angle-down"></i></a>
+        </div>
+    </section><!--//promo-->
+    
+    <!-- ******Content Section****** -->       
+    <section class="section why" id="begin-content">
+        <div class="container">
+            <h2 class="title text-center">Become a Botify Certified Consultant</h2>
+            <p class="intro text-center">You’re already a Botify user but you want to increase your Botify knowledge? Get the Certification Program’s Advanced Training and become a Botify Master.</p>
+            <div class="row item">
+                <div class="content col-md-4 col-sm-12 col-xs-12">
+                    <div class="desc">
+                        <p><strong><i class="fa fa-star"></i>Attend a certification session</strong><br>Certification session can be organized on-line, in our Botify’s HQs in London or Paris or even  in your Offices if you’re different people in your team using the application.</p>
+                        <p><strong><i class="fa fa-star"></i>Take the on-line test</strong><br>One hour. 80 questions covering most of Botify concepts and uses. Not really difficult but you need to be a real Expert.</p>
+                        <p><strong><i class="fa fa-star"></i>You earned the Badge</strong><br>80% of good answers. You did it and you’re now part of the Community!</p>
+                    </div>                     
+                </div><!--//content-->
+                <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+                    <img class="img-responsive" src="{{ static("images/screens/globaloverview.jpg") }}" alt="Report Overview" />
+                    <figcaption class="figure-caption">(Screenshot: Report Overview) </figcaption>
+                </figure>
+            </div><!--//item-->
+
+            
+            <h2 class="title text-center">Stay ahead of the curve</h2>
+                <p class="intro text-center">Getting the badge is just the beginning.</p>
+                <div class="row item last-item">
+                    <div class="content col-md-4 col-sm-12 col-xs-12 col-md-push-8 col-sm-push-0 col-xs-push-0">
+                        <div class="desc">
+                            <p><strong><i class="fa fa-check"></i>Exclusive training</strong><br>Get access to new training sessions as soon as they are available and master every new Botify Feature.</p>
+                            <p><strong><i class="fa fa-check"></i>Access Beta Features</strong><br>Can't wait testing Botify new releases and features? No problem. As a Botify Certified Consultant, you can test every new feature before the Official release.</p>
+                            <p><strong><i class="fa fa-check"></i>Join the growing Community</strong><br>More and more SEO managers around the world optimize their websites with Botify. Discuss and share with other Botify Certified Consultants about new Botify features, SEO best practices or future of Search.</p>
+                        </div>                       
+                    </div><!--//content-->
+                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-pull-4 col-sm-pull-0 col-xs-pull-0">
+                        <img class="img-responsive" src="{{ static("images/screens/globaloverview.jpg") }}" alt="Organic Visits" />
+                        <figcaption class="figure-caption">(Screenshot: Organic Visits) </figcaption>
+                    </figure>
+                </div><!--//item-->
+        </div><!--//container-->
+    </section><!--//content--> 
+
+    <!-- ******Emphasis Section****** --> 
+    <section class="emphasis section">
+        <div class="container">
+            <h2 class="title text-center">Earn the Badge Now</h2>
+            <div class="text-center">
+                <p>You want to get the most of Botify? Become a Botify Certified Partner and join our growing Community. We’ll be there to help you every step of the way.</p>
+                <a id="show-features" href="/contact/" class="btn btn-cta btn-cta-primary">Earn the Badge</a>
+            </div>
+        </div><!--//container-->        
+    </section><!--//emphasis-->
+{% endblock %}

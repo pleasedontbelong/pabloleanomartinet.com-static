@@ -1,0 +1,93 @@
+{% extends "website/includes/base.html" %}
+{% block title %}Contact Botify{% endblock %}
+{% block body_class %}contact-page{% endblock %}
+{% block content %}
+        <div class="headline-bg contact-headline-bg">
+        </div><!--//headline-bg-->
+
+
+        <!-- ******Contact Section****** -->
+        <section class="contact-section section section-on-bg">
+            <div class="container">
+                <h2 class="title text-center">Contact Us</h2>
+                <p class="intro text-center">We’d love to hear from you.</p>
+
+                <form id="contact-form" class="contact-form contact" method="post" action="https://api.botify.com/contact/">
+                    <div class="row">
+                        <div class="contact-form-inner col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-0 xs-offset-0">
+                            <div class="row">
+                                {{ csrf() }}
+                                <input type="hidden" name="origin" value="contact">
+                                <input type="hidden" name="lang" value="0">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                    <label class="sr-only" for="cname">Your name</label>
+                                    <input type="text" class="form-control" id="cname" name="last_name" placeholder="Your name" minlength="2" required>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                    <label class="sr-only" for="cemail">Email address</label>
+                                    <input type="email" class="form-control" id="cemail" name="email" placeholder="Your email address" required>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                    <label class="sr-only" for="cmessage">Your message</label>
+                                    <textarea class="form-control" id="cmessage" name="text" placeholder="Enter your message" rows="12" required></textarea>
+                                </div>
+                                 <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                    <button type="submit" class="btn btn-block btn-cta btn-cta-primary">Send Message</button>
+                                </div>
+                            </div><!--//row-->
+                        </div>
+                    </div><!--//row-->
+                    <div id="form-messages"></div>
+                </form><!--//contact-form-->
+                <div id="success-message" class="hide">
+                    <p class="text-center">
+                        <span class="fa-stack fa-3x">
+                          <i class="fa fa-circle fa-stack-2x text-success" style="color:#47C9AF;"></i>
+                          <i class="fa fa-check fa-stack-1x" style="color:#fff;"></i>
+                        </span>
+                    </p>
+                    <h2 class="title text-center">
+                        Your message was sent successfully
+                    </h2>
+                </div>
+            </div><!--//container-->
+        </section><!--//contact-section-->
+
+        <!-- ******Other Contact Section****** -->
+        <section class="contact-other-section section">
+            <div class="container text-center">
+                <h2 class="title">Other ways to reach us</h2>
+                <div class="row">
+                    <ul class="other-info list-unstyled col-md-6 col-sm-10 col-xs-12 col-md-offset-3 col-sm-offset-1 xs-offset-0" >
+                        <li><i class="fa fa-twitter"></i><a href="https://twitter.com/3rdwave_media" target="_blank">@botify</a></li>
+                        <li><i class="fa fa-map-marker"></i>
+                            <p><b>London, United Kingdom</b></p>
+                            <p><a href="tel:{{ phone_uk }}">{{ phone_uk }}</a></p>
+
+                            Botify <br />14 Bonhill St.<br />7th Floor<br />London EC2A 4BX
+                        </li>
+                        <li><i class="fa fa-map-marker"></i>
+                            <p><b>Paris, France</b></p>
+                            <p><a href="tel:{{ phone_fr }}">{{ phone_fr }}</a></p>
+
+                            Botify <br />8 rue Saint Fiacre<br />75 002 Paris
+                        </li>
+                    </ul>
+                </div><!--//row-->
+            </div><!--//container-->
+        </section><!--//contact-other-section-->
+
+
+
+        <!-- ******CTA Section****** -->
+        <section id="cta-section" class="section cta-section text-center contact-cta-section">
+            <div class="container">
+               <h2 class="title">Ready to boost your traffic and revenue with great actionable data?</h2>
+               <p class="intro">More than <span class="counting">3,500</span> users are optimizing their website with Botify</p>
+               <p><a class="btn btn-cta btn-cta-primary" href="{{ signup_url }}">Start Your Free Trial Now</a></p>
+            </div><!--//container-->
+        </section><!--//cta-section-->
+
+    </div><!--//wrapper-->
+{% endblock %}

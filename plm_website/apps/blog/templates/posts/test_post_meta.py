@@ -1,0 +1,2 @@
+CATEGORY = "mycat"
+AUTHOR = "Pablo"

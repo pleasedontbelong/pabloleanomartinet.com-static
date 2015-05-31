@@ -2,6 +2,8 @@ from django.conf import settings
 from importlib import import_module
 from plm_website.core.generic import TemplateView
 
+from blog import main_context
+
 
 class PostView(TemplateView):
 
@@ -17,6 +19,7 @@ class PostView(TemplateView):
         return dict(
             super(PostView, self).get_context_data(*args, **kwargs),
             **{
-                'meta': meta
+                'meta': meta,
+                'base': main_context,
             }
         )

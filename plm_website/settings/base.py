@@ -134,6 +134,7 @@ PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_CSS = {
     'main': {
         'source_filenames': (
+            'css/vendors/bootstrap/dist/css/bootstrap.min.css',
         ),
         'output_filename': 'css/style.css',
         'extra_context': {

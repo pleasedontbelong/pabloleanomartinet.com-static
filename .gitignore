@@ -2,7 +2,6 @@
 *.pot
 *.pyc
 *.swp
-local_settings.py
 local.py
 *.DS_Store
 .ven/
@@ -12,8 +11,6 @@ htmlcov/
 .sass-cache/
 Gemfile.lock
 node_modules
-media/
 db.sqlite3
 venv/
-/static/
-node_modules
+plm_website/apps/blog/static/

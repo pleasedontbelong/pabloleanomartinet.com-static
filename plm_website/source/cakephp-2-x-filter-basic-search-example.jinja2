@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+   
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+<title>CakePHP 2.x Filter and Basic search with pagination example - Pablo Leano Martinet</title>
+
+<link rel="stylesheet" href="http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/style.css" media="screen" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes" />
+
+<!--[if IE 8]>
+    <script src="http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/scripts/html5.js" type="text/javascript"></script>
+    <script src="http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/scripts/selectivizr-min.js" type="text/javascript"></script>
+<![endif]-->
+
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="A basic example of filtering and searching while using a paginating a list of items, using cakephp 2.x"/>
+<link rel="canonical" href="http://www.pabloleanomartinet.com/cakephp-2-x-filter-basic-search-example/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="CakePHP 2.x Filter and Basic search with pagination example - Pablo Leano Martinet" />
+<meta property="og:description" content="A basic example of filtering and searching while using a paginating a list of items, using cakephp 2.x" />
+<meta property="og:url" content="http://www.pabloleanomartinet.com/cakephp-2-x-filter-basic-search-example/" />
+<meta property="og:site_name" content="Pablo Leano Martinet" />
+<meta property="article:tag" content="cakephp" />
+<meta property="article:tag" content="filters" />
+<meta property="article:tag" content="pagination" />
+<meta property="article:tag" content="search" />
+<meta property="article:tag" content="tutorial" />
+<meta property="article:section" content="Posts" />
+<meta property="article:published_time" content="2014-01-24T12:31:24+00:00" />
+<meta property="article:modified_time" content="2014-12-16T10:19:21+00:00" />
+<meta property="og:updated_time" content="2014-12-16T10:19:21+00:00" />
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Pablo Leano Martinet &raquo; Feed" href="http://www.pabloleanomartinet.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Pablo Leano Martinet &raquo; Comments Feed" href="http://www.pabloleanomartinet.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Pablo Leano Martinet &raquo; CakePHP 2.x Filter and Basic search with pagination example Comments Feed" href="http://www.pabloleanomartinet.com/cakephp-2-x-filter-basic-search-example/feed/" />
+<link rel='stylesheet' id='bootstrap.min-css'  href='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/css/bootstrap.min.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap.theme.min-css'  href='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/css/bootstrap.theme.min.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome.min-css'  href='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/css/font-awesome.min.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='prettyPhoto-css'  href='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/css/prettyPhoto.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='template-css'  href='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/css/template.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-css'  href='//fonts.googleapis.com/css?family=Raleway%3A900%7CFjalla+One%7CRoboto+Slab%3A400%2C300%2C100%2C700&#038;ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='A2A_SHARE_SAVE-css'  href='http://www.pabloleanomartinet.com/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.9' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.pabloleanomartinet.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.pabloleanomartinet.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.0.1" />
+<link rel='shortlink' href='http://www.pabloleanomartinet.com/?p=14' />
+
+<script type="text/javascript"><!--
+var a2a_config=a2a_config||{},wpa2a={done:false,html_done:false,script_ready:false,script_load:function(){var a=document.createElement('script'),s=document.getElementsByTagName('script')[0];a.type='text/javascript';a.async=true;a.src='http://static.addtoany.com/menu/page.js';s.parentNode.insertBefore(a,s);wpa2a.script_load=function(){};},script_onready:function(){if(a2a.type=='page'){wpa2a.script_ready=true;if(wpa2a.html_done)wpa2a.init();}},init:function(){for(var i=0,el,target,targets=wpa2a.targets,length=targets.length;i<length;i++){el=document.getElementById('wpa2a_'+(i+1));target=targets[i];a2a_config.linkname=target.title;a2a_config.linkurl=target.url;if(el){a2a.init('page',{target:el});el.id='';}wpa2a.done=true;}wpa2a.targets=[];}};a2a_config.tracking_callback=['ready',wpa2a.script_onready];
+//--></script>
+<style type="text/css"><br />
+<b>Notice</b>:  Undefined variable: logostyle in <b>/var/www/pabloleanomartinet.com/prod/wp-content/themes/diarjo-lite/core/functions/style.php</b> on line <b>16</b><br />
+#header, #footer, #sidebar .post-article, #back-to-top i, nav#mainmenu ul ul, #wp-calendar { background-color: #2D3032; } #sidebar h3.title, #sidebar a, #sidebar p, #sidebar li, #sidebar address,
+#sidebar dd, #sidebar blockquote, #sidebar td, #sidebar th, #sidebar label, #sidebar .textwidget, #footer h3.title, #footer a, #footer p, #footer li, #footer address,
+#footer dd, #footer blockquote, #footer td, #footer th, #footer label, #footer .textwidget, nav#mainmenu ul li a, #back-to-top i, #wp-calendar caption, #wp-calendar td a, #footer h4.title, #logo a, nav#widgetmenu li a { color: #ffffff; } nav#mainmenu ul ul li:last-of-type a, #searchform input[type=submit], .contact-form input[type=submit], #commentform input[type=submit], #sidebar li, #footer li, #footer .widgets, ul.widget-category, ul.widget-category li a, ul.contact-info li, .bottom_widget ul.contact-info li, .tagcloud a, .socials a, #back-to-top i, nav#mainmenu ul li a, #sidebar ul.children, #sidebar ul.sub-menu, #wp-calendar th, #wp-calendar td, nav#widgetmenu ul, nav#widgetmenu li a, nav#widgetmenu li:last-of-type a, nav#widgetmenu li:last-of-type a:hover, #sidebar li, #footer li, #sidebar ul.children, #sidebar ul.children, #footer ul.sub-menu, #sidebar ul.sub-menu { border-color: #444649; } ::-moz-selection { background-color: #48c9b0; } ::selection { background-color: #48c9b0; } .skills .views, .filter, #searchform input[type=submit], .contact-form input[type=submit], #commentform input[type=submit]{ background-color: #48c9b0; } .skills .views, .filter, #searchform input[type=submit], .contact-form input[type=submit], #commentform input[type=submit] { border-color: #48c9b0; } #subheader, nav#mainmenu ul li a:hover,nav#mainmenu li:hover > a, nav#mainmenu ul li.current-menu-item > a, nav#mainmenu ul li.current_page_item > a, nav#mainmenu ul li.current-menu-parent > a, nav#mainmenu ul li.current_page_ancestor > a, nav#mainmenu ul li.current-menu-ancestor > a, #back-to-top i.open, #back-to-top i:hover, .post-article .link a:hover, .post-article .quote:hover, .filter li:hover, .filter li.active, ul.widget-category li a:hover, #wp-calendar #today, #wp-calendar #today a, .tagcloud a:hover, .tabs li a:hover, .tabs li.ui-tabs-active a, .tabs li.ui-state-active a, .toggle_container h5.element:hover, .toggle_container h5.inactive, .toggle_container h5.inactive:hover, .socials a:hover, .wp-pagenavi a:hover, .wp-pagenavi span.current, .wip-pagination span, .wip-pagination span:hover, #searchform input[type=submit]:hover, .contact-form input[type=submit]:hover, #commentform input[type=submit]:hover, .skills .views.active, .skills .views:hover, .theme-default .nivo-directionNav a:hover, .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover, nav#widgetmenu li a:hover, nav#widgetmenu li:hover > a , nav#widgetmenu li.current-menu-item > a, nav#widgetmenu li.current-menu-ancestor > a { background-color: #1abc9c; } a.more:hover, a:hover, #footer a:hover, #sidebar a:hover, .post-article .title a:hover, .post-info a:hover, .filterable-grid  h4.title a:hover, .filterable-grid  h4.title a:focus, #logo a:hover, #footer a:hover { color: #1abc9c; } nav#mainmenu ul li a:hover,nav#mainmenu li:hover > a,nav#mainmenu ul li.current-menu-item > a, nav#mainmenu ul li.current_page_item > a, nav#mainmenu ul li.current-menu-parent > a, nav#mainmenu ul li.current_page_ancestor > a, nav#mainmenu ul li.current-menu-ancestor > a, nav#mainmenu ul ul li:last-of-type a:hover, nav#mainmenu ul ul li:last-of-type:hover > a, nav#mainmenu ul ul li.current-menu-item > a, nav#mainmenu ul ul li.current_page_item > a, nav#mainmenu ul ul li.current-menu-parent > a, nav#mainmenu ul ul li.current_page_ancestor > a, nav#mainmenu ul ul li.current-menu-ancestor > a, #back-to-top i.open, #back-to-top i:hover, ul.widget-category li a:hover, .tagcloud a:hover, .toggle_container h5.element:hover, .toggle_container h5.inactive, .toggle_container h5.inactive:hover, .toggle_container h5.element:hover:last-of-type, .toggle_container h5.inactive:last-of-type, .toggle_container h5.inactive:hover:last-of-type, .socials a:hover, #searchform input[type=submit]:hover, .contact-form input[type=submit]:hover, #commentform input[type=submit]:hover, nav#widgetmenu li a:hover, nav#widgetmenu li:hover > a , nav#widgetmenu li.current-menu-item > a, nav#widgetmenu li.current-menu-ancestor > a { border-color: #1abc9c; } </style>
+</head>
+
+<body class="single single-post postid-14 single-format-standard custom-background custombody" >
+
+<header id="header">
+
+    <div class="container">
+    
+        <div class="row">
+        
+        	<div class="col-md-12">
+            
+            	<div id="logo">
+                
+                    <a href="http://www.pabloleanomartinet.com" title="Pablo Leano Martinet">
+                            
+                        Pablo Leano Martinet                                
+                    </a>
+                
+                </div>
+				
+                <nav id="mainmenu" >
+               
+                	<ul id="menu-menu-1" class="menu"><li id="menu-item-70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70"><a href="http://www.pabloleanomartinet.com/">Home Page</a></li>
+<li id="menu-item-72" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-72"><a href="http://www.pabloleanomartinet.com/category/posts/">Posts</a></li>
+<li id="menu-item-73" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-73"><a href="http://www.pabloleanomartinet.com/category/project/">Projects</a></li>
+<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79"><a href="http://www.pabloleanomartinet.com/about-me/">About Me</a></li>
+</ul>                
+                </nav> 
+				
+                <div class="clear"></div>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</header>
+<div class="container">
+	
+    <div class="row">
+       
+        <div class="col-md-12 full">
+        	
+            <div class="row">
+        
+                <article class="post-14 post type-post status-publish format-standard hentry category-posts tag-cakephp tag-filters tag-pagination tag-search tag-tutorial-2 post-container col-md-12" >
+                    
+                    			
+            <div class="post-article post-title">	
+                <h1 class="title icon-title"> 
+                	CakePHP 2.x Filter and Basic search with pagination example                	<span><i class="fa fa-pencil-square-o"></i></span>
+                </h1>
+			</div>
+            
+		    
+<div class="post-article">
+
+	
+    	<div class="line"> <span> On January 24, 2014 by pablo </span> </div>
+
+	<p>I&#8217;ll try to make it fast. So, for those who just want to see the code, you can clone it from the <a href="https://github.com/pleasedontbelong/cakephp2.x-filter-search-example" target="_blank">github repository.</a> Feel free to fork it, improve it, add issues, etc.</p>
+<p>Now, for those who are still reading this article n_n. A few time I have been asked to add some filtering and basic search on paginated lists baked with cakephp. The principle is quite simple, we need a form with some few inputs or selects (our filters), and pass those parameters to the $paginate variable on the controller.</p>
+<p>We need to have those filter parameters on the url because if we only work with POST parameters we will lose all of our filters as soon as we change the page, obviously because our pagination numbers are just links. So the first thing to do is to transform the POST sended by the form into <a href="http://book.cakephp.org/2.0/en/development/routing.html#named-parameters" target="_blank">named parameters</a>. We could (maybe) set the form method attribute to &#8220;get&#8221; but I prefer not to, because we could end up with urls that have both named parameters and GET parameters. Witch looks ugly &#8220;/test/page:1/sort:title/?parameter=value&#8221;</p>
+<h2>The Data-model</h2>
+<p>It&#8217;s a simple model to paginate a list of movies by the genre or the director. It will include a basic search on the title and description of the movie</p>
+<h2>The View (index.ctp)</h2>
+<div style="font-size:10px; line-height:1.3em">
+<div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.x-filter-search-example/blob/master/app/View/Movies/index.ctp?slice=6:28&footer=minimal"></script></div>
+</div>
+<h2>The Controller (MoviesController.php)</h2>
+<div style="font-size:10px; line-height:1.3em">
+<div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.x-filter-search-example/blob/master/app/Controller/MoviesController.php?slice=15:70&footer=minimal"></script></div>
+</div>
+<h2>A few notes</h2>
+<ul>
+<li>I&#8217;m using a very simple search here, just a like. But all I wanted was to show you the basic algorithm for filtering.</li>
+<li>In order to respect the DRY principle, you might want to put this code inside a component and a helper</li>
+<li>You could use some rewrite rules to make beautiful urls to improve the SEO.</li>
+<li>In this example I am only using 1xN relationships. If you want to filter NxN relations, you&#8217;ll need to work a little more on the controller side (making manual joins).</li>
+</ul>
+<p>Hope this helps :). Please leave a comment if something is not working correctly on the code or post an issue on github. I&#8217;ll write a few unit test later and push it</p>
+<div class="addtoany_share_save_container addtoany_content_bottom"><div class="a2a_kit a2a_kit_size_32 addtoany_list a2a_target" id="wpa2a_1"><a class="a2a_button_facebook" href="http://www.addtoany.com/add_to/facebook?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcakephp-2-x-filter-basic-search-example%2F&amp;linkname=CakePHP%202.x%20Filter%20and%20Basic%20search%20with%20pagination%20example" title="Facebook" rel="nofollow" target="_blank"></a><a class="a2a_button_twitter" href="http://www.addtoany.com/add_to/twitter?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcakephp-2-x-filter-basic-search-example%2F&amp;linkname=CakePHP%202.x%20Filter%20and%20Basic%20search%20with%20pagination%20example" title="Twitter" rel="nofollow" target="_blank"></a><a class="a2a_button_google_plus" href="http://www.addtoany.com/add_to/google_plus?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcakephp-2-x-filter-basic-search-example%2F&amp;linkname=CakePHP%202.x%20Filter%20and%20Basic%20search%20with%20pagination%20example" title="Google+" rel="nofollow" target="_blank"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share_save"></a>
+<script type="text/javascript"><!--
+wpa2a.script_load();
+//--></script>
+</div></div><div class="clear"></div>        <div class="post-info">
+            <div class="left"> <a href="http://www.pabloleanomartinet.com/category/posts/" rel="category tag">Posts</a> </div>
+            <div class="right"> Tags: <a href="http://www.pabloleanomartinet.com/tag/cakephp/" rel="tag">cakephp</a>, <a href="http://www.pabloleanomartinet.com/tag/filters/" rel="tag">filters</a>, <a href="http://www.pabloleanomartinet.com/tag/pagination/" rel="tag">pagination</a>, <a href="http://www.pabloleanomartinet.com/tag/search/" rel="tag">search</a>, <a href="http://www.pabloleanomartinet.com/tag/tutorial-2/" rel="tag">tutorial</a>  </div>
+        </div>
+            
+        <div class="clear"></div>
+
+    
+
+</div>                        
+                    <div style="clear:both"></div>
+                    
+                </article>
+        
+                
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-2588">
+        <div id="dsq-comment-header-2588" class="dsq-comment-header">
+            <cite id="dsq-cite-2588">
+                <span id="dsq-author-user-2588">Randy</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2588" class="dsq-comment-body">
+            <div id="dsq-comment-message-2588" class="dsq-comment-message"><p>Thanks for this codes, it&#8217;s simple and easy. please give me script for filter by date &#8220;between&#8221;.<br />
+thanks before. <img src="http://www.pabloleanomartinet.com/wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley" /></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2948">
+        <div id="dsq-comment-header-2948" class="dsq-comment-header">
+            <cite id="dsq-cite-2948">
+http://youinspireyou.com                <span id="dsq-author-user-2948">David Wampamba</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2948" class="dsq-comment-body">
+            <div id="dsq-comment-message-2948" class="dsq-comment-message"><p>I actually landed on this when I wanted to add filters to my app. I hope this can be of great help. </p>
+<p>Since it will be my first attempt to do it, I don&#8217;t wish to improve it but later, I will do. </p>
+<p>Wait for feed back otherwise thanks</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-15390">
+        <div id="dsq-comment-header-15390" class="dsq-comment-header">
+            <cite id="dsq-cite-15390">
+                <span id="dsq-author-user-15390">Andrei R</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-15390" class="dsq-comment-body">
+            <div id="dsq-comment-message-15390" class="dsq-comment-message"><p>I made a method based on your code. It will help you to use this filter in every controller in your app with less coding.</p>
+<p>AppController.php</p>
+<p><code><br />
+public function filterTable($controllerName, $conditionArrays) {<br />
+		$conditions = array();<br />
+        //Transform POST into GET<br />
+        if(($this-&gt;request-&gt;is('post') || $this-&gt;request-&gt;is('put')) &amp;&amp; isset($this-&gt;data['Filter'])){<br />
+        	$filter_url['controller'] = $this-&gt;request-&gt;params['controller'];<br />
+            $filter_url['action'] = $this-&gt;request-&gt;params['action'];<br />
+            // We need to overwrite the page every time we change the parameters<br />
+            $filter_url['page'] = 1;</p>
+<p>            // for each filter we will add a GET parameter for the generated url<br />
+            foreach($this-&gt;data['Filter'] as $name =&gt; $value){<br />
+            	if($value){<br />
+                	// You might want to sanitize the $value here<br />
+                    // or even do a urlencode to be sure<br />
+                    $filter_url[$name] = urlencode($value);<br />
+                }<br />
+            }<br />
+            // now that we have generated an url with GET parameters,<br />
+            // we'll redirect to that page<br />
+            return $this-&gt;redirect($filter_url);<br />
+		} else {<br />
+            // Inspect all the named parameters to apply the filters<br />
+            foreach($this-&gt;params['named'] as $param_name =&gt; $value){<br />
+            // Don't apply the default named parameters used for pagination<br />
+            	if(!in_array($param_name, array('page','sort','direction','limit'))){<br />
+	                // You may use a switch here to make special filters<br />
+	                // like "between dates", "greater than", etc<br />
+	                if($param_name == "search"){<br />
+	                	$cond = array();<br />
+	                    for($i = 0; $i  '%' . $value . '%'));<br />
+	                    }</p>
+<p>	                	$conditions['OR'] = $cond;<br />
+	                } else {<br />
+		            	$conditions[$controllerName.'.'.$param_name] = $value;<br />
+	                }<br />
+					$this-&gt;request-&gt;data['Filter'][$param_name] = $value;<br />
+				}<br />
+			}<br />
+        }<br />
+        // Pass the search parameter to highlight the text<br />
+        $this-&gt;set('search', isset($this-&gt;params['named']['search']) ? $this-&gt;params['named']['search'] : "");</p>
+<p>        return $conditions;<br />
+	}<br />
+</code></p>
+<p>DistributorController.php</p>
+<p><code><br />
+public function admin_index() {<br />
+		$conditionArrays = array('Distributor.contact_person LIKE', 'Distributor.name LIKE', 'Distributor.phone LIKE');<br />
+        $conditions = $this-&gt;filterTable('Distributor', $conditionArrays);</p>
+<p>        $this-&gt;Distributor-&gt;recursive = 0;<br />
+        $this-&gt;paginate = array('limit' =&gt; 10, 'conditions' =&gt; $conditions);<br />
+        $this-&gt;set('distributors', $this-&gt;paginate());<br />
+	}<br />
+</code></p>
+<p>The View Bootstrap 3 ready:</p>
+<p><code><br />
+ 'distributors', 'action' =&gt; 'index'); ?&gt;</p>
+<p>Form-&gt;create("Filter",array('url' =&gt; $base_url, 'class' =&gt; 'filter')); ?&gt;</p>
+<p>					Form-&gt;input("search", array('label' =&gt; false, 'class' =&gt; 'form-control', 'placeholder' =&gt; 'Filter')); ?&gt;<br />
+					Form-&gt;submit(__('Search'), array('class' =&gt; 'btn btn-default')); ?&gt;</p>
+<p>						&lt;?php<br />
+							echo &quot;";<br />
+							echo $this-&gt;Html-&gt;link("Reset", $base_url, array('class' =&gt; 'btn btn-default pull-right'));<br />
+							echo "";<br />
+						?&gt;</p>
+<p>			Form-&gt;end();?&gt;<br />
+</code></p>
+<p>Hope it helps someone. Thank you for this code.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-pablo bypostauthor odd alt depth-2" id="dsq-comment-22364">
+        <div id="dsq-comment-header-22364" class="dsq-comment-header">
+            <cite id="dsq-cite-22364">
+                <span id="dsq-author-user-22364">pablo</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-22364" class="dsq-comment-body">
+            <div id="dsq-comment-message-22364" class="dsq-comment-message"><p>Nice!! Feel free to fork the github repo to add your changes! (there are a few unit tests i think)</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-20006">
+        <div id="dsq-comment-header-20006" class="dsq-comment-header">
+            <cite id="dsq-cite-20006">
+                <span id="dsq-author-user-20006">Marcos Xavier</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-20006" class="dsq-comment-body">
+            <div id="dsq-comment-message-20006" class="dsq-comment-message"><p>Uow very good<br />
+Uow muito bom</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-20763">
+        <div id="dsq-comment-header-20763" class="dsq-comment-header">
+            <cite id="dsq-cite-20763">
+                <span id="dsq-author-user-20763">Carlos</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-20763" class="dsq-comment-body">
+            <div id="dsq-comment-message-20763" class="dsq-comment-message"><p>Hi, thank you for this tutorial. It helped my a lot.</p>
+<p>Just a detail, on the search field if you write something with a space &#8221; &#8221; it won&#8217;t find it, you&#8217;ll need a urldecode in this the fields:</p>
+<p>array(&#8216;Movie.title LIKE&#8217; =&gt; &#8216;%&#8217; . urldecode($value) . &#8216;%&#8217;),<br />
+                                                array(&#8216;Movie.description LIKE&#8217; =&gt; &#8216;%&#8217; . urldecode($value) . &#8216;%&#8217;)</p>
+<p>Thanks!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-22561">
+        <div id="dsq-comment-header-22561" class="dsq-comment-header">
+            <cite id="dsq-cite-22561">
+                <span id="dsq-author-user-22561">gonzela2006</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-22561" class="dsq-comment-body">
+            <div id="dsq-comment-message-22561" class="dsq-comment-message"><p>Hi,</p>
+<p>Thank you very much, It is working as a charm <img src="http://www.pabloleanomartinet.com/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-22566">
+        <div id="dsq-comment-header-22566" class="dsq-comment-header">
+            <cite id="dsq-cite-22566">
+                <span id="dsq-author-user-22566">Nicholas Schembri</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-22566" class="dsq-comment-body">
+            <div id="dsq-comment-message-22566" class="dsq-comment-message"><p>Thank you very very much! You were very helpful!!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-22568">
+        <div id="dsq-comment-header-22568" class="dsq-comment-header">
+            <cite id="dsq-cite-22568">
+                <span id="dsq-author-user-22568">murugadas</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-22568" class="dsq-comment-body">
+            <div id="dsq-comment-message-22568" class="dsq-comment-message"><p>Thank you for the post. It helped me a lot. Working fine.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+
+			</div>
+        
+        </div>
+
+		
+        <div class="clear"></div>
+
+           
+    </div>
+    
+</div>
+
+<div id="back-to-top"> <i class="fa fa-chevron-up"></i> </div>
+
+<footer id="footer">
+	
+    <div class="container">
+
+		        
+			<section class="row widgets">
+                    
+				<div class="col-md-4 widget-box"><h4 class="title">Categories</h4>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://www.pabloleanomartinet.com/category/posts/" >Posts</a> (8)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.pabloleanomartinet.com/category/project/" >Project</a> (2)
+</li>
+		</ul>
+</div>                    
+            </section>
+                
+        
+        <div class="row" >
+             
+			<div class="col-md-12" >
+
+                <div class="copyright">
+
+                    <p>
+                                                  Copyright Pablo Leano Martinet 2015 
+                         
+                        | Theme by <a href="http://www.themeinprogress.com/" target="_blank">Theme in Progress</a> |
+                        <a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+                    
+                    </p>
+
+				</div>
+                
+                
+                <div class="clear"></div>
+                
+			</div>
+                
+		</div>
+        
+	</div>
+    
+</footer>
+
+
+<script type="text/javascript"><!--
+wpa2a.targets=[
+{title:'CakePHP 2.x Filter and Basic search with pagination example',url:'http://www.pabloleanomartinet.com/cakephp-2-x-filter-basic-search-example/'}];
+wpa2a.html_done=true;if(wpa2a.script_ready&&!wpa2a.done)wpa2a.init();wpa2a.script_load();
+//--></script>
+<!-- Tracking code easily added by NK Google Analytics -->
+<script type="text/javascript"> 
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ 
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), 
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) 
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); 
+ga('create', 'UA-12714966-2', 'pabloleanomartinet.com'); 
+ga('send', 'pageview'); 
+</script> 
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-includes/js/comment-reply.min.js?ver=4.0.1'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-includes/js/jquery/ui/jquery.ui.core.min.js?ver=1.10.4'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-includes/js/jquery/ui/jquery.ui.widget.min.js?ver=1.10.4'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-includes/js/jquery/ui/jquery.ui.tabs.min.js?ver=1.10.4'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/js/jquery.easing.1.3.js?ver=4.0.1'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/js/jquery.prettyPhoto.js?ver=4.0.1'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/js/jquery.scrollTo.js?ver=4.0.1'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/js/jquery.tinynav.js?ver=4.0.1'></script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-content/themes/diarjo-lite/js/jquery.wip.js?ver=4.0.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"platform":"wordpress@4.0.1","language":""},"disqusIdentifier":"14 http:\/\/www.pabloleanomartinet.com\/?p=14","disqusShortname":"pleasedontbelong","disqusTitle":"CakePHP 2.x Filter and Basic search with pagination example","disqusUrl":"http:\/\/www.pabloleanomartinet.com\/cakephp-2-x-filter-basic-search-example\/","options":{"manualSync":false},"postId":"14"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-content/plugins/disqus-comment-system/media/js/disqus.js?ver=4.0.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"pleasedontbelong"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.pabloleanomartinet.com/wp-content/plugins/disqus-comment-system/media/js/count.js?ver=4.0.1'></script>
+  
+ 
+</body>
+
+</html>

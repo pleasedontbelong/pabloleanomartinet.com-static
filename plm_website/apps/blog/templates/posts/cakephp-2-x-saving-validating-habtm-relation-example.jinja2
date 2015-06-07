@@ -1,0 +1,121 @@
+    	<div class="line"> <span> On January 24, 2014 by pablo </span> </div>
+
+	<p>Even if the documentation on this subject is quite complete, I will write an example of how to do it including a control witch validates the number of elements saved.</p>
+<p>First I’ll give you only the code and after that (for those who are interested) I’ll give some notes about it. Or you could <a title="cakephp habtm repository" href="https://github.com/pleasedontbelong/cakephp2.2-habtm-example" target="_blank">download/pull the github repository</a> to test it. I&#8217;ve also added some unit test that I&#8217;ll use for new versions of cakephp. Please do clone this code and feel free to fork, repair, etc.</p>
+<h2>The database model</h2>
+<p><img class="size-full wp-image-237" title="cakephp habtm model example" src="http://www.pabloleanomartinet.com/wp-content/uploads/2012/10/model.png" alt="post habtm tags" width="561" height="148" /></p>
+<p><em>Read the <a href="http://book.cakephp.org/2.0/en/getting-started/cakephp-conventions.html#model-and-database-conventions">naming conventions</a></em></p>
+<h2>The Model</h2>
+<h3>Post.php</h3>
+<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.2-habtm-example/blob/master/app/Model/Post.php?footer=minimal"></script></div></div>
+<h3>Tag.php</h3>
+<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.2-habtm-example/blob/master/app/Model/Tag.php?footer=minimal"></script></div></div>
+<h3>PostController.php</h3>
+<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.2-habtm-example/blob/master/app/Controller/PostsController.php?slice=39:53&footer=minimal"></script></div></div>
+<h3>Post/add.ctp</h3>
+<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.2-habtm-example/blob/master/app/View/Posts/add.ctp?footer=minimal"></script></div></div>
+<h2>Where’s the magic?</h2>
+<p>If you look closely, you’ll find that almost everything is in the Model. The add() method on the Controller is just a simple (baked) method used to save the Post model and its associated Tags.</p>
+<p>Basically to save a HABTM relation you need the data to be structured like this:</p>
+<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script>document.write('<link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css">')
+document.write('<div id=\"gist8647994\" class=\"gist\">\n        <div class=\"gist-file\">\n          <div class=\"gist-data gist-syntax\">\n            \n\n\n\n    <div class=\"file-data\">\n      <table cellpadding=\"0\" cellspacing=\"0\" class=\"lines highlight\">\n        <tr>\n          <td class=\"line-numbers\">\n            <span class=\"line-number\" id=\"file-habtm_structure-L1\" rel=\"file-habtm_structure-L1\">1<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L2\" rel=\"file-habtm_structure-L2\">2<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L3\" rel=\"file-habtm_structure-L3\">3<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L4\" rel=\"file-habtm_structure-L4\">4<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L5\" rel=\"file-habtm_structure-L5\">5<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L6\" rel=\"file-habtm_structure-L6\">6<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L7\" rel=\"file-habtm_structure-L7\">7<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L8\" rel=\"file-habtm_structure-L8\">8<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L9\" rel=\"file-habtm_structure-L9\">9<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L10\" rel=\"file-habtm_structure-L10\">10<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L11\" rel=\"file-habtm_structure-L11\">11<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L12\" rel=\"file-habtm_structure-L12\">12<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L13\" rel=\"file-habtm_structure-L13\">13<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L14\" rel=\"file-habtm_structure-L14\">14<\/span>\n            <span class=\"line-number\" id=\"file-habtm_structure-L15\" rel=\"file-habtm_structure-L15\">15<\/span>\n          <\/td>\n          <td class=\"line-data\">\n            <pre class=\"line-pre\"><div class=\"line\" id=\"file-habtm_structure-LC1\">Array\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC2\">	(\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC3\">	[Post] =&gt; Array\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC4\">		(\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC5\">			[name] =&gt; my test post\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC6\">		)\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC7\">	[Tag] =&gt; Array\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC8\">		(\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC9\">		[Tag] =&gt; Array\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC10\">			(\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC11\">				[0] =&gt; 1\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC12\">				[1] =&gt; 3\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC13\">			)\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC14\">		)\n<\/div><div class=\"line\" id=\"file-habtm_structure-LC15\">	)\n<\/div><\/pre>\n          <\/td>\n        <\/tr>\n      <\/table>\n    <\/div>\n\n          <\/div>\n          <div class=\"gist-meta\">\n            <a href=\"https://gist.github.com/pleasedontbelong/8647994/raw/habtm_structure\" style=\"float:right\">view raw<\/a>\n            <a href=\"https://gist.github.com/pleasedontbelong/8647994#file-habtm_structure\">habtm_structure<\/a>\n            hosted with &#10084; by <a href=\"https://github.com\">GitHub<\/a>\n          <\/div>\n        <\/div>\n<\/div>\n')
+</script><div style='margin-bottom:1em;padding:0;'><noscript><code><pre style='overflow:auto;margin:0;padding:0;border:1px solid #DDD;'>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;title&gt;Server Error &amp;middot; Gist&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+      body {
+        background: #f1f1f1;
+        font-family: &quot;HelveticaNeue-Light&quot;, Helvetica, Arial, sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased; }
+
+      .container { margin: 100px auto; width: 600px; text-align: center; }
+
+      a { color: #4183c4; text-decoration: none; }
+      a:visited { color: #4183c4 }
+      a:hover { text-decoration: none; }
+
+      h1 { letter-spacing: -1px; line-height: 60px; font-size: 60px; font-weight: 100; margin: 0px; text-shadow: 0 1px 0 #fff; }
+      p { color: rgba(0, 0, 0, 0.5); margin: 20px 0 40px; }
+
+      ul { border-top: 1px solid #ccc; list-style: none; margin: 20px 0; padding: 20px 0; }
+      li { display: table-cell; font-weight: bold; width: 1%; }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;h1&gt;OH NOES, 404.&lt;/h1&gt;
+      &lt;p&gt;We seem to have missed the &lt;em&gt;gist&lt;/em&gt; of that &lt;em&gt;gist&lt;/em&gt; you were looking for.&lt;/p&gt;
+      &lt;ul id=&quot;error-suggestions&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;https://github.com/contact&quot;&gt;Contact Support&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;https://status.github.com&quot;&gt;Status Site&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;https://twitter.com/github&quot;&gt;@github&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;&lt;img src=&quot;https://github.s3.amazonaws.com/media/maint-logo.png&quot; alt=&quot;GitHub&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></code></noscript></div></div></div>
+<p><em>(Why does the Tag array needs to be formatted like that??? I really have no idea.)</em></p>
+<p>If you want to validate the number of tags that can be added to a post, you could use the “<a href="http://book.cakephp.org/2.0/en/models/data-validation.html#Validation::multiple">multiple validator</a>”. But in order to be able to use the multiple validator, the data must be structured like this:</p>
+<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script>document.write('<link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css">')
+document.write('<div id=\"gist8647994\" class=\"gist\">\n        <div class=\"gist-file\">\n          <div class=\"gist-data gist-syntax\">\n            \n\n\n\n    <div class=\"file-data\">\n      <table cellpadding=\"0\" cellspacing=\"0\" class=\"lines highlight\">\n        <tr>\n          <td class=\"line-numbers\">\n            <span class=\"line-number\" id=\"file-validator_structure-L1\" rel=\"file-validator_structure-L1\">1<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L2\" rel=\"file-validator_structure-L2\">2<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L3\" rel=\"file-validator_structure-L3\">3<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L4\" rel=\"file-validator_structure-L4\">4<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L5\" rel=\"file-validator_structure-L5\">5<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L6\" rel=\"file-validator_structure-L6\">6<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L7\" rel=\"file-validator_structure-L7\">7<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L8\" rel=\"file-validator_structure-L8\">8<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L9\" rel=\"file-validator_structure-L9\">9<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L10\" rel=\"file-validator_structure-L10\">10<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L11\" rel=\"file-validator_structure-L11\">11<\/span>\n            <span class=\"line-number\" id=\"file-validator_structure-L12\" rel=\"file-validator_structure-L12\">12<\/span>\n          <\/td>\n          <td class=\"line-data\">\n            <pre class=\"line-pre\"><div class=\"line\" id=\"file-validator_structure-LC1\">Array\n<\/div><div class=\"line\" id=\"file-validator_structure-LC2\">	(\n<\/div><div class=\"line\" id=\"file-validator_structure-LC3\">	[Post] =&gt; Array\n<\/div><div class=\"line\" id=\"file-validator_structure-LC4\">		(\n<\/div><div class=\"line\" id=\"file-validator_structure-LC5\">			[name] =&gt; my other test post\n<\/div><div class=\"line\" id=\"file-validator_structure-LC6\">			[Tag] =&gt; Array\n<\/div><div class=\"line\" id=\"file-validator_structure-LC7\">				(\n<\/div><div class=\"line\" id=\"file-validator_structure-LC8\">				[0] =&gt; 2\n<\/div><div class=\"line\" id=\"file-validator_structure-LC9\">				[1] =&gt; 4\n<\/div><div class=\"line\" id=\"file-validator_structure-LC10\">			)\n<\/div><div class=\"line\" id=\"file-validator_structure-LC11\">		)\n<\/div><div class=\"line\" id=\"file-validator_structure-LC12\">	)\n<\/div><\/pre>\n          <\/td>\n        <\/tr>\n      <\/table>\n    <\/div>\n\n          <\/div>\n          <div class=\"gist-meta\">\n            <a href=\"https://gist.github.com/pleasedontbelong/8647994/raw/validator_structure\" style=\"float:right\">view raw<\/a>\n            <a href=\"https://gist.github.com/pleasedontbelong/8647994#file-validator_structure\">validator_structure<\/a>\n            hosted with &#10084; by <a href=\"https://github.com\">GitHub<\/a>\n          <\/div>\n        <\/div>\n<\/div>\n')
+</script><div style='margin-bottom:1em;padding:0;'><noscript><code><pre style='overflow:auto;margin:0;padding:0;border:1px solid #DDD;'>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;title&gt;Server Error &amp;middot; Gist&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+      body {
+        background: #f1f1f1;
+        font-family: &quot;HelveticaNeue-Light&quot;, Helvetica, Arial, sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased; }
+
+      .container { margin: 100px auto; width: 600px; text-align: center; }
+
+      a { color: #4183c4; text-decoration: none; }
+      a:visited { color: #4183c4 }
+      a:hover { text-decoration: none; }
+
+      h1 { letter-spacing: -1px; line-height: 60px; font-size: 60px; font-weight: 100; margin: 0px; text-shadow: 0 1px 0 #fff; }
+      p { color: rgba(0, 0, 0, 0.5); margin: 20px 0 40px; }
+
+      ul { border-top: 1px solid #ccc; list-style: none; margin: 20px 0; padding: 20px 0; }
+      li { display: table-cell; font-weight: bold; width: 1%; }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;h1&gt;OH NOES, 404.&lt;/h1&gt;
+      &lt;p&gt;We seem to have missed the &lt;em&gt;gist&lt;/em&gt; of that &lt;em&gt;gist&lt;/em&gt; you were looking for.&lt;/p&gt;
+      &lt;ul id=&quot;error-suggestions&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;https://github.com/contact&quot;&gt;Contact Support&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;https://status.github.com&quot;&gt;Status Site&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;https://twitter.com/github&quot;&gt;@github&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;&lt;img src=&quot;https://github.s3.amazonaws.com/media/maint-logo.png&quot; alt=&quot;GitHub&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></code></noscript></div></div></div>
+<p><em>(Again: Why does the Tag array needs to be formatted like that??? I really have no idea.)</em></p>
+<p>As you can see, the HABTM relationship needs the data in a different way that the validator, clearly it is a contradiction between the validation and the data saving. The validator needs the Tag array inside the Post, and the save method needs the Tags at the same level of the Post. Surely you could transform the data inside the controller, but where’s the fun in that? Let’s better use the <strong>before save</strong> callback, because maybe you have multiple HABTM relations and you want to preserve a skinny controller and a fat model. In this case I used the <strong>before save</strong> on the Post Model, but you could also define it in the AppModel so it will work for all models.</p>
+<p>And that&#8217;s it!. Now if you try to save the Post without choosing any tag, you should see something like this:</p>
+<p><img class="aligncenter size-large wp-image-242" title="validation on habtm" src="http://www.pabloleanomartinet.com/wp-content/uploads/2012/10/screen-1024x421.png" alt="Example data validation on HABTM relation" width="584" height="240" /></p>
+<p>This might not be the cleanest way, but I couldn&#8217;t find a better way to do it (without using js validation of course). And the documentation doesn&#8217;t say anything about this, so&#8230;.</p>
+<p>Hope this helps!</p>
+<p><strong>Hey! if you want to give it a try. I have created a repository so you could pull, test, correct, improve this code. Just go to the <a title="cakephp habtm repository" href="https://github.com/pleasedontbelong/cakephp2.2-habtm-example" target="_blank">repository on github.<br />
+</a></strong></p>
+<div class="addtoany_share_save_container addtoany_content_bottom"><div class="a2a_kit a2a_kit_size_32 addtoany_list a2a_target" id="wpa2a_1"><a class="a2a_button_facebook" href="http://www.addtoany.com/add_to/facebook?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcakephp-2-x-saving-validating-habtm-relation-example%2F&amp;linkname=Cakephp%202.x%20Saving%20and%20validating%20a%20HABTM%20relation%20example" title="Facebook" rel="nofollow" target="_blank"></a><a class="a2a_button_twitter" href="http://www.addtoany.com/add_to/twitter?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcakephp-2-x-saving-validating-habtm-relation-example%2F&amp;linkname=Cakephp%202.x%20Saving%20and%20validating%20a%20HABTM%20relation%20example" title="Twitter" rel="nofollow" target="_blank"></a><a class="a2a_button_google_plus" href="http://www.addtoany.com/add_to/google_plus?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcakephp-2-x-saving-validating-habtm-relation-example%2F&amp;linkname=Cakephp%202.x%20Saving%20and%20validating%20a%20HABTM%20relation%20example" title="Google+" rel="nofollow" target="_blank"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share_save"></a>
+<script type="text/javascript"><!--
+wpa2a.script_load();
+//--></script>
+</div></div><div class="clear"></div>        <div class="post-info">
+            <div class="left"> <a href="http://www.pabloleanomartinet.com/category/posts/" rel="category tag">Posts</a> </div>
+            <div class="right"> Tags: <a href="http://www.pabloleanomartinet.com/tag/cakephp-2-x/" rel="tag">cakephp 2.x</a>, <a href="http://www.pabloleanomartinet.com/tag/habtm/" rel="tag">habtm</a>, <a href="http://www.pabloleanomartinet.com/tag/save/" rel="tag">save</a>, <a href="http://www.pabloleanomartinet.com/tag/validation/" rel="tag">validation</a>  </div>
+        </div>
+
+        <div class="clear"></div>

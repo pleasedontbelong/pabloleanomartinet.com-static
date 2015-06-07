@@ -1,0 +1,20 @@
+    	<div class="line"> <span> On February 26, 2014 by pablo </span> </div>
+
+	<p>A friend that I have, works with google adwords and oftenly he needs to check a list of urls to verify the Http status code of a list of urls. To verify that he&#8217;s not paying for a campaign that contain 404 pages.</p>
+<p>So I took a weekend and build a simple site using Django and Celery. A simple three-page-website that uses an asynchronous task (in celery) to get the http status code of every page.</p>
+<p>The code is open source in a <a title="github http code responses" href="https://github.com/pleasedontbelong/http_code_responses">github repository</a> that you can fork, modify, create an issue, etc.</p>
+<h2 style="text-align: center; padding: 20px; text-decoration: underline;"><a title="Http status code checker" href="http://response.pabloleanomartinet.com" target="_blank">response.pabloleanomartinet.com</a></h2>
+<p>For now I set a limit of 300 urls, so it wont crash the server. The requests are sent one by one and it will use a normal user-agent. I&#8217;m working on a functionality that will allow you to add your custom user agent or a custom header on the request</p>
+<p>Hope this helps someone.</p>
+<div class="addtoany_share_save_container addtoany_content_bottom"><div class="a2a_kit a2a_kit_size_32 addtoany_list a2a_target" id="wpa2a_1"><a class="a2a_button_facebook" href="http://www.addtoany.com/add_to/facebook?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fhttp-status-code-checker%2F&amp;linkname=Http%20status%20code%20checker" title="Facebook" rel="nofollow" target="_blank"></a><a class="a2a_button_twitter" href="http://www.addtoany.com/add_to/twitter?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fhttp-status-code-checker%2F&amp;linkname=Http%20status%20code%20checker" title="Twitter" rel="nofollow" target="_blank"></a><a class="a2a_button_google_plus" href="http://www.addtoany.com/add_to/google_plus?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fhttp-status-code-checker%2F&amp;linkname=Http%20status%20code%20checker" title="Google+" rel="nofollow" target="_blank"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share_save"></a>
+<script type="text/javascript"><!--
+wpa2a.script_load();
+//--></script>
+</div></div><div class="clear"></div>        <div class="post-info">
+            <div class="left"> <a href="http://www.pabloleanomartinet.com/category/project/" rel="category tag">Project</a> </div>
+            <div class="right"> Tags: <a href="http://www.pabloleanomartinet.com/tag/checker/" rel="tag">checker</a>, <a href="http://www.pabloleanomartinet.com/tag/http/" rel="tag">http</a>, <a href="http://www.pabloleanomartinet.com/tag/seo/" rel="tag">seo</a>, <a href="http://www.pabloleanomartinet.com/tag/status-code/" rel="tag">status code</a>, <a href="http://www.pabloleanomartinet.com/tag/tool/" rel="tag">tool</a>  </div>
+        </div>
+
+        <div class="clear"></div>
+
+

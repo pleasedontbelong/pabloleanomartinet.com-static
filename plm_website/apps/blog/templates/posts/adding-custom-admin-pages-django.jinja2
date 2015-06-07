@@ -1,0 +1,45 @@
+    	<div class="line"> <span> On March 24, 2015 by pablo </span> </div>
+
+	<p>The other day I was asked to add a new page on the admin site of django that was like a list view for a model but with different actions, different columns to display and with a filter applied to the list. After hours of searching on the docs I ended up reading the source code of the contrib.admin package to understand how to do it.</p>
+<p>Feel free to skip all this text and inspect the code directly on github</p>
+<p class="text-center"><a href="https://github.com/pleasedontbelong/django-admin-view-example" class="btn btn-success">Source Code</a></p>
+<h2>The goal</h2>
+<p>Let&#8217;s use the user model to create a new view on the admin. In this new view we want to display only the list of inactive users that are not admins of the site. And in this view we want to display the emails, date joined and last login. BUT we also want to keep our complete users page.</p>
+<p>We&#8217;ll need une view <strong>/users/</strong> to display the complete list and <strong>/users/inactive/</strong> to display only the inactive users</p>
+<h2>The code</h2>
+<h3>Admin.py</h3>
+<p>This is where we customize the admin pages. It&#8217;s a single file</p>
+<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/django-admin-view-example/blob/master/django_admin_pages%2Fapps%2Fbase%2Fadmin.py?footer=minimal"></script></div></div>
+<h3>The custom views</h3>
+<p>I wanted to separate the code and have the admin views in a different file but you could put it in the <strong>admin.py</strong> file too</p>
+<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/django-admin-view-example/blob/master/django_admin_pages%2Fapps%2Fbase%2Fadmin_views.py?footer=minimal"></script></div></div>
+<h2>The result</h2>
+<h3>The default users list view</h3>
+<p class="text-center">
+    <a href="http://d3f79bc9m1q83t.cloudfront.net/djangocustomadmin/default_users.png" target="_blank"><br />
+        <img width="100%" src="http://d3f79bc9m1q83t.cloudfront.net/djangocustomadmin/default_users.png" alt="Default user list view on django"><br />
+    </a>
+</p>
+<h3>The custom users list view</h3>
+<p class="text-center">
+    <a href="http://d3f79bc9m1q83t.cloudfront.net/djangocustomadmin/inactive_users.png" target="_blank"><br />
+        <img width="100%" src="http://d3f79bc9m1q83t.cloudfront.net/djangocustomadmin/inactive_users.png" alt="Custom list view of users"><br />
+    </a>
+</p>
+<h2>Final Notes</h2>
+<p>I tried and tried and searched and read the docs, and I wasn&#8217;t able to find a way to add a custom link on the index page of the admin (without installing another package that manages the admin). If you are using django-suit you could add a custom link on the sidebar</p>
+<p>When you are customizing your admin site, you end up writing a lot of code inside the <strong>admin.py</strong> file and it might get dirty. It&#8217;s better to separate your code in multiple files. I also tried to create an admin submodule that works fine on production, but not in the unit tests (because of the admin registry)</p>
+<p>Hope this helps</p>
+<div class="addtoany_share_save_container addtoany_content_bottom"><div class="a2a_kit a2a_kit_size_32 addtoany_list a2a_target" id="wpa2a_1"><a class="a2a_button_facebook" href="http://www.addtoany.com/add_to/facebook?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fadding-custom-admin-pages-django%2F&amp;linkname=Adding%20custom%20admin%20pages%20on%20django" title="Facebook" rel="nofollow" target="_blank"></a><a class="a2a_button_twitter" href="http://www.addtoany.com/add_to/twitter?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fadding-custom-admin-pages-django%2F&amp;linkname=Adding%20custom%20admin%20pages%20on%20django" title="Twitter" rel="nofollow" target="_blank"></a><a class="a2a_button_google_plus" href="http://www.addtoany.com/add_to/google_plus?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fadding-custom-admin-pages-django%2F&amp;linkname=Adding%20custom%20admin%20pages%20on%20django" title="Google+" rel="nofollow" target="_blank"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share_save"></a>
+<script type="text/javascript"><!--
+wpa2a.script_load();
+//--></script>
+</div></div><div class="clear"></div>        <div class="post-info">
+            <div class="left"> <a href="http://www.pabloleanomartinet.com/category/posts/" rel="category tag">Posts</a> </div>
+            <div class="right"> Tags: <a href="http://www.pabloleanomartinet.com/tag/django/" rel="tag">django</a>  </div>
+        </div>
+
+        <div class="clear"></div>
+
+
+

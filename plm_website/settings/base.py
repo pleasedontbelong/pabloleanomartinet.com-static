@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'plm_website.core',
     'blog',
+    'default_theme',
     'django_extensions',
     'pipeline'
 )
@@ -137,6 +138,16 @@ PIPELINE_CSS = {
             'vendors/bootstrap/dist/css/bootstrap.min.css',
         ),
         'output_filename': 'css/style.css',
+        'extra_context': {
+            'media': 'screen,projection',
+        },
+    },
+    'post': {
+        'source_filenames': (
+            'vendors/bootstrap/dist/css/bootstrap.min.css',
+            'css/post.css',
+        ),
+        'output_filename': 'css/post.css',
         'extra_context': {
             'media': 'screen,projection',
         },

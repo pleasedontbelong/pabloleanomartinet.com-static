@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8" />
+
+    {% block meta_block %}{% endblock %}
+
+    {% block style %}
+      {% stylesheet('post') %}
+    {% endblock %}
+  </head>
+  <body class="{% block body_class %}{% endblock %}" >
+    <div class="container">
+      <div class="row content">
+        <div class="col-md-8">
+          <div class="col-md-12">
+            <div id="logo">
+              <a href="http://www.pabloleanomartinet.com" title="Pablo Leano Martinet">
+              Pablo Leano Martinet
+              </a>
+            </div>
+          </div>
+          <article class="post col-md-12" >
+            <div class="post-title">
+              <h1 class="title">
+                {% block post_title %}
+                  {{ meta.POST_TITLE }}
+                {% endblock %}
+              </h1>
+            </div>
+            <div class="post-content">
+              {% block post_date %}
+                <div class="line"> <span> {{ meta.PUBLISHED_DATE }} {{ meta.AUTHOR }} </span> </div>
+              {% endblock %}
+              {% block post_content %}{% endblock %}
+            </div>
+          </article>
+        </div>
+        <div class="col-md-4">
+          {% include "partials/header.jinja2" %}
+          {% include "partials/sidebar.jinja2" %}
+        </div>
+      </div>
+
+      {% block footer %}
+        {% include "partials/footer.jinja2" %}
+      {% endblock %}
+    </div>
+    {% block javascript %}
+      {% javascript('main') %}
+    {% endblock %}
+  </body>
+</html>

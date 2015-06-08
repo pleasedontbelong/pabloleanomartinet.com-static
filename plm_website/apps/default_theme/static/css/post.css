@@ -1,0 +1,13 @@
+/* line 1, modules/sidebar/__mixin.scss */
+div {
+  color: black;
+}
+
+/* No files to import found in ui_patterns/*\/** */
+/* No files to import found in buttons/** */
+/* line 1, layouts/_base.scss */
+body {
+  background: url("../images/binding_dark.png") repeat 0 0;
+}
+
+/* No files to import found in fonts/* */

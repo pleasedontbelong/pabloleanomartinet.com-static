@@ -1,13 +1,24 @@
+/* line 1, modules/footer/_mixin.scss */
+body > footer {
+  background-color: rgba(81, 81, 81, 0.7);
+}
+
 /* line 1, modules/sidebar/__mixin.scss */
-div {
-  color: black;
+.right-sidebar {
+  height: 100%;
+  background-color: #222;
 }
 
 /* No files to import found in ui_patterns/*\/** */
 /* No files to import found in buttons/** */
 /* line 1, layouts/_base.scss */
 body {
-  background: url("../images/binding_dark.png") repeat 0 0;
+  background: url("../images/irongrip.png") repeat 0 0;
+}
+
+/* line 5, layouts/_base.scss */
+.left-content {
+  background: url("../images/crossword.png") repeat 0 0;
 }
 
 /* No files to import found in fonts/* */

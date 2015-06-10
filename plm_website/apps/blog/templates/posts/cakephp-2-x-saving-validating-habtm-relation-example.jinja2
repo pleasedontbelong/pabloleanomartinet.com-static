@@ -1,5 +1,6 @@
-    	<div class="line"> <span> On January 24, 2014 by pablo </span> </div>
+{% extends 'base_post.jinja2' %}
 
+{% block post_content %}
 	<p>Even if the documentation on this subject is quite complete, I will write an example of how to do it including a control witch validates the number of elements saved.</p>
 <p>First I’ll give you only the code and after that (for those who are interested) I’ll give some notes about it. Or you could <a title="cakephp habtm repository" href="https://github.com/pleasedontbelong/cakephp2.2-habtm-example" target="_blank">download/pull the github repository</a> to test it. I&#8217;ve also added some unit test that I&#8217;ll use for new versions of cakephp. Please do clone this code and feel free to fork, repair, etc.</p>
 <h2>The database model</h2>
@@ -119,3 +120,4 @@ wpa2a.script_load();
         </div>
 
         <div class="clear"></div>
+{% endblock %}

@@ -7,8 +7,25 @@ body > footer a:hover, body .right-sidebar a:hover {
   color: white;
 }
 
+/* line 1, modules/brand/_extends.scss */
+.brand strong, .brand a:hover span {
+  color: #EAE9E3;
+  text-shadow: 4px 4px 0px #5E6166;
+}
+
+/* line 6, modules/brand/_extends.scss */
+.brand span, .brand a:hover strong {
+  color: #736A62;
+  text-shadow: 2px 2px 0px #C6C0A6;
+}
+
 /* No files to import found in ui_patterns/*\/** */
 /* No files to import found in buttons/** */
+/* line 1, _design.scss */
+a:hover {
+  text-decoration: none;
+}
+
 /* line 1, layouts/_base.scss */
 body {
   background: url("../images/irongrip.png") repeat 0 0;
@@ -18,22 +35,28 @@ body > .container {
   background-color: rgba(2, 2, 2, 0.4);
 }
 /* line 6, layouts/_base.scss */
+body #post-page-header {
+  background: url(http://subtlepatterns.com/patterns/ricepaper2.png);
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+/* line 11, layouts/_base.scss */
 body > footer {
   background-color: rgba(87, 87, 87, 0.5);
   border-top: 1px solid #555;
   color: #aaa;
 }
-/* line 9, layouts/_base.scss */
+/* line 14, layouts/_base.scss */
 body .right-sidebar {
   color: #aaa;
 }
 
-/* line 14, layouts/_base.scss */
+/* line 19, layouts/_base.scss */
 .left-content {
   background: url("../images/crossword.png") repeat 0 0;
 }
 
-/* line 18, layouts/_base.scss */
+/* line 23, layouts/_base.scss */
 .brand {
   font-family: 'Lobster Two', cursive;
   font-weight: bold;
@@ -44,8 +67,6 @@ body .right-sidebar {
 }
 /* line 7, modules/brand/_mixins.scss */
 .brand strong {
-  color: #EAE9E3;
-  text-shadow: 4px 4px 0px #5E6166;
   font-size: 80px;
   line-height: 80px;
   position: relative;
@@ -59,11 +80,9 @@ body .right-sidebar {
   -webkit-transition-duration: 1.5s;
   transition-duration: 1.5s;
 }
-/* line 17, modules/brand/_mixins.scss */
+/* line 16, modules/brand/_mixins.scss */
 .brand span {
   font-size: 32px;
-  color: #736A62;
-  text-shadow: 2px 2px 2px #C6C0A6;
   position: relative;
   top: 0px;
   -moz-transition-property: top, color;
@@ -75,21 +94,28 @@ body .right-sidebar {
   -webkit-transition-duration: 1.5s;
   transition-duration: 1.5s;
 }
-/* line 26, modules/brand/_mixins.scss */
+/* line 24, modules/brand/_mixins.scss */
 .brand a:hover {
   text-decoration: none;
 }
-/* line 28, modules/brand/_mixins.scss */
+/* line 26, modules/brand/_mixins.scss */
 .brand a:hover strong {
   top: 45px;
-  color: #736A62;
-  text-shadow: 4px 4px 0px #C6C0A6;
 }
-/* line 34, modules/brand/_mixins.scss */
+/* line 31, modules/brand/_mixins.scss */
 .brand a:hover span {
   top: -70px;
-  color: #EAE9E3;
-  text-shadow: 2px 2px 2px #5E6166;
+}
+
+/* line 27, layouts/_base.scss */
+.post-header-top-links {
+  margin-top: 45px;
+}
+/* line 40, modules/brand/_mixins.scss */
+.post-header-top-links a {
+  font-size: 15px;
+  margin-left: 8px;
+  color: #736A62;
 }
 
 /* No files to import found in fonts/* */

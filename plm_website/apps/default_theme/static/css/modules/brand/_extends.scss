@@ -1,0 +1,9 @@
+%white_header{
+    color: $header_white;
+    text-shadow: 4px 4px 0px $header_white_shadow;
+}
+
+%black_header{
+    color: $header_brown;
+    text-shadow: 2px 2px 0px $header_brown_shadow;
+}

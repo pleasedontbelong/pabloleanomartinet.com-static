@@ -3,6 +3,11 @@ body{
     > .container{
         background-color:rgba(2, 2, 2, 0.4);
     }
+    #post-page-header{
+        background: url(http://subtlepatterns.com/patterns/ricepaper2.png);
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+    }
     > footer{
         @include footer;
     }
@@ -17,4 +22,8 @@ body{
 
 .brand{
     @include brand;
+}
+
+.post-header-top-links{
+    @include post_header_links
 }

@@ -5,8 +5,7 @@
         text-decoration: none;
     }
     strong {
-        color: #EAE9E3;
-        text-shadow: 4px 4px 0px #5E6166;
+        @extend %white_header;
         font-size: 80px;
         line-height: 80px;
         position: relative;
@@ -16,8 +15,7 @@
     }
     span {
         font-size: 32px;
-        color: #736A62;
-        text-shadow: 2px 2px 2px #C6C0A6;
+        @extend %black_header;
         position: relative;
         top: 0px;
         @include transition-property(top, color);
@@ -27,14 +25,21 @@
         text-decoration: none;
         strong {
             top: 45px;
-            color: #736A62;
-            text-shadow: 4px 4px 0px #C6C0A6;
+            @extend %black_header;
 
         }
         span {
             top: -70px;
-            color: #EAE9E3;
-            text-shadow: 2px 2px 2px #5E6166;
+            @extend %white_header;
         }
+    }
+}
+
+@mixin post_header_links() {
+    margin-top: 45px;
+    a{
+        font-size: 15px;
+        margin-left: 8px;
+        color: $header_brown;
     }
 }

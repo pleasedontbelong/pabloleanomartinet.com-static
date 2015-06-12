@@ -1,4 +1,4 @@
-body > footer{
+@mixin footer() {
     background-color: rgba(87, 87, 87, 0.5);
     border-top: 1px solid #555;
     color: $gray;

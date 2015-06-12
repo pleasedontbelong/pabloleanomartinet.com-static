@@ -1,22 +1,10 @@
 /* line 2, _typography.scss */
-body > footer a:link, .right-sidebar a:link, body > footer a:visited, .right-sidebar a:visited {
+body > footer a:link, body .right-sidebar a:link, body > footer a:visited, body .right-sidebar a:visited {
   color: #eee;
 }
 /* line 5, _typography.scss */
-body > footer a:hover, .right-sidebar a:hover {
+body > footer a:hover, body .right-sidebar a:hover {
   color: white;
-}
-
-/* line 1, modules/footer/_mixin.scss */
-body > footer {
-  background-color: rgba(87, 87, 87, 0.5);
-  border-top: 1px solid #555;
-  color: #aaa;
-}
-
-/* line 1, modules/sidebar/__mixin.scss */
-.right-sidebar {
-  color: #aaa;
 }
 
 /* No files to import found in ui_patterns/*\/** */
@@ -25,14 +13,83 @@ body > footer {
 body {
   background: url("../images/irongrip.png") repeat 0 0;
 }
-/* line 2, layouts/_base.scss */
+/* line 3, layouts/_base.scss */
 body > .container {
   background-color: rgba(2, 2, 2, 0.4);
 }
+/* line 6, layouts/_base.scss */
+body > footer {
+  background-color: rgba(87, 87, 87, 0.5);
+  border-top: 1px solid #555;
+  color: #aaa;
+}
+/* line 9, layouts/_base.scss */
+body .right-sidebar {
+  color: #aaa;
+}
 
-/* line 8, layouts/_base.scss */
+/* line 14, layouts/_base.scss */
 .left-content {
   background: url("../images/crossword.png") repeat 0 0;
+}
+
+/* line 18, layouts/_base.scss */
+.brand {
+  font-family: 'Lobster Two', cursive;
+  font-weight: bold;
+}
+/* line 4, modules/brand/_mixins.scss */
+.brand:hover {
+  text-decoration: none;
+}
+/* line 7, modules/brand/_mixins.scss */
+.brand strong {
+  color: #EAE9E3;
+  text-shadow: 4px 4px 0px #5E6166;
+  font-size: 80px;
+  line-height: 80px;
+  position: relative;
+  top: 10px;
+  -moz-transition-property: top, color;
+  -o-transition-property: top, color;
+  -webkit-transition-property: top, color;
+  transition-property: top, color;
+  -moz-transition-duration: 1.5s;
+  -o-transition-duration: 1.5s;
+  -webkit-transition-duration: 1.5s;
+  transition-duration: 1.5s;
+}
+/* line 17, modules/brand/_mixins.scss */
+.brand span {
+  font-size: 32px;
+  color: #736A62;
+  text-shadow: 2px 2px 2px #C6C0A6;
+  position: relative;
+  top: 0px;
+  -moz-transition-property: top, color;
+  -o-transition-property: top, color;
+  -webkit-transition-property: top, color;
+  transition-property: top, color;
+  -moz-transition-duration: 1.5s;
+  -o-transition-duration: 1.5s;
+  -webkit-transition-duration: 1.5s;
+  transition-duration: 1.5s;
+}
+/* line 26, modules/brand/_mixins.scss */
+.brand a:hover {
+  text-decoration: none;
+}
+/* line 28, modules/brand/_mixins.scss */
+.brand a:hover strong {
+  top: 45px;
+  color: #736A62;
+  text-shadow: 4px 4px 0px #C6C0A6;
+}
+/* line 34, modules/brand/_mixins.scss */
+.brand a:hover span {
+  top: -70px;
+  color: #EAE9E3;
+  text-shadow: 2px 2px 2px #5E6166;
 }
 
 /* No files to import found in fonts/* */

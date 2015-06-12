@@ -1,10 +1,20 @@
 body{
+    background: url("../images/irongrip.png") repeat 0 0;
     > .container{
         background-color:rgba(2, 2, 2, 0.4);
     }
-    background: url("../images/irongrip.png") repeat 0 0;
+    > footer{
+        @include footer;
+    }
+    .right-sidebar{
+        @include right_sidebar;
+    }
 }
 
 .left-content{
     background: url("../images/crossword.png") repeat 0 0;
+}
+
+.brand{
+    @include brand;
 }

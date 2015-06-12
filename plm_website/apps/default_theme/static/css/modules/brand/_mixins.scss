@@ -1,0 +1,40 @@
+@mixin brand() {
+    font-family: 'Lobster Two', cursive;
+    font-weight:bold;
+    &:hover{
+        text-decoration: none;
+    }
+    strong {
+        color: #EAE9E3;
+        text-shadow: 4px 4px 0px #5E6166;
+        font-size: 80px;
+        line-height: 80px;
+        position: relative;
+        top: 10px;
+        @include transition-property(top, color);
+        @include transition-duration(1.5s);
+    }
+    span {
+        font-size: 32px;
+        color: #736A62;
+        text-shadow: 2px 2px 2px #C6C0A6;
+        position: relative;
+        top: 0px;
+        @include transition-property(top, color);
+        @include transition-duration(1.5s);
+    }
+    a:hover{
+        text-decoration: none;
+        strong {
+            top: 45px;
+            color: #736A62;
+            text-shadow: 4px 4px 0px #C6C0A6;
+
+        }
+        span {
+            top: -70px;
+            color: #EAE9E3;
+            text-shadow: 2px 2px 2px #5E6166;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-.right-sidebar{
+@mixin right_sidebar() {
     color: $gray;
     a{
         @extend %white_link;

@@ -1,12 +1,22 @@
+/* line 2, _typography.scss */
+body > footer a:link, .right-sidebar a:link, body > footer a:visited, .right-sidebar a:visited {
+  color: #eee;
+}
+/* line 5, _typography.scss */
+body > footer a:hover, .right-sidebar a:hover {
+  color: white;
+}
+
 /* line 1, modules/footer/_mixin.scss */
 body > footer {
-  background-color: rgba(81, 81, 81, 0.7);
+  background-color: rgba(87, 87, 87, 0.5);
+  border-top: 1px solid #555;
+  color: #aaa;
 }
 
 /* line 1, modules/sidebar/__mixin.scss */
 .right-sidebar {
-  height: 100%;
-  background-color: #222;
+  color: #aaa;
 }
 
 /* No files to import found in ui_patterns/*\/** */
@@ -15,8 +25,12 @@ body > footer {
 body {
   background: url("../images/irongrip.png") repeat 0 0;
 }
+/* line 2, layouts/_base.scss */
+body > .container {
+  background-color: rgba(2, 2, 2, 0.4);
+}
 
-/* line 5, layouts/_base.scss */
+/* line 8, layouts/_base.scss */
 .left-content {
   background: url("../images/crossword.png") repeat 0 0;
 }

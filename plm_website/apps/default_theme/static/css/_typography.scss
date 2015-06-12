@@ -1,0 +1,8 @@
+%white_link{
+    &:link, &:visited{
+        color: $white;
+    }
+    &:hover{
+        color: lighten($white, 10%);
+    }
+}

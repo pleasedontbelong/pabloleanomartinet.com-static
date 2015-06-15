@@ -1,9 +1,9 @@
 /* line 2, _typography.scss */
-body > footer a:link, body .right-sidebar a:link, body > footer a:visited, body .right-sidebar a:visited {
+body > footer a:link, body .right-sidebar a:link, #main-menu li a:link, body > footer a:visited, body .right-sidebar a:visited, #main-menu li a:visited {
   color: #eee;
 }
 /* line 5, _typography.scss */
-body > footer a:hover, body .right-sidebar a:hover {
+body > footer a:hover, body .right-sidebar a:hover, #main-menu li a:hover {
   color: white;
 }
 
@@ -19,7 +19,6 @@ body > footer a:hover, body .right-sidebar a:hover {
   text-shadow: 2px 2px 0px #C6C0A6;
 }
 
-/* No files to import found in ui_patterns/*\/** */
 /* No files to import found in buttons/** */
 /* line 1, _design.scss */
 a:hover {
@@ -116,6 +115,36 @@ body .right-sidebar {
   font-size: 15px;
   margin-left: 8px;
   color: #736A62;
+}
+
+/* line 2, modules/main_menu/_mixins.scss */
+#main-menu li {
+  padding: 8px 10px;
+  background-color: #5E6166;
+  margin-bottom: 5px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 12, ui_patterns/list_navs/_extends.scss */
+#main-menu ul {
+  margin: 0;
+}
+/* line 15, ui_patterns/list_navs/_extends.scss */
+#main-menu li {
+  float: left;
+  list-style-type: none;
+}
+@media screen and (min-width: 992px) {
+  /* line 2, ui_patterns/list_navs/_extends.scss */
+  #main-menu ul {
+    margin: 0;
+  }
+  /* line 5, ui_patterns/list_navs/_extends.scss */
+  #main-menu li {
+    float: none;
+    list-style-type: none;
+  }
 }
 
 /* No files to import found in fonts/* */

@@ -27,3 +27,7 @@ body{
 .post-header-top-links{
     @include post_header_links
 }
+
+#main-menu{
+    @include main_menu;
+}

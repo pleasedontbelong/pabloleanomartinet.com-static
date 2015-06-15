@@ -1,0 +1,16 @@
+@mixin main_menu() {
+    li{
+        padding: 8px 10px;
+        background-color: $header_white_shadow;
+        margin-bottom: 5px;
+        @include border_radius(4px);
+        a{
+            @extend %white_link;
+        }
+    }
+
+    @include horizontal_list;
+    @media screen and (min-width: 992px)  {
+        @include vertical_list;
+    }
+}

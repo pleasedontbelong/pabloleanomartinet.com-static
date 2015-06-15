@@ -1,0 +1,19 @@
+@mixin vertical_list {
+    ul{
+        margin: 0;
+    }
+    li{
+        float: none;
+        list-style-type: none;
+    }
+}
+
+@mixin horizontal_list {
+    ul{
+        margin: 0;
+    }
+    li{
+        float: left;
+        list-style-type: none;
+    }
+}

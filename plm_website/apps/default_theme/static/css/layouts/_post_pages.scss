@@ -1,0 +1,54 @@
+body{
+    background: url("../images/irongrip.png") repeat 0 0;
+    > .container{
+        background-color:rgba(2, 2, 2, 0.4);
+    }
+    > footer{
+        @include footer;
+    }
+    .right-sidebar{
+        @include right_sidebar;
+    }
+}
+
+#post-page-header{
+    @include post_header;
+}
+
+.left-content{
+    background: url("../images/crossword.png") repeat 0 0;
+}
+
+.brand{
+    @include brand;
+}
+
+.post-header-top-links{
+    @include post_header_links;
+}
+
+#main-menu{
+    @include main_menu;
+}
+
+@media (max-width: $screen-md-min) {
+    .brand{
+        @include small_brand;
+    }
+    .post-header-top-links{
+        @include small_post_header_links;
+    }
+    #post-page-header{
+        @include small_post_header;
+    }
+}
+
+@media (max-width: $screen-sm-min) {
+    .brand{
+        @include xsmall_brand;
+    }
+    .post-header-top-links{
+        @include xsmall_post_header_links;
+    }
+}
+

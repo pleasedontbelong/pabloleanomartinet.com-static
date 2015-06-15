@@ -1,0 +1,30 @@
+@mixin post_header(){
+    background: url(http://subtlepatterns.com/patterns/ricepaper2.png);
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+@mixin post_header_links() {
+    margin-top: 45px;
+    a{
+        font-size: 1em;
+        margin-left: 8px;
+        color: $header_brown;
+    }
+}
+
+@mixin small_post_header_links() {
+    margin-top: 5px;
+}
+
+@mixin small_post_header(){
+    padding-bottom: 5px;
+}
+
+@mixin xsmall_post_header_links() {
+    float: none !important;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 0;
+}

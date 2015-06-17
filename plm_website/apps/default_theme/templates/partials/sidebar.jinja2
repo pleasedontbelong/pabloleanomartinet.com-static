@@ -3,7 +3,7 @@
     <h3 class="title">Recent Posts</h3>
     <ul>
       {% for post in posts_list() %}
-        <li> {{ post }} </li>
+        <li> {{ post.data.POST_TITLE }} </li>
       {% endfor %}
     </ul>
   </div>

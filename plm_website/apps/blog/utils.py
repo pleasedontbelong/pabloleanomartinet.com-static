@@ -8,4 +8,4 @@ def list_posts():
     parses the posts templates and return a list of post identifiers
     """
     manager = PostManager()
-    return manager.posts_list
+    return manager.all()

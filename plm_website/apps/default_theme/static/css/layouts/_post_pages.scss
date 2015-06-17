@@ -16,6 +16,7 @@ body{
 }
 
 .left-content{
+    padding-top: 20px;
     background: url("../images/crossword.png") repeat 0 0;
 }
 
@@ -27,8 +28,10 @@ body{
     @include post_header_links;
 }
 
-#main-menu{
-    @include main_menu;
+@media (min-width: $screen-md-min) {
+    #main-menu{
+        @include main_menu_vertical;
+    }
 }
 
 @media (max-width: $screen-md-min) {
@@ -40,6 +43,9 @@ body{
     }
     #post-page-header{
         @include small_post_header;
+    }
+    #main-menu{
+        @include main_menu_horizontal;
     }
 }
 

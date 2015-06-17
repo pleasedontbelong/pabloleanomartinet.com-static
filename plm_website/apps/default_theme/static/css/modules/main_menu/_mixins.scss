@@ -1,16 +1,53 @@
-@mixin main_menu() {
-    li{
-        padding: 8px 10px;
-        background-color: $header_white_shadow;
-        margin-bottom: 5px;
-        @include border_radius(4px);
-        a{
-            @extend %white_link;
+@mixin _main_menu() {
+    ul {
+        font-family: 'Lobster Two', cursive;
+        font-size: 1.3em;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            background-color: rgba($header_brown, 0);
+            display: block;
+            a {
+                color: $header_brown_shadow;
+                display: block;
+                &:hover {
+                    color: #eee;
+                }
+            }
+            &:hover {
+                background-color: rgba($header_brown, 1);
+            }
         }
     }
-
-    @include horizontal_list;
-    @media screen and (min-width: 992px)  {
-        @include vertical_list;
+}
+@mixin main_menu_vertical() {
+    @include _main_menu;
+    li{
+        padding: 1em 0.5em;
     }
 }
+
+@mixin main_menu_horizontal(){
+    @include _main_menu;
+    ul {
+        display: flex;
+        position: relative;
+        li {
+            flex: 1 1 auto;
+            text-align: center;
+            @include transition-property(all);
+            @include transition-duration(0.8s);
+            a {
+                padding: 1rem 0;
+                &:hover {
+                    color: #FFF8D9;
+                }
+            }
+            &:hover{
+                @include scale(1.2);
+            }
+        }
+    }
+}
+

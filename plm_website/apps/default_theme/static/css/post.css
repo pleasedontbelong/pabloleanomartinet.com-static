@@ -1,9 +1,9 @@
 /* line 2, _typography.scss */
-body > footer a:link, body .right-sidebar a:link, #main-menu li a:link, body > footer a:visited, body .right-sidebar a:visited, #main-menu li a:visited {
+body > footer a:link, body .right-sidebar a:link, body > footer a:visited, body .right-sidebar a:visited {
   color: #eee;
 }
 /* line 5, _typography.scss */
-body > footer a:hover, body .right-sidebar a:hover, #main-menu li a:hover {
+body > footer a:hover, body .right-sidebar a:hover {
   color: white;
 }
 
@@ -53,10 +53,11 @@ body .right-sidebar {
 
 /* line 18, layouts/_post_pages.scss */
 .left-content {
+  padding-top: 20px;
   background: url("../images/crossword.png") repeat 0 0;
 }
 
-/* line 22, layouts/_post_pages.scss */
+/* line 23, layouts/_post_pages.scss */
 .brand {
   font-family: 'Lobster Two', cursive;
   font-weight: bold;
@@ -105,7 +106,7 @@ body .right-sidebar {
   top: -70px;
 }
 
-/* line 26, layouts/_post_pages.scss */
+/* line 27, layouts/_post_pages.scss */
 .post-header-top-links {
   margin-top: 45px;
 }
@@ -116,36 +117,38 @@ body .right-sidebar {
   color: #736A62;
 }
 
-/* line 2, modules/main_menu/_mixins.scss */
-#main-menu li {
-  padding: 8px 10px;
-  background-color: #5E6166;
-  margin-bottom: 5px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-}
-/* line 12, ui_patterns/list_navs/_extends.scss */
-#main-menu ul {
-  margin: 0;
-}
-/* line 15, ui_patterns/list_navs/_extends.scss */
-#main-menu li {
-  float: left;
-  list-style-type: none;
-}
-@media screen and (min-width: 992px) {
-  /* line 2, ui_patterns/list_navs/_extends.scss */
+@media (min-width: 992px) {
+  /* line 2, modules/main_menu/_mixins.scss */
   #main-menu ul {
+    font-family: 'Lobster Two', cursive;
+    font-size: 1.3em;
+    list-style: none;
     margin: 0;
+    padding: 0;
   }
-  /* line 5, ui_patterns/list_navs/_extends.scss */
+  /* line 8, modules/main_menu/_mixins.scss */
+  #main-menu ul li {
+    background-color: rgba(115, 106, 98, 0);
+    display: block;
+  }
+  /* line 11, modules/main_menu/_mixins.scss */
+  #main-menu ul li a {
+    color: #C6C0A6;
+    display: block;
+  }
+  /* line 14, modules/main_menu/_mixins.scss */
+  #main-menu ul li a:hover {
+    color: #eee;
+  }
+  /* line 18, modules/main_menu/_mixins.scss */
+  #main-menu ul li:hover {
+    background-color: #736a62;
+  }
+  /* line 26, modules/main_menu/_mixins.scss */
   #main-menu li {
-    float: none;
-    list-style-type: none;
+    padding: 1em 0.5em;
   }
 }
-
 @media (max-width: 992px) {
   /* line 39, modules/brand/_mixins.scss */
   .brand strong {
@@ -193,24 +196,84 @@ body .right-sidebar {
     text-shadow: 1px 1px 0px #C6C0A6;
   }
 
-  /* line 38, layouts/_post_pages.scss */
+  /* line 41, layouts/_post_pages.scss */
   .post-header-top-links {
     margin-top: 5px;
   }
 
-  /* line 41, layouts/_post_pages.scss */
+  /* line 44, layouts/_post_pages.scss */
   #post-page-header {
     padding-bottom: 5px;
   }
+
+  /* line 2, modules/main_menu/_mixins.scss */
+  #main-menu ul {
+    font-family: 'Lobster Two', cursive;
+    font-size: 1.3em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  /* line 8, modules/main_menu/_mixins.scss */
+  #main-menu ul li {
+    background-color: rgba(115, 106, 98, 0);
+    display: block;
+  }
+  /* line 11, modules/main_menu/_mixins.scss */
+  #main-menu ul li a {
+    color: #C6C0A6;
+    display: block;
+  }
+  /* line 14, modules/main_menu/_mixins.scss */
+  #main-menu ul li a:hover {
+    color: #eee;
+  }
+  /* line 18, modules/main_menu/_mixins.scss */
+  #main-menu ul li:hover {
+    background-color: #736a62;
+  }
+  /* line 33, modules/main_menu/_mixins.scss */
+  #main-menu ul {
+    display: flex;
+    position: relative;
+  }
+  /* line 36, modules/main_menu/_mixins.scss */
+  #main-menu ul li {
+    flex: 1 1 auto;
+    text-align: center;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -moz-transition-duration: 0.8s;
+    -o-transition-duration: 0.8s;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+  }
+  /* line 41, modules/main_menu/_mixins.scss */
+  #main-menu ul li a {
+    padding: 1rem 0;
+  }
+  /* line 43, modules/main_menu/_mixins.scss */
+  #main-menu ul li a:hover {
+    color: #FFF8D9;
+  }
+  /* line 47, modules/main_menu/_mixins.scss */
+  #main-menu ul li:hover {
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+  }
 }
 @media (max-width: 768px) {
-  /* line 47, layouts/_post_pages.scss */
+  /* line 53, layouts/_post_pages.scss */
   .brand {
     width: 100%;
     text-align: center;
   }
 
-  /* line 50, layouts/_post_pages.scss */
+  /* line 56, layouts/_post_pages.scss */
   .post-header-top-links {
     float: none !important;
     width: 100%;

@@ -146,7 +146,31 @@ body .right-sidebar {
   }
   /* line 26, modules/main_menu/_mixins.scss */
   #main-menu li {
-    padding: 1em 0.5em;
+    padding: 1.3em 0.5em;
+    width: 50%;
+    float: left;
+    text-align: center;
+    background-color: rgba(115, 106, 98, 0.4) !important;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -moz-transition-duration: 0.8s;
+    -o-transition-duration: 0.8s;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+  }
+  /* line 34, modules/main_menu/_mixins.scss */
+  #main-menu li:first-child, #main-menu li:last-child {
+    background-color: rgba(115, 106, 98, 0.6) !important;
+  }
+  /* line 37, modules/main_menu/_mixins.scss */
+  #main-menu li:hover {
+    background-color: #736a62 !important;
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
   }
 }
 @media (max-width: 992px) {
@@ -232,12 +256,12 @@ body .right-sidebar {
   #main-menu ul li:hover {
     background-color: #736a62;
   }
-  /* line 33, modules/main_menu/_mixins.scss */
+  /* line 46, modules/main_menu/_mixins.scss */
   #main-menu ul {
     display: flex;
     position: relative;
   }
-  /* line 36, modules/main_menu/_mixins.scss */
+  /* line 49, modules/main_menu/_mixins.scss */
   #main-menu ul li {
     flex: 1 1 auto;
     text-align: center;
@@ -250,15 +274,15 @@ body .right-sidebar {
     -webkit-transition-duration: 0.8s;
     transition-duration: 0.8s;
   }
-  /* line 41, modules/main_menu/_mixins.scss */
+  /* line 54, modules/main_menu/_mixins.scss */
   #main-menu ul li a {
     padding: 1rem 0;
   }
-  /* line 43, modules/main_menu/_mixins.scss */
+  /* line 56, modules/main_menu/_mixins.scss */
   #main-menu ul li a:hover {
     color: #FFF8D9;
   }
-  /* line 47, modules/main_menu/_mixins.scss */
+  /* line 60, modules/main_menu/_mixins.scss */
   #main-menu ul li:hover {
     -moz-transform: scale(1.2, 1.2);
     -ms-transform: scale(1.2, 1.2);

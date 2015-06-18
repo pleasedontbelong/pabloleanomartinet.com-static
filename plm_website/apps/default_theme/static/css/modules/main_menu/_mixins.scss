@@ -24,7 +24,20 @@
 @mixin main_menu_vertical() {
     @include _main_menu;
     li{
-        padding: 1em 0.5em;
+        padding: 1.3em 0.5em;
+        width: 50%;
+        float: left;
+        text-align: center;
+        background-color: rgba($header_brown, 0.4) !important;
+        @include transition-property(all);
+        @include transition-duration(0.8s);
+        &:first-child, &:last-child{
+            background-color: rgba($header_brown, 0.6) !important;
+        }
+        &:hover{
+            background-color: rgba($header_brown, 1) !important;
+            @include scale(1.2);
+        }
     }
 }
 

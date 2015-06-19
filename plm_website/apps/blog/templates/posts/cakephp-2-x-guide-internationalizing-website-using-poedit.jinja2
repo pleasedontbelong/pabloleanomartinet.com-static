@@ -1,5 +1,6 @@
-    	<div class="line"> <span> On January 19, 2014 by pablo </span> </div>
+{% extends 'base_post.jinja2' %}
 
+{% block post_content %}
 	<p>Even if <a title="internationalization and localization" href="http://book.cakephp.org/2.0/en/core-libraries/internationalization-and-localization.html" target="_blank">the documentation</a> is quite complete, I find that its better to have a &#8220;step-by-step&#8221; basic guide for internationalizing your pages. So here it is:</p>
 <h2>Step 1 &#8211; Prepare your code:</h2>
 <p>
@@ -100,4 +101,4 @@ wpa2a.script_load();
 
         <div class="clear"></div>
 
-
+{% endblock %}

@@ -1,5 +1,6 @@
-    	<div class="line"> <span> On February 26, 2014 by pablo </span> </div>
+{% extends 'base_post.jinja2' %}
 
+{% block post_content %}
 	<p>A friend that I have, works with google adwords and oftenly he needs to check a list of urls to verify the Http status code of a list of urls. To verify that he&#8217;s not paying for a campaign that contain 404 pages.</p>
 <p>So I took a weekend and build a simple site using Django and Celery. A simple three-page-website that uses an asynchronous task (in celery) to get the http status code of every page.</p>
 <p>The code is open source in a <a title="github http code responses" href="https://github.com/pleasedontbelong/http_code_responses">github repository</a> that you can fork, modify, create an issue, etc.</p>
@@ -17,4 +18,4 @@ wpa2a.script_load();
 
         <div class="clear"></div>
 
-
+{% endblock %}

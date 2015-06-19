@@ -27,37 +27,38 @@ a:hover, a:visited, a:active {
 
 /* line 1, layouts/_post_pages.scss */
 body {
-  background: url("../images/irongrip.png") repeat 0 0;
+  background: url(http://subtlepatterns.com/patterns/upfeathers.png) repeat 0 0;
 }
 /* line 3, layouts/_post_pages.scss */
 body > .container {
-  background-color: rgba(2, 2, 2, 0.4);
+  background-color: rgba(52, 40, 29, 0.85);
+  border-left: 1px solid #CCC3BA;
 }
-/* line 6, layouts/_post_pages.scss */
+/* line 7, layouts/_post_pages.scss */
 body > footer {
-  background-color: rgba(87, 87, 87, 0.5);
-  border-top: 1px solid #555;
+  background-color: #34280D;
+  border-top: 1px solid #34281D;
   color: #aaa;
 }
-/* line 9, layouts/_post_pages.scss */
+/* line 10, layouts/_post_pages.scss */
 body .right-sidebar {
   color: #aaa;
 }
 
-/* line 14, layouts/_post_pages.scss */
+/* line 15, layouts/_post_pages.scss */
 #post-page-header {
   background: url(http://subtlepatterns.com/patterns/ricepaper2.png);
   border-bottom: 1px solid #ccc;
   padding-bottom: 20px;
 }
 
-/* line 18, layouts/_post_pages.scss */
+/* line 19, layouts/_post_pages.scss */
 .left-content {
   padding-top: 20px;
   background: url("../images/crossword.png") repeat 0 0;
 }
 
-/* line 23, layouts/_post_pages.scss */
+/* line 24, layouts/_post_pages.scss */
 .brand {
   font-family: 'Lobster Two', cursive;
   font-weight: bold;
@@ -106,7 +107,7 @@ body .right-sidebar {
   top: -70px;
 }
 
-/* line 27, layouts/_post_pages.scss */
+/* line 28, layouts/_post_pages.scss */
 .post-header-top-links {
   margin-top: 45px;
 }
@@ -220,12 +221,12 @@ body .right-sidebar {
     text-shadow: 1px 1px 0px #C6C0A6;
   }
 
-  /* line 41, layouts/_post_pages.scss */
+  /* line 42, layouts/_post_pages.scss */
   .post-header-top-links {
     margin-top: 5px;
   }
 
-  /* line 44, layouts/_post_pages.scss */
+  /* line 45, layouts/_post_pages.scss */
   #post-page-header {
     padding-bottom: 5px;
   }
@@ -291,13 +292,13 @@ body .right-sidebar {
   }
 }
 @media (max-width: 768px) {
-  /* line 53, layouts/_post_pages.scss */
+  /* line 54, layouts/_post_pages.scss */
   .brand {
     width: 100%;
     text-align: center;
   }
 
-  /* line 56, layouts/_post_pages.scss */
+  /* line 57, layouts/_post_pages.scss */
   .post-header-top-links {
     float: none !important;
     width: 100%;

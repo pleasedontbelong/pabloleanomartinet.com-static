@@ -1,6 +1,6 @@
 @mixin footer() {
-    background-color: rgba(87, 87, 87, 0.5);
-    border-top: 1px solid #555;
+    background-color: #34280D;
+    border-top: 1px solid #34281D;
     color: $gray;
     a{
         @extend %white_link;

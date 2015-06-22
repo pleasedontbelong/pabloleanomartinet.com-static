@@ -4,5 +4,5 @@ from .utils import list_posts
 
 
 @register.function
-def posts_list():
-    return list_posts()
+def posts_list(limit=None):
+    return list_posts(limit)

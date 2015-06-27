@@ -2,7 +2,7 @@
   <div class="sidebar-box">
     <h3 class="title">Recent Posts</h3>
     <ul>
-      {% for post in posts_list(limit=3) %}
+      {% for post in posts_list(limit=5) %}
         <li>
           <a href="{{ post.link }}">
             {{ post.data.POST_TITLE }}

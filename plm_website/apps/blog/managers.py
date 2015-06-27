@@ -18,6 +18,9 @@ class PostManager(object):
     def __iter__(self):
         return self
 
+    def __getitem__(self, key):
+        return self.posts[key]
+
     def next(self):
         if self.index >= len(self.posts):
             raise StopIteration

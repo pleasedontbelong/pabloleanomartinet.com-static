@@ -8,7 +8,7 @@ def list_posts(limit=None):
     parses the posts templates and return a list of post identifiers
     """
     manager = PostManager()
-    posts = manager.all()
+    posts = manager.all().order_by('PUBLISHED_DATE')
     if limit:
         return posts[:limit]
     return posts

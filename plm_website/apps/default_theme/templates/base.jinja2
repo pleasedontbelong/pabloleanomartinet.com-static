@@ -6,33 +6,13 @@
     {% block meta_block %}{% endblock %}
 
     {% block style %}
-      {% stylesheet('main') %}
+      {% stylesheet('default') %}
     {% endblock %}
   </head>
   <body class="{% block body_class %}{% endblock %}" >
-    <header id="header">
-      {% include "partials/header.jinja2" %}
-    </header>
-
-    <div class="container">
-      <div class="row">
-
-        {% block content %}{% endblock %}
-
-        {% include "partials/sidebar.jinja2" %}
-
-        <div class="clear"></div>
-      </div>
-    </div>
-
-    <div id="back-to-top"> <i class="fa fa-chevron-up"></i> </div>
-
-    {% block footer %}
-      {% include "partials/footer.jinja2" %}
-    {% endblock %}
-
+    {% block body_content %}{% endblock %}
     {% block javascript %}
-      {% javascript('main') %}
+      {% javascript('default') %}
     {% endblock %}
   </body>
 </html>

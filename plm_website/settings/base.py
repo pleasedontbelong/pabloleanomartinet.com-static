@@ -133,21 +133,12 @@ PIPELINE_YUGLIFY_BINARY = "node_modules/yuglify/bin/yuglify"
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 
 PIPELINE_CSS = {
-    'main': {
+    'default': {
         'source_filenames': (
             'vendors/bootstrap/dist/css/bootstrap.min.css',
+            'css/main.css',
         ),
-        'output_filename': 'css/style.css',
-        'extra_context': {
-            'media': 'screen,projection',
-        },
-    },
-    'post': {
-        'source_filenames': (
-            'vendors/bootstrap/dist/css/bootstrap.min.css',
-            'css/post.css',
-        ),
-        'output_filename': 'css/post.css',
+        'output_filename': 'css/main.css',
         'extra_context': {
             'media': 'screen,projection',
         },
@@ -155,7 +146,7 @@ PIPELINE_CSS = {
 }
 
 PIPELINE_JS = {
-    'main': {
+    'default': {
         'source_filenames': (
             'vendors/bootstrap/dist/js/bootstrap.min.js',
         ),

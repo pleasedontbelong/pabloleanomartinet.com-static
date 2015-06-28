@@ -7,10 +7,10 @@
     <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     {% block style %}
-      {% stylesheet('post') %}
+      {% stylesheet('default') %}
     {% endblock %}
   </head>
-  <body class="{% block body_class %}{% endblock %}" >
+  <body class="{% block body_class %}post-page{% endblock %}" >
     <div class="container">
       <div class="row content">
         <div class="col-md-8" id="post-page-header">
@@ -46,7 +46,7 @@
       {% include "partials/footer.jinja2" %}
     {% endblock %}
     {% block javascript %}
-      {% javascript('main') %}
+      {% javascript('default') %}
     {% endblock %}
   </body>
 </html>

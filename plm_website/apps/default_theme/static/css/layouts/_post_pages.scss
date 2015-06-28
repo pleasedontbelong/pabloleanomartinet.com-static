@@ -1,61 +1,63 @@
-body{
+.post-page{
     background: url(../images/upfeathers.png) repeat 0 0;
+
     > .container{
         background-color:rgba(#34281D, 0.85);
         border-left: 1px solid #CCC3BA;
     }
+
     > footer{
         @include footer;
     }
     .right-sidebar{
         @include right_sidebar;
     }
-}
 
-#post-page-header{
-    @include post_header;
-}
 
-.left-content{
-    padding-top: 20px;
-    background: url("../images/crossword.png") repeat 0 0;
-}
-
-.brand{
-    @include brand;
-}
-
-.post-header-top-links{
-    @include post_header_links;
-}
-
-@media (min-width: $screen-md-min) {
-    #main-menu{
-        @include main_menu_vertical;
-    }
-}
-
-@media (max-width: $screen-md-min) {
-    .brand{
-        @include small_brand;
-    }
-    .post-header-top-links{
-        @include small_post_header_links;
-    }
     #post-page-header{
-        @include small_post_header;
+        @include post_header;
     }
-    #main-menu{
-        @include main_menu_horizontal;
-    }
-}
 
-@media (max-width: $screen-sm-min) {
+    .left-content{
+        padding-top: 20px;
+        background: url("../images/crossword.png") repeat 0 0;
+    }
+
     .brand{
-        @include xsmall_brand;
+        @include brand;
     }
+
     .post-header-top-links{
-        @include xsmall_post_header_links;
+        @include post_header_links;
+    }
+
+    @media (min-width: $screen-md-min) {
+        #main-menu{
+            @include main_menu_vertical;
+        }
+    }
+
+    @media (max-width: $screen-md-min) {
+        .brand{
+            @include small_brand;
+        }
+        .post-header-top-links{
+            @include small_post_header_links;
+        }
+        #post-page-header{
+            @include small_post_header;
+        }
+        #main-menu{
+            @include main_menu_horizontal;
+        }
+    }
+
+    @media (max-width: $screen-sm-min) {
+        .brand{
+            @include xsmall_brand;
+        }
+        .post-header-top-links{
+            @include xsmall_post_header_links;
+        }
     }
 }
-

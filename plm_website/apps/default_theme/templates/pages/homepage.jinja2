@@ -1,10 +1,15 @@
 {% extends 'base.jinja2' %}
 
+{% block body_class %}homepage-page{% endblock %}
+
 {% block body_content %}
 
-  <div class="page">
+  <div class="page intro">
+    <img src="http://www.gravatar.com/avatar/fe876b7f3f32966ceb8b4977feded6a7?s=200" class="img-circle"/>
     <h1>Pablo Leano Martinet</h1>
-
     {% include "partials/main_menu.jinja2" %}
+  </div>
+  <div class="page about">
+    <p>This is just a simple text</p>
   </div>
 {% endblock %}

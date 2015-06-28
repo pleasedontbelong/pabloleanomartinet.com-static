@@ -7,6 +7,13 @@
   color: white;
 }
 
+/* line 10, _typography.scss */
+.homepage-page .intro h1, .post-page .brand {
+  font-family: 'Lobster Two', cursive;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 /* line 1, modules/brand/_extends.scss */
 .post-page .brand strong, .post-page .brand a:hover span {
   color: #EAE9E3;
@@ -14,7 +21,7 @@
 }
 
 /* line 6, modules/brand/_extends.scss */
-.post-page .brand span, .post-page .brand a:hover strong {
+.homepage-page .intro h1, .post-page .brand span, .post-page .brand a:hover strong {
   color: #736A62;
   text-shadow: 2px 2px 0px #C6C0A6;
 }
@@ -23,6 +30,97 @@
 /* line 1, _design.scss */
 a:hover, a:visited, a:active {
   text-decoration: none;
+}
+
+/* line 2, layouts/_homepage_page.scss */
+.homepage-page .page {
+  height: 80vh;
+}
+/* line 5, layouts/_homepage_page.scss */
+.homepage-page .intro {
+  background-color: #2e2b27;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+/* line 10, layouts/_homepage_page.scss */
+.homepage-page .intro img {
+  margin-top: 20vh;
+  border: 6px solid #736A62;
+}
+/* line 14, layouts/_homepage_page.scss */
+.homepage-page .intro h1 {
+  font-size: 5em;
+  position: absolute;
+  bottom: 10vh;
+  width: 100%;
+}
+/* line 22, layouts/_homepage_page.scss */
+.homepage-page .intro #main-menu {
+  background-color: #736a62;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+/* line 2, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul {
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.3em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 8, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li {
+  background-color: rgba(115, 106, 98, 0);
+  display: block;
+}
+/* line 11, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li a {
+  color: #C6C0A6;
+  display: block;
+}
+/* line 14, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li a:hover {
+  color: #eee;
+}
+/* line 18, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li:hover {
+  background-color: #736a62;
+}
+/* line 46, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul {
+  display: flex;
+  position: relative;
+}
+/* line 49, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li {
+  flex: 1 1 auto;
+  text-align: center;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  -webkit-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+/* line 54, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li a {
+  padding: 1rem 0;
+}
+/* line 56, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li a:hover {
+  color: #FFF8D9;
+}
+/* line 60, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li:hover {
+  -moz-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
 }
 
 /* line 1, layouts/_post_pages.scss */
@@ -55,13 +153,7 @@ a:hover, a:visited, a:active {
   padding-top: 20px;
   background: url("../images/crossword.png") repeat 0 0;
 }
-/* line 26, layouts/_post_pages.scss */
-.post-page .brand {
-  font-family: 'Lobster Two', cursive;
-  font-weight: bold;
-  text-decoration: none;
-}
-/* line 5, modules/brand/_mixins.scss */
+/* line 3, modules/brand/_mixins.scss */
 .post-page .brand strong {
   display: block;
   font-size: 5.7em;
@@ -77,7 +169,7 @@ a:hover, a:visited, a:active {
   -webkit-transition-duration: 1.5s;
   transition-duration: 1.5s;
 }
-/* line 15, modules/brand/_mixins.scss */
+/* line 13, modules/brand/_mixins.scss */
 .post-page .brand span {
   font-size: 2.25em;
   position: relative;
@@ -91,15 +183,15 @@ a:hover, a:visited, a:active {
   -webkit-transition-duration: 1.5s;
   transition-duration: 1.5s;
 }
-/* line 23, modules/brand/_mixins.scss */
+/* line 21, modules/brand/_mixins.scss */
 .post-page .brand a:hover {
   text-decoration: none;
 }
-/* line 25, modules/brand/_mixins.scss */
+/* line 23, modules/brand/_mixins.scss */
 .post-page .brand a:hover strong {
   top: 45px;
 }
-/* line 30, modules/brand/_mixins.scss */
+/* line 28, modules/brand/_mixins.scss */
 .post-page .brand a:hover span {
   top: -70px;
 }
@@ -170,7 +262,7 @@ a:hover, a:visited, a:active {
   }
 }
 @media (max-width: 992px) {
-  /* line 39, modules/brand/_mixins.scss */
+  /* line 37, modules/brand/_mixins.scss */
   .post-page .brand strong {
     font-size: 2.25em;
     display: inline;
@@ -186,7 +278,7 @@ a:hover, a:visited, a:active {
     color: #736A62;
     text-shadow: 1px 1px 0px #C6C0A6;
   }
-  /* line 49, modules/brand/_mixins.scss */
+  /* line 47, modules/brand/_mixins.scss */
   .post-page .brand span {
     -moz-transition-property: none;
     -o-transition-property: none;
@@ -199,17 +291,17 @@ a:hover, a:visited, a:active {
     color: #736A62;
     text-shadow: 1px 1px 0px #C6C0A6;
   }
-  /* line 56, modules/brand/_mixins.scss */
+  /* line 54, modules/brand/_mixins.scss */
   .post-page .brand a:hover {
     text-decoration: none;
   }
-  /* line 58, modules/brand/_mixins.scss */
+  /* line 56, modules/brand/_mixins.scss */
   .post-page .brand a:hover strong {
     top: 0;
     color: #736A62;
     text-shadow: 1px 1px 0px #C6C0A6;
   }
-  /* line 63, modules/brand/_mixins.scss */
+  /* line 61, modules/brand/_mixins.scss */
   .post-page .brand a:hover span {
     top: 0;
     color: #736A62;

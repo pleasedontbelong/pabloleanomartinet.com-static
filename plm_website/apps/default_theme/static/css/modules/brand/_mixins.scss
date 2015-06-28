@@ -1,7 +1,5 @@
 @mixin brand() {
-    font-family: 'Lobster Two', cursive;
-    font-weight:bold;
-    text-decoration: none;
+    @extend %title-text;
     strong {
         @extend %white_header;
         display: block;

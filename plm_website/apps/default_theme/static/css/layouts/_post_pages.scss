@@ -1,8 +1,8 @@
 .post-page{
-    background: url(../images/upfeathers.png) repeat 0 0;
+    background: $main_dark;
 
     > .container{
-        background-color:rgba(#34281D, 0.85);
+        background-color: darken($main_dark, 15%);
         border-left: 1px solid #CCC3BA;
     }
 

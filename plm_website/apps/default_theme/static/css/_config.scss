@@ -1,12 +1,35 @@
-$gray: #aaa;
-$white: #eee;
+$gray: #bdc3c7;
+$white: #ecf0f1;
 
-$header_white: #EAE9E3;
-$header_white_shadow: #5E6166;
-$header_brown: #736A62;
-$header_brown_shadow: #C6C0A6;
+$turquoise: #1abc9c;
+$green_sea: #16a085;
+$sun_flower: #f1c40f;
+$orange: #f39c12;
+$emerald: #2ecc71;
+$nephritis: #27ae60;
+$carrot: #e67e22;
+$pumpkin: #d35400;
+$peter_river: #3498db;
+$belize_hole: #2980b9;
+$alizarin: #e74c3c;
+$pomegranate: #c0392b;
+$amethyst: #9b59b6;
+$visteria: #8e44ad;
+$wet_asphalt: #34495e;
+$midnight_blue: #2c3e50;
+$concrete: #95a5a6;
+$asbestos: #7f8c8d;
+
+$main_light: $green_sea;
+$main_light_shadow: $turquoise;
+$main_dark: $midnight_blue;
+$main_dark_shadow: $wet_asphalt;
 
 // Media queries breakpoints
 $screen-sm-min: 768px;
 $screen-md-min: 992px;
 $screen-lg-min: 1200px;
+
+// Fonts
+$fancy_font: 'Oswald', sans-serif;
+

@@ -1,0 +1,22 @@
+{% extends 'base.jinja2' %}
+
+{% block body_class %}posts-page{% endblock %}
+
+{% block body_content %}
+  <div class="page container">
+    <h1><i class="fa fa-wrench"></i> Projects</h1>
+    <div class="row">
+    {% for project in projects_list() %}
+      <div class="col-md-4">
+      <article class="post-box">
+        <a href="{{ project.link }}">
+        <h1>{{ project.data.POST_TITLE }}</h1>
+        <p>{{ project.data.POST_DESCRIPTION }}</p>
+        </a>
+      </article>
+      </div>
+
+    {% endfor %}
+    </div>
+  </div>
+{% endblock %}

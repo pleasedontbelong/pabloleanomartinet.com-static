@@ -9,5 +9,8 @@ urlpatterns = patterns(
         name='homepage'),
     url(r'^posts/?$',
         TemplateView.as_view(template_name='pages/posts.jinja2'),
-        name='posts-list')
+        name='posts-list'),
+    url(r'^projects/?$',
+        TemplateView.as_view(template_name='pages/projects.jinja2'),
+        name='projects-list')
 )

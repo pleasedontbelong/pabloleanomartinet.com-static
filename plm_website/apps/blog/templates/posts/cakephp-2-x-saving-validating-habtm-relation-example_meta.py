@@ -1,6 +1,7 @@
 from datetime import datetime
+from .constants import CATEGORIES
 
-CATEGORY = "mycat"
+CATEGORY = CATEGORIES.POST
 AUTHOR = "Pablo"
 POST_TITLE = "Cakephp 2.x Saving and validating a HABTM relation example"
 PUBLISHED_DATE = datetime(year=2014, month=1, day=24)

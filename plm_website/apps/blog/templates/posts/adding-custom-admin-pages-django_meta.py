@@ -1,6 +1,7 @@
 from datetime import datetime
+from .constants import CATEGORIES
 
-CATEGORY = "mycat"
+CATEGORY = CATEGORIES.POST
 AUTHOR = "Pablo"
 POST_TITLE = "Adding custom admin pages on django"
 POST_DESCRIPTION = "Adding custom admin pages on django"

@@ -15,3 +15,9 @@ class Post(object):
     @property
     def link(self):
         return reverse('post_view', kwargs={'slug': self.slug})
+
+    def match(self, filters):
+        for filter_name, filter_value in filters.iteritems():
+            if getattr(self.data, filter_name) != filter_value:
+                return False
+        return True

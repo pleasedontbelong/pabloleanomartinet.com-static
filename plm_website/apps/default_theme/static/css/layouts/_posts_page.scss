@@ -1,0 +1,15 @@
+.posts-page{
+    background-color: $white;
+    .page{
+        height: 100vh;
+        position: relative;
+        > h1{
+            @extend %title-text;
+            color: $green_sea;
+            font-size: 5em;
+        }
+    }
+    .post-box{
+        @include post-box;
+    }
+}

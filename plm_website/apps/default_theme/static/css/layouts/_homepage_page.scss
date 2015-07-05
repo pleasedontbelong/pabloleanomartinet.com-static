@@ -1,11 +1,15 @@
 .homepage-page{
     .page{
         height: 100vh;
+        overflow: hidden;
+        position: relative;
+        h1{
+            @extend %title-text;
+            font-size: 5em;
+        }
     }
     .intro{
         background-color: rgba(darken($main_dark, 15%), 1);
-        overflow: hidden;
-        position: relative;
         text-align: center;
         img{
             margin-top: 30vh;

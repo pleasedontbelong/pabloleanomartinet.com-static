@@ -6,5 +6,8 @@ urlpatterns = patterns(
     '',
     url(r'^$',
         TemplateView.as_view(template_name='pages/homepage.jinja2'),
-        name='homepage')
+        name='homepage'),
+    url(r'^posts/?$',
+        TemplateView.as_view(template_name='pages/posts.jinja2'),
+        name='posts-list')
 )

@@ -22,13 +22,13 @@
     </header>
     <div class="row">
     {% for project in projects_list() %}
-      <div class="col-md-4">
-      <article class="post-box">
-        <a href="{{ project.link }}">
+      <div class="col-md-8 col-md-offset-2">
+        <article class="post-item">
+          <a href="{{ project.link }}">
         <h1>{{ project.data.POST_TITLE }}</h1>
         <p>{{ project.data.POST_DESCRIPTION }}</p>
         </a>
-      </article>
+        </article>
       </div>
 
     {% endfor %}

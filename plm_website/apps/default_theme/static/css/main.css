@@ -416,31 +416,19 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 /* line 14, layouts/_posts_page.scss */
-.posts-page .post-box {
-  background-color: #fff;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
+.posts-page .post-item {
   margin-bottom: 20px;
-  min-height: 300px;
 }
-/* line 6, modules/post_box/_mixins.scss */
-.posts-page .post-box a {
-  color: #ecf0f1;
-}
-/* line 9, modules/post_box/_mixins.scss */
-.posts-page .post-box h1 {
+/* line 3, modules/post_box/_mixins.scss */
+.posts-page .post-item h1 {
   text-transform: uppercase;
   font-weight: bold;
-  padding: 20px 15px;
-  font-size: 1em;
+  font-size: 1.3em;
   line-height: 1.23em;
-  margin: 0;
-  background-color: #2c3e50;
+  color: #2c3e50;
 }
-/* line 19, modules/post_box/_mixins.scss */
-.posts-page .post-box p {
-  padding: 20px 15px;
+/* line 11, modules/post_box/_mixins.scss */
+.posts-page .post-item p {
   color: #2c3e50;
 }
 /* line 18, layouts/_posts_page.scss */
@@ -464,19 +452,20 @@ a:hover, a:visited, a:active {
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
+  margin-left: 10px;
 }
-/* line 88, modules/main_menu/_mixins.scss */
+/* line 89, modules/main_menu/_mixins.scss */
 .posts-page #main-menu ul li a {
   color: #16a085;
   display: block;
 }
-/* line 91, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li a:hover {
-  color: #ecf0f1;
+/* line 93, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:hover {
+  border-color: #1abc9c;
 }
 /* line 95, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:hover {
-  background-color: #2ecc71;
+.posts-page #main-menu ul li:hover a {
+  color: #1abc9c;
 }
 
 /* No files to import found in fonts/* */

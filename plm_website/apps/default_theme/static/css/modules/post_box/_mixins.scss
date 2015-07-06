@@ -1,23 +1,14 @@
-@mixin post_box() {
-    background-color: #fff;
-    @include border-radius(4px);
+@mixin post_item() {
     margin-bottom: 20px;
-    min-height: 300px;
-    a{
-        color: $white;
-    }
     h1{
         text-transform: uppercase;
         font-weight: bold;
-        padding: 20px 15px;
-        font-size: 1em;
+        font-size: 1.3em;
         line-height: 1.23em;
-        margin: 0;
-        background-color: $main_dark;
+        color: $main_dark;
     }
 
     p{
-        padding: 20px 15px;
         color: $main_dark;
     }
 

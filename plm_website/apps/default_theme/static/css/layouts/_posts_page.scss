@@ -11,8 +11,8 @@
             width: 50%;
         }
     }
-    .post-box{
-        @include post-box;
+    .post-item{
+        @include post_item;
     }
 
     #main-menu{

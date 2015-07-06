@@ -85,15 +85,16 @@
             padding: 10px 20px;
             display: inline-block;
             @include border-radius(30px);
+            margin-left: 10px;
             a {
                 color: $green_sea;
                 display: block;
-                &:hover {
-                    color: $white;
-                }
             }
             &:hover {
-                background-color: $emerald;
+                border-color: $turquoise;
+                a {
+                    color: $turquoise;
+                }
             }
         }
     }

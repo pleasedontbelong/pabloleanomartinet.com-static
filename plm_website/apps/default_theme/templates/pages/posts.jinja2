@@ -4,7 +4,22 @@
 
 {% block body_content %}
   <div class="page container">
-    <h1><i class="fa fa-newspaper-o"></i> Posts</h1>
+    <header class="clearfix">
+      <h1><i class="fa fa-newspaper-o"></i> Posts</h1>
+      <nav id="main-menu" >
+        <ul class="menu">
+          <li>
+            <a href="{{ url('homepage')}}">Home</a>
+          </li>
+          <li>
+            <a href="{{ url('projects-list')}}">Projects</a>
+          </li>
+          <li>
+            <a href="http://www.pabloleanomartinet.com/about-me/">About Me</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <div class="row">
     {% for post in posts_list() %}
       <div class="col-md-4">

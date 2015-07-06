@@ -9,10 +9,10 @@
     > footer{
         @include footer;
     }
+
     .right-sidebar{
         @include right_sidebar;
     }
-
 
     #post-page-header{
         @include post_header;

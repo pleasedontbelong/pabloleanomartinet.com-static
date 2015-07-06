@@ -72,3 +72,29 @@
     }
 }
 
+@mixin buttons_menu() {
+    ul {
+        font-family: $fancy_font;
+        font-size: 1.3em;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        float: right;
+        li {
+            border: 2px solid $green_sea;
+            padding: 10px 20px;
+            display: inline-block;
+            @include border-radius(30px);
+            a {
+                color: $green_sea;
+                display: block;
+                &:hover {
+                    color: $white;
+                }
+            }
+            &:hover {
+                background-color: $emerald;
+            }
+        }
+    }
+}

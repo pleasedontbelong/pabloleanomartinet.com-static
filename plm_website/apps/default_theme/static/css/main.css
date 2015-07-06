@@ -8,7 +8,7 @@
 }
 
 /* line 10, _typography.scss */
-.homepage-page .page h1, .homepage-page .intro h1, .post-page .brand, .posts-page .page > h1 {
+.homepage-page .page h1, .homepage-page .intro h1, .post-page .brand, .posts-page .page > header h1 {
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   text-decoration: none;
@@ -135,7 +135,7 @@ a:hover, a:visited, a:active {
   background-color: #080b0e;
   color: #bdc3c7;
 }
-/* line 12, layouts/_post_pages.scss */
+/* line 13, layouts/_post_pages.scss */
 .post-page .right-sidebar {
   color: #bdc3c7;
 }
@@ -409,11 +409,13 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 /* line 6, layouts/_posts_page.scss */
-.posts-page .page > h1 {
+.posts-page .page > header h1 {
   color: #16a085;
   font-size: 5em;
+  float: left;
+  width: 50%;
 }
-/* line 12, layouts/_posts_page.scss */
+/* line 14, layouts/_posts_page.scss */
 .posts-page .post-box {
   background-color: #fff;
   -moz-border-radius: 4px;
@@ -440,6 +442,41 @@ a:hover, a:visited, a:active {
 .posts-page .post-box p {
   padding: 20px 15px;
   color: #2c3e50;
+}
+/* line 18, layouts/_posts_page.scss */
+.posts-page #main-menu {
+  margin-top: 30px;
+}
+/* line 76, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.3em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+/* line 83, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li {
+  border: 2px solid #16a085;
+  padding: 10px 20px;
+  display: inline-block;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+}
+/* line 88, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li a {
+  color: #16a085;
+  display: block;
+}
+/* line 91, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li a:hover {
+  color: #ecf0f1;
+}
+/* line 95, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:hover {
+  background-color: #2ecc71;
 }
 
 /* No files to import found in fonts/* */

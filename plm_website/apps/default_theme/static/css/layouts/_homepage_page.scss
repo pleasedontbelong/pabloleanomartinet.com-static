@@ -1,26 +1,30 @@
 .homepage-page{
     .page{
-        height: 80vh;
-    }
-    .intro{
-        background-color: rgba(darken($header_brown, 25%), 1);
+        height: 100vh;
         overflow: hidden;
         position: relative;
+        h1{
+            @extend %title-text;
+            font-size: 5em;
+        }
+    }
+    .intro{
+        background-color: rgba(darken($main_dark, 15%), 1);
         text-align: center;
         img{
-            margin-top: 20vh;
-            border: 6px solid $header_brown;
+            margin-top: 30vh;
+            border: 6px solid $main_dark;
         }
         h1{
             @extend %title-text;
             font-size: 5em;
-            @extend %black_header;
+            @extend %white_header;
             position: absolute;
-            bottom: 10vh;
+            bottom: 20vh;
             width: 100%;
         }
         #main-menu{
-            background-color: rgba($header_brown, 1);
+            background-color: rgba($main_dark, 1);
             width: 100%;
             position: absolute;
             bottom: 0;

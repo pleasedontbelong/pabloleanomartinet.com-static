@@ -1,0 +1,22 @@
+.posts-page{
+    background-color: $white;
+    .page{
+        height: 100vh;
+        position: relative;
+        > header h1{
+            @extend %title-text;
+            color: $green_sea;
+            font-size: 5em;
+            float: left;
+            width: 50%;
+        }
+    }
+    .post-item{
+        @include post_item;
+    }
+
+    #main-menu{
+        margin-top: 30px;
+        @include buttons_menu;
+    }
+}

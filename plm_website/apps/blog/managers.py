@@ -46,6 +46,11 @@ class PostManager(object):
             self.posts.append(post)
         return self
 
+    def filter(self, **filters):
+        self.all()
+        self.posts = [p for p in self.posts if p.match(filters)]
+        return self
+
     def order_by(self, attribute, reverse=True):
         self.posts.sort(key=lambda p: getattr(p.data, attribute), reverse=reverse)
         return self

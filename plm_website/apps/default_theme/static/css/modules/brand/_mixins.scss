@@ -40,28 +40,28 @@
         top: 0;
         @include transition-property(none);
         @include transition-duration(0);
-        color: $header_brown;
-        text-shadow: 1px 1px 0px $header_brown_shadow;
+        color: $main_dark;
+        text-shadow: 1px 1px 0px $main_dark_shadow;
     }
 
     span{
         @include transition-property(none);
         @include transition-duration(0);
-        color: $header_brown;
-        text-shadow: 1px 1px 0px $header_brown_shadow;
+        color: $main_dark;
+        text-shadow: 1px 1px 0px $main_dark_shadow;
     }
 
     a:hover{
         text-decoration: none;
         strong {
             top: 0;
-            color: $header_brown;
-            text-shadow: 1px 1px 0px $header_brown_shadow;
+            color: $main_dark;
+            text-shadow: 1px 1px 0px $main_dark_shadow;
         }
         span {
             top: 0;
-            color: $header_brown;
-            text-shadow: 1px 1px 0px $header_brown_shadow;
+            color: $main_dark;
+            text-shadow: 1px 1px 0px $main_dark_shadow;
         }
     }
 }

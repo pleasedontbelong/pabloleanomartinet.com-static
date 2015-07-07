@@ -43,6 +43,7 @@ path[0:0] = [
 INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'plm_website.core',
+    'content',
     'blog',
     'default_theme',
     'django_extensions',
@@ -161,4 +162,4 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
 
-POST_TEMPLATES_APP = "plm_website.apps.blog.templates.posts.{}_meta"
+POST_TEMPLATES_APP = "plm_website.apps.content.templates.posts.{}_meta"

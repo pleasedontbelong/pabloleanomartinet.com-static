@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from .managers import PostManager
-from blog.templates.posts.constants import CATEGORIES
+from content.templates.posts.constants import CATEGORIES
 
 
 def list_posts(limit=None):

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import imp
 import os
-POST_EXTENSIONS = ('_meta.py', '_meta.pyc', '_meta.pyo')
-POSTS_PATH = "blog/templates/posts"
+
+from django.conf import settings
 
 from .models import Post
 
@@ -30,13 +30,13 @@ class PostManager(object):
             return next
 
     def all(self):
-        file, pathname, description = imp.find_module(POSTS_PATH)
+        file, pathname, description = imp.find_module(settings.POSTS_PATH)
         if file:
-            raise ImportError('Not a package: %r', POSTS_PATH)
+            raise ImportError('Not a package: %r', settings.POSTS_PATH)
 
         posts_files = set()
         for module in os.listdir(pathname):
-            if module.endswith(POST_EXTENSIONS):
+            if module.endswith(settings.POST_EXTENSIONS):
                 posts_files.add(os.path.splitext(module)[0][:-5])
 
         self.posts = []

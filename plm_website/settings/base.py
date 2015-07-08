@@ -163,3 +163,5 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 )
 
 POST_TEMPLATES_APP = "plm_website.apps.content.templates.posts.{}_meta"
+POSTS_PATH = "content/templates/posts"
+POST_EXTENSIONS = ('_meta.py', '_meta.pyc', '_meta.pyo')

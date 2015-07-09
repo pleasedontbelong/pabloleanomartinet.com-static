@@ -24,13 +24,28 @@
     {% for post in posts_list() %}
       <div class="col-md-8 col-md-offset-2">
         <article class="post-item">
-          <a href="{{ post.link }}">
-          <h1>{{ post.data.POST_TITLE }}</h1>
-          <p>{{ post.data.POST_DESCRIPTION }}</p>
+          <a href="{{ post.link }}#disqus_thread">
+            <h1>{{ post.data.POST_TITLE }}</h1>
+            <p>{{ post.data.POST_DESCRIPTION }}</p>
           </a>
         </article>
       </div>
     {% endfor %}
     </div>
   </div>
+{% endblock %}
+
+{% block extra_javascript %}
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'pleasedontbelong';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 {% endblock %}

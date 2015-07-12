@@ -16,5 +16,8 @@
       {% javascript('default') %}
     {% endblock %}
     {% block extra_javascript %}{% endblock %}
+    {% block metrics %}
+      {% include "partials/metrics.jinja2" %}
+    {% endblock %}
   </body>
 </html>

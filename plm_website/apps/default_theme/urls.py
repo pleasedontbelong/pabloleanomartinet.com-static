@@ -12,5 +12,8 @@ urlpatterns = patterns(
         name='posts-list'),
     url(r'^projects/?$',
         TemplateView.as_view(template_name='pages/projects.jinja2'),
-        name='projects-list')
+        name='projects-list'),
+    url(r'^about-me/?$',
+        TemplateView.as_view(template_name='pages/about_me.jinja2'),
+        name='about-me')
 )

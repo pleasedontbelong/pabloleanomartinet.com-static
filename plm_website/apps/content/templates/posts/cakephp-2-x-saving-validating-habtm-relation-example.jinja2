@@ -3,7 +3,7 @@
   <p>Even if the documentation on this subject is quite complete, I will write an example of how to do it including a control witch validates the number of elements saved.</p>
   <p>First I’ll give you only the code and after that (for those who are interested) I’ll give some notes about it. Or you could <a title="cakephp habtm repository" href="https://github.com/pleasedontbelong/cakephp2.2-habtm-example" target="_blank">download/pull the github repository</a> to test it. I&#8217;ve also added some unit test that I&#8217;ll use for new versions of cakephp. Please do clone this code and feel free to fork, repair, etc.</p>
   <h2>The database model</h2>
-  <p><img class="size-full wp-image-237" title="cakephp habtm model example" src="http://www.pabloleanomartinet.com/wp-content/uploads/2012/10/model.png" alt="post habtm tags" width="561" height="148" /></p>
+  <p><img class="size-full" title="cakephp habtm model example" src="http://d3f79bc9m1q83t.cloudfront.net/cakephp-habtm/model.png" alt="post habtm tags" width="561" height="148" /></p>
   <p><em>Read the <a href="http://book.cakephp.org/2.0/en/getting-started/cakephp-conventions.html#model-and-database-conventions">naming conventions</a></em></p>
   <h2>The Model</h2>
   <h3>Post.php</h3>
@@ -96,7 +96,7 @@
       <p><em>(Again: Why does the Tag array needs to be formatted like that??? I really have no idea.)</em></p>
       <p>As you can see, the HABTM relationship needs the data in a different way that the validator, clearly it is a contradiction between the validation and the data saving. The validator needs the Tag array inside the Post, and the save method needs the Tags at the same level of the Post. Surely you could transform the data inside the controller, but where’s the fun in that? Let’s better use the <strong>before save</strong> callback, because maybe you have multiple HABTM relations and you want to preserve a skinny controller and a fat model. In this case I used the <strong>before save</strong> on the Post Model, but you could also define it in the AppModel so it will work for all models.</p>
       <p>And that&#8217;s it!. Now if you try to save the Post without choosing any tag, you should see something like this:</p>
-      <p><img class="aligncenter size-large wp-image-242" title="validation on habtm" src="http://www.pabloleanomartinet.com/wp-content/uploads/2012/10/screen-1024x421.png" alt="Example data validation on HABTM relation" width="584" height="240" /></p>
+      <p><img class="aligncenter" title="validation on habtm" src="http://d3f79bc9m1q83t.cloudfront.net/cakephp-habtm/screen.png" alt="Example data validation on HABTM relation" width="584" height="240" /></p>
       <p>This might not be the cleanest way, but I couldn&#8217;t find a better way to do it (without using js validation of course). And the documentation doesn&#8217;t say anything about this, so&#8230;.</p>
       <p>Hope this helps!</p>
       <p><strong>Hey! if you want to give it a try. I have created a repository so you could pull, test, correct, improve this code. Just go to the <a title="cakephp habtm repository" href="https://github.com/pleasedontbelong/cakephp2.2-habtm-example" target="_blank">repository on github.<br />

@@ -18,3 +18,4 @@ venv/
 vendors
 .bundle
 bundle
+local.py

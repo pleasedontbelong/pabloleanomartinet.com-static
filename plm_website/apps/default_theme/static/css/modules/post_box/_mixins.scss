@@ -5,7 +5,10 @@
         font-weight: bold;
         font-size: 1.3em;
         line-height: 1.23em;
-        color: $main_dark;
+        a{
+            color: $main_dark;
+        }
+
     }
 
     p{

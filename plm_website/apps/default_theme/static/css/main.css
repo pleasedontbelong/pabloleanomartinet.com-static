@@ -425,9 +425,12 @@ a:hover, a:visited, a:active {
   font-weight: bold;
   font-size: 1.3em;
   line-height: 1.23em;
+}
+/* line 8, modules/post_box/_mixins.scss */
+.posts-page .post-item h1 a {
   color: #2c3e50;
 }
-/* line 11, modules/post_box/_mixins.scss */
+/* line 14, modules/post_box/_mixins.scss */
 .posts-page .post-item p {
   color: #2c3e50;
 }

@@ -1,6 +1,6 @@
-from django.conf import settings
-from importlib import import_module
+# -*- coding: utf-8 -*-
 from plm_website.core.generic import TemplateView
+from .models import Post
 
 
 class PostView(TemplateView):
@@ -13,10 +13,11 @@ class PostView(TemplateView):
         return "posts/{}.jinja2".format(self.post_slug)
 
     def get_context_data(self, *args, **kwargs):
-        meta = import_module(settings.POST_TEMPLATES_APP.format(self.post_slug))
+        post = Post(self.post_slug)
+        post.load_data()
         return dict(
             super(PostView, self).get_context_data(*args, **kwargs),
             **{
-                'meta': meta
+                'post': post
             }
         )

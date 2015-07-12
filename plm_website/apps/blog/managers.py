@@ -54,3 +54,9 @@ class PostManager(object):
     def order_by(self, attribute, reverse=True):
         self.posts.sort(key=lambda p: getattr(p.data, attribute), reverse=reverse)
         return self
+
+    def get(self, **filters):
+        results = self.filter(**filters)
+        if not results:
+            return None
+        return results[0]

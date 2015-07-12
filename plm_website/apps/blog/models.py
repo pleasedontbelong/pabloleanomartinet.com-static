@@ -13,7 +13,7 @@ class Post(object):
         self.data = import_module(settings.POST_TEMPLATES_APP.format(self.slug))
 
     @property
-    def link(self):
+    def url(self):
         return reverse('post_view', kwargs={'slug': self.slug})
 
     def match(self, filters):

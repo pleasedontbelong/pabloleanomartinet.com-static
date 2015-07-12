@@ -6,4 +6,5 @@ AUTHOR = "Pablo"
 POST_TITLE = "CakePHP 2.x Filter and Basic search with pagination example"
 POST_DESCRIPTION = "A basic example of filtering and searching while using a " \
                    "paginating a list of items, using cakephp 2.x"
+POST_TAGS = ("CakePHP", "filter", "search", "pagination")
 PUBLISHED_DATE = datetime(year=2014, month=1, day=24)

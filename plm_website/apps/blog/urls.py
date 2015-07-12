@@ -4,7 +4,7 @@ from .views import PostView
 
 urlpatterns = patterns(
     '',
-    url(r'^(?P<slug>[\w\-]+)/?$',
+    url(r'^(?P<slug>[\w\-]+)/$',
         PostView.as_view(),
         name='post_view')
 )

@@ -1,14 +1,13 @@
 {% extends 'base_post.jinja2' %}
-
 {% block post_content %}
-	<p>Even if <a title="internationalization and localization" href="http://book.cakephp.org/2.0/en/core-libraries/internationalization-and-localization.html" target="_blank">the documentation</a> is quite complete, I find that its better to have a &#8220;step-by-step&#8221; basic guide for internationalizing your pages. So here it is:</p>
-<h2>Step 1 &#8211; Prepare your code:</h2>
-<p>
-You need to use the <a href="http://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__" target="_blank">__()</a> function to translate your text, so instead of doing something like:
-</p>
+  <p>Even if <a title="internationalization and localization" href="http://book.cakephp.org/2.0/en/core-libraries/internationalization-and-localization.html" target="_blank">the documentation</a> is quite complete, I find that its better to have a &#8220;step-by-step&#8221; basic guide for internationalizing your pages. So here it is:</p>
+  <h2>Step 1 &#8211; Prepare your code:</h2>
+  <p>
+    You need to use the <a href="http://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__" target="_blank">__()</a> function to translate your text, so instead of doing something like:
+  </p>
 <pre class="brush: php;tab-size: 2;gutter: false;">&lt;h1&gt; Hi, my name is &lt;?php echo $name;?&gt;&lt;/h1&gt;</pre>
 <p>
-It should be:
+  It should be:
 </p>
 <pre class="brush: php;tab-size: 2;gutter: false;">&lt;h1&gt;&lt;?php echo __("Hi, my name is %s",$name);?&gt;</pre>
 <h2>Step 2 &#8211; Create your pot file:</h2>

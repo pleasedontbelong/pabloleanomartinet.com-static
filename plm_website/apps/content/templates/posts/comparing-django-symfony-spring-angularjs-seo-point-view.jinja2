@@ -1,247 +1,257 @@
 {% extends 'base_post.jinja2' %}
-
 {% block post_content %}
-
-	<h2>Why?</h2>
-<p>Probably you have noticed that I&#8217;m comparing four frameworks that have nothing to do with each other. To begin, they are written in different languages, with different modjos and flavors. I&#8217;m not interested on the endless and pointless war between: compiled languages vs interpreted, strongly typed vs weakly typed or client side vs server side. What I want to find out is how good are their websites, after all that&#8217;s how they present their product to the community</p>
-<p>Whenever I have some problems or when I have some doubts with a framework, the first thing I do is to google it, like most of us, but lately I realized that some questions on Stackoverflow are on the top of the results, while the official documentation pages are not. A bad website of a framework could change drastically it&#8217;s learning curve, changing also the number of developers using that framework and finally killing the framework</p>
-<p>This post is about analyzing the websites of those frameworks from a SEO point of view. I&#8217;ll try to detect some problems and try to find out who has the most clean website</p>
-<h2>Running the analysis</h2>
-<p>I&#8217;m using <a href="http://www.botify.com" target="_blank">Botify</a> to crawl and analyze the different websites. The good thing about this service is that it gives you both macro and micro information about the websites.</p>
-<p>The crawl was limited to 100k URLs and has no information about sitemaps or robots.txt</p>
-<h2>Website Overviews</h2>
-<p>Let&#8217;s first compare the main metrics of the analyses:</p>
-<table class="table table-bordered" cellspacing="0" cellpadding="0">
-<thead>
-<tr>
-<th>Metric</th>
-<th>Spring</th>
-<th>AngularJS</th>
-<th>Symfony</th>
-<th>Django</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="metric">Crawled URLs</td>
-<td>100,038</td>
-<td>54</td>
-<td>44,801</td>
-<td>100,039</td>
-</tr>
-<tr>
-<td class="metric">Compliant URLs</td>
-<td>88,827 (88.79%)</td>
-<td>22 (40.74%)</td>
-<td>31,473 (70.25%)</td>
-<td>68,575 (68.55%)</td>
-</tr>
-<tr>
-<td class="metric">Not Compliant URLs</td>
-<td>11,211 (11.21%)</td>
-<td>32 (59.26%)</td>
-<td>13,328 (29.75%)</td>
-<td>31,464 (31.45%)</td>
-</tr>
-<tr>
-<td class="metric">2xx URLs</td>
-<td>98,026 (97.99%)</td>
-<td>23 (42.59%)</td>
-<td>41,363 (92.33%)</td>
-<td>84,152 (84.12%)</td>
-</tr>
-<tr>
-<td class="metric">Compliant URLs with Bad H1</td>
-<td>79,952 (79.92%)</td>
-<td>21 (38.89%)</td>
-<td>28,561 (63.75%)</td>
-<td>47,460 (47.44%)</td>
-</tr>
-<tr>
-<td class="metric">Compliant URLs with Bad Description</td>
-<td>88,508 (88.47%)</td>
-<td>21 (38.89%)</td>
-<td>31,467 (70.24%)</td>
-<td>68,575 (68.55%)</td>
-</tr>
-<tr>
-<td class="metric">URLs with 1 Follow Inlink</td>
-<td>32,733 (32.72%)</td>
-<td>2 (3.70%)</td>
-<td>4,877 (10.89%)</td>
-<td>18,617 (18.61%)</td>
-</tr>
-</tbody>
-</table>
-<p>The first thing that pops out is the <strong>number of crawled URLs for AngularJS, only 54</strong>. After a quick navigation on Angular&#8217;s website I found out that they rely on JS for the navigation, so usually a crawler won&#8217;t be able to crawl all the available pages. I did a search on google to find out how many pages google has indexed for Angular and I found out that Google has indexed 2,550 URLs, probably thanks to sitemaps or because Angular belongs to Google and so they don&#8217;t really care about SEO problems. But hey! <strong>Bing was able to find 14K URLs on Angular&#8217;s website</strong>&#8230; Say Wut?&#8230; In that the case, Angular is out of the competition, just because I couldn&#8217;t get the correct information</p>
-<p>Both Django and Spring have reached the limit of crawler URLs set for this experiment. However the crawler found more than 300K URLs on both. Probably there are some forums installed, or maybe there are some &#8220;code reference&#8221; pages that were automatically generated, displaying all the code and comments on each file, class, method, etc. Meanwhile Symfony stays with only 44K pages but Symfony also has the highest percentage of Not Compliant URLs, almost 30% (basically URLs that have no SEO value cf: <a href="https://www.botify.com/blog/seo-compliant-urls/" target="_blank">SEO Compliant URLs</a>)</p>
-<p>Seems that none of them really care about H1 and Description tags. However Django makes an effort setting a correct H1 tag on its pages. But we&#8217;ll see it in more detail later.</p>
-<h2>Distribution</h2>
-<p>This is about depth, content-type, protocol and language.</p>
-<div class="row">
-<div class="col-md-4">
-<h3 class="text-center">Spring</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_Distribution.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_Distribution.png" alt="Django Distribution Report" class="img-thumbnail"><br />
-      </a>
+  <h2>Why?</h2>
+  <p>Probably you have noticed that I&#8217;m comparing four frameworks that have nothing to do with each other. To begin, they are written in different languages, with different modjos and flavors. I&#8217;m not interested on the endless and pointless war between: compiled languages vs interpreted, strongly typed vs weakly typed or client side vs server side. What I want to find out is how good are their websites, after all that&#8217;s how they present their product to the community</p>
+  <p>Whenever I have some problems or when I have some doubts with a framework, the first thing I do is to google it, like most of us, but lately I realized that some questions on Stackoverflow are on the top of the results, while the official documentation pages are not. A bad website of a framework could change drastically it&#8217;s learning curve, changing also the number of developers using that framework and finally killing the framework</p>
+  <p>This post is about analyzing the websites of those frameworks from a SEO point of view. I&#8217;ll try to detect some problems and try to find out who has the most clean website</p>
+  <h2>Running the analysis</h2>
+  <p>I&#8217;m using <a href="http://www.botify.com" target="_blank">Botify</a> to crawl and analyze the different websites. The good thing about this service is that it gives you both macro and micro information about the websites.</p>
+  <p>The crawl was limited to 100k URLs and has no information about sitemaps or robots.txt</p>
+  <h2>Website Overviews</h2>
+  <p>Let&#8217;s first compare the main metrics of the analyses:</p>
+  <table class="table table-bordered" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Spring</th>
+        <th>AngularJS</th>
+        <th>Symfony</th>
+        <th>Django</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="metric">Crawled URLs</td>
+        <td>100,038</td>
+        <td>54</td>
+        <td>44,801</td>
+        <td>100,039</td>
+      </tr>
+      <tr>
+        <td class="metric">Compliant URLs</td>
+        <td>88,827 (88.79%)</td>
+        <td>22 (40.74%)</td>
+        <td>31,473 (70.25%)</td>
+        <td>68,575 (68.55%)</td>
+      </tr>
+      <tr>
+        <td class="metric">Not Compliant URLs</td>
+        <td>11,211 (11.21%)</td>
+        <td>32 (59.26%)</td>
+        <td>13,328 (29.75%)</td>
+        <td>31,464 (31.45%)</td>
+      </tr>
+      <tr>
+        <td class="metric">2xx URLs</td>
+        <td>98,026 (97.99%)</td>
+        <td>23 (42.59%)</td>
+        <td>41,363 (92.33%)</td>
+        <td>84,152 (84.12%)</td>
+      </tr>
+      <tr>
+        <td class="metric">Compliant URLs with Bad H1</td>
+        <td>79,952 (79.92%)</td>
+        <td>21 (38.89%)</td>
+        <td>28,561 (63.75%)</td>
+        <td>47,460 (47.44%)</td>
+      </tr>
+      <tr>
+        <td class="metric">Compliant URLs with Bad Description</td>
+        <td>88,508 (88.47%)</td>
+        <td>21 (38.89%)</td>
+        <td>31,467 (70.24%)</td>
+        <td>68,575 (68.55%)</td>
+      </tr>
+      <tr>
+        <td class="metric">URLs with 1 Follow Inlink</td>
+        <td>32,733 (32.72%)</td>
+        <td>2 (3.70%)</td>
+        <td>4,877 (10.89%)</td>
+        <td>18,617 (18.61%)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>The first thing that pops out is the <strong>number of crawled URLs for AngularJS, only 54</strong>. After a quick navigation on Angular&#8217;s website I found out that they rely on JS for the navigation, so usually a crawler won&#8217;t be able to crawl all the available pages. I did a search on google to find out how many pages google has indexed for Angular and I found out that Google has indexed 2,550 URLs, probably thanks to sitemaps or because Angular belongs to Google and so they don&#8217;t really care about SEO problems. But hey! <strong>Bing was able to find 14K URLs on Angular&#8217;s website</strong>&#8230; Say Wut?&#8230; In that the case, Angular is out of the competition, just because I couldn&#8217;t get the correct information</p>
+  <p>Both Django and Spring have reached the limit of crawler URLs set for this experiment. However the crawler found more than 300K URLs on both. Probably there are some forums installed, or maybe there are some &#8220;code reference&#8221; pages that were automatically generated, displaying all the code and comments on each file, class, method, etc. Meanwhile Symfony stays with only 44K pages but Symfony also has the highest percentage of Not Compliant URLs, almost 30% (basically URLs that have no SEO value cf: <a href="https://www.botify.com/blog/seo-compliant-urls/" target="_blank">SEO Compliant URLs</a>)</p>
+  <p>Seems that none of them really care about H1 and Description tags. However Django makes an effort setting a correct H1 tag on its pages. But we&#8217;ll see it in more detail later.</p>
+  <h2>Distribution</h2>
+  <p>This is about depth, content-type, protocol and language.</p>
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center">Spring</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_Distribution.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_Distribution.png" alt="Django Distribution Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>11% percent of Spring pages are not SEO Compliant, and when you see the pie chart you realize that most of those non-compliant URLs are not HTML pages. After exploring those URLs I see that there are a lot of plain text pages, json files and checksums. Most of them used on the &#8220;Guide&#8221; pages as an example.</li>
+        <li>Average depth seems OK</li>
+        <li>The site is also available on German but 33% of the site does not have the language metatag</li>
+        <li>The pages are well separated in subdomains where docs.spring.io is 70% of the site and 20% is the repository that maybe should not be indexed</li>
+        <li>80% of the pages are gziped!</li>
+      </ul>
     </div>
-<ul>
-<li>11% percent of Spring pages are not SEO Compliant, and when you see the pie chart you realize that most of those non-compliant URLs are not HTML pages. After exploring those URLs I see that there are a lot of plain text pages, json files and checksums. Most of them used on the &#8220;Guide&#8221; pages as an example.</li>
-<li>Average depth seems OK</li>
-<li>The site is also available on German but 33% of the site does not have the language metatag</li>
-<li>The pages are well separated in subdomains where docs.spring.io is 70% of the site and 20% is the repository that maybe should not be indexed</li>
-<li>80% of the pages are gziped!</li>
-</ul></div>
-<div class="col-md-4">
-<h3 class="text-center">Django</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_Distribution.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_Distribution.png" alt="Django Distribution Report" class="img-thumbnail"><br />
-      </a>
+    <div class="col-md-4">
+      <h3 class="text-center">Django</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_Distribution.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_Distribution.png" alt="Django Distribution Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>Average depth seems a little high but that&#8217;s probably because I miss-configured the crawl, the start url is a 302 redirection</li>
+        <li>Almost 80% of the pages belong to code.djangoproject.com (probably automatically-generated pages) and half of those pages are not compliant</li>
+        <li>The documentation pages are only 3% of the website</li>
+        <li>10K pages need to be removed from the site structure (probably), due to bad http code response or bad content-type.</li>
+      </ul>
     </div>
-<ul>
-<li>Average depth seems a little high but that&#8217;s probably because I miss-configured the crawl, the start url is a 302 redirection</li>
-<li>Almost 80% of the pages belong to code.djangoproject.com (probably automatically-generated pages) and half of those pages are not compliant</li>
-<li>The documentation pages are only 3% of the website</li>
-<li>10K pages need to be removed from the site structure (probably), due to bad http code response or bad content-type.</li>
-</ul></div>
-<div class="col-md-4">
-<h3 class="text-center">Symfony</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_Distribution.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_Distribution.png" alt="Django Distribution Report" class="img-thumbnail"><br />
-      </a>
+    <div class="col-md-4">
+      <h3 class="text-center">Symfony</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_Distribution.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_Distribution.png" alt="Django Distribution Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>It only has 6 pages with different &#8220;description&#8221; tag</li>
+        <li>Not Compliant URLs are placed between depths 2 and 5</li>
+        <li>13k of not compliant URLs and I don&#8217;t see any specific rule on the robots.txt to prevent them from being indexed.</li>
+      </ul>
     </div>
-<ul>
-<li>It only has 6 pages with different &#8220;description&#8221; tag</li>
-<li>Not Compliant URLs are placed between depths 2 and 5</li>
-<li>13k of not compliant URLs and I don&#8217;t see any specific rule on the robots.txt to prevent them from being indexed.</li>
-</ul></div>
-</div>
-<h2>Performance</h2>
-<div class="row">
-<div class="col-md-4">
-<h3 class="text-center">Spring</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_Performance.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_Performance.png" alt="Django performance Report" class="img-thumbnail"><br />
-      </a>
+  </div>
+  <h2>Performance</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center">Spring</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_Performance.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_Performance.png" alt="Django performance Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>Performance could be a little better</li>
+        <li>Even some 500 HTTP Codes are slow</li>
+        <li>The fastest subdomain is the blog</li>
+      </ul>
     </div>
-<ul>
-<li>Performance could be a little better</li>
-<li>Even some 500 HTTP Codes are slow</li>
-<li>The fastest subdomain is the blog</li>
-</ul></div>
-<div class="col-md-4">
-<h3 class="text-center">Django</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_Performance.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_Performance.png" alt="Django performance Report" class="img-thumbnail"><br />
-      </a>
+    <div class="col-md-4">
+      <h3 class="text-center">Django</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_Performance.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_Performance.png" alt="Django performance Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>Django pages are really slow, with an average load time of 2.3 seconds</li>
+        <li>The slowest pages are the 2xx (Http code)</li>
+        <li>code.djangoproject.com is the slowest subdomain</li>
+      </ul>
     </div>
-<ul>
-<li>Django pages are really slow, with an average load time of 2.3 seconds</li>
-<li>The slowest pages are the 2xx (Http code)</li>
-<li>code.djangoproject.com is the slowest subdomain</li>
-</ul></div>
-<div class="col-md-4">
-<h3 class="text-center">Symfony</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_Performance.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_Performance.png" alt="Django performance Report" class="img-thumbnail"><br />
-      </a>
+    <div class="col-md-4">
+      <h3 class="text-center">Symfony</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_Performance.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_Performance.png" alt="Django performance Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>There&#8217;s nothing to say, charts are clear: Symfony website is fast</li>
+      </ul>
     </div>
-<ul>
-<li>There&#8217;s nothing to say, charts are clear: Symfony website is fast</li>
-</ul></div>
-</div>
-<h2>HTTP Codes</h2>
-<div class="row">
-<div class="col-md-4">
-<h3 class="text-center">Spring</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_HTTP_Status_Codes.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_HTTP_Status_Codes.png" alt="Django HTTP Codes Report" class="img-thumbnail"><br />
-      </a>
+  </div>
+  <h2>HTTP Codes</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center">Spring</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_HTTP_Status_Codes.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_HTTP_Status_Codes.png" alt="Django HTTP Codes Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>One of the cleanest sites I&#8217;ve ever seen. Only a few 3xx pages and even fewer 4xx pages</li>
+      </ul>
     </div>
-<ul>
-<li>One of the cleanest sites I&#8217;ve ever seen. Only a few 3xx pages and even fewer 4xx pages</li>
-</ul></div>
-<div class="col-md-4">
-<h3 class="text-center">Django</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_HTTP_Status_Codes.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_HTTP_Status_Codes.png" alt="Django HTTP Codes Report" class="img-thumbnail"><br />
-      </a>
+    <div class="col-md-4">
+      <h3 class="text-center">Django</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_HTTP_Status_Codes.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_HTTP_Status_Codes.png" alt="Django HTTP Codes Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>15% of django&#8217;s pages are redirections</li>
+        <li>6% of the HTTP redirects are permanent (301). Maybe due to a migration.</li>
+      </ul>
     </div>
-<ul>
-<li>15% of django&#8217;s pages are redirections</li>
-<li>6% of the HTTP redirects are permanent (301). Maybe due to a migration.</li>
-</ul></div>
-<div class="col-md-4">
-<h3 class="text-center">Symfony</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_HTTP_Status_Codes.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_HTTP_Status_Codes.png" alt="Django HTTP Codes Report" class="img-thumbnail"><br />
-      </a>
+    <div class="col-md-4">
+      <h3 class="text-center">Symfony</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_HTTP_Status_Codes.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_HTTP_Status_Codes.png" alt="Django HTTP Codes Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>Doesn&#8217;t have too many problems. Anyway, it has some 404 pages that need to be solved</li>
+      </ul>
     </div>
-<ul>
-<li>Doesn&#8217;t have too many problems. Anyway, it has some 404 pages that need to be solved</li>
-</ul></div>
-</div>
-<h2>HTML Tags</h2>
-<div class="row">
-<div class="col-md-4">
-<h3 class="text-center">Spring</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_HTML_tags.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_HTML_tags.png" alt="Django HTML Tags Report" class="img-thumbnail"><br />
-      </a>
+  </div>
+  <h2>HTML Tags</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center">Spring</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_HTML_tags.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_spring_20141218_HTML_tags.png" alt="Django HTML Tags Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>Half of the pages have a unique title</li>
+        <li>Descriptions are missing</li>
+      </ul>
     </div>
-<ul>
-<li>Half of the pages have a unique title</li>
-<li>Descriptions are missing</li>
-</ul></div>
-<div class="col-md-4">
-<h3 class="text-center">Django</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_HTML_tags.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_HTML_tags.png" alt="Django HTML Tags Report" class="img-thumbnail"><br />
-      </a>
+    <div class="col-md-4">
+      <h3 class="text-center">Django</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_HTML_tags.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_django_20141218_HTML_tags.png" alt="Django HTML Tags Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>Almost all pages have a title and a H1, but most of them are duplicated</li>
+        <li>Descriptions are missing</li>
+      </ul>
     </div>
-<ul>
-<li>Almost all pages have a title and a H1, but most of them are duplicated</li>
-<li>Descriptions are missing</li>
-</ul></div>
-<div class="col-md-4">
-<h3 class="text-center">Symfony</h3>
-<div>
-      <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_HTML_tags.png" target="_blank"><br />
-        <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_HTML_tags.png" alt="Django HTML Tags Report" class="img-thumbnail"><br />
-      </a>
+    <div class="col-md-4">
+      <h3 class="text-center">Symfony</h3>
+      <div>
+        <a href="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_HTML_tags.png" target="_blank"><br />
+          <img src="http://d3f79bc9m1q83t.cloudfront.net/frameworks-seo/Botify_Analytics_symfony_20141218_HTML_tags.png" alt="Django HTML Tags Report" class="img-thumbnail"><br />
+        </a>
+      </div>
+      <ul>
+        <li>Only a few pages have unique title and H1</li>
+        <li>They made an effort to prevent the duplicate content using canonicals</li>
+      </ul>
     </div>
-<ul>
-<li>Only a few pages have unique title and H1</li>
-<li>They made an effort to prevent the duplicate content using canonicals</li>
-</ul></div>
-</div>
-<h2>What have we learned</h2>
-<p>If you&#8217;re like me, you probably skipped all the previous text and jumped directly into the conclusions. The conclusion is quite simple, for what I have seen Spring is the &#8220;cleanest&#8221; website because:</p>
-<ul>
-<li>It has the least percentage of not compliant URLs</li>
-<li>It has the smallest average depth</li>
-<li>Even when it&#8217;s not the fastest framework, it&#8217;s not slow neither</li>
-<li>Almost 100% of 200 HTTP status code</li>
-<li>Need some improvement on HTML tags, but slightly better compared to the rest of the frameworks</li>
-</ul>
-<p>Symfony, on the other hand, has really fast pages and it&#8217;s HTTP codes are not that bad, and Django makes an effort on the HTML tags but has a poor performance</p>
-<h2>Some final words</h2>
-<p>I&#8217;m not a SEO &#8220;expert&#8221;, but I&#8217;m learning, so this article might not be too accurate. You probably noticed that I&#8217;m currently working for Botify (that&#8217;s how I was able to make the crawls) and this article made me realize that our tool lack of some feature that we&#8217;re currently developing. Anyway, using Botify is quite easy to detect problems and navigate the website structure to find out the real cause of the problem. For that, the URL Explorer is quite useful.</p>
-<p>If you want to test another framework go to <a href="http://www.botify.com" target="_blank">Botify.com</a> and launch a free crawl, and let me know the results<br />
-<div class="addtoany_share_save_container addtoany_content_bottom"><div class="a2a_kit a2a_kit_size_32 addtoany_list a2a_target" id="wpa2a_1"><a class="a2a_button_facebook" href="http://www.addtoany.com/add_to/facebook?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcomparing-django-symfony-spring-angularjs-seo-point-view%2F&amp;linkname=Comparing%20Django%2C%20Symfony%2C%20Spring%20and%20AngularJS%20from%20a%20SEO%20point%20of%20view" title="Facebook" rel="nofollow" target="_blank"></a><a class="a2a_button_twitter" href="http://www.addtoany.com/add_to/twitter?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcomparing-django-symfony-spring-angularjs-seo-point-view%2F&amp;linkname=Comparing%20Django%2C%20Symfony%2C%20Spring%20and%20AngularJS%20from%20a%20SEO%20point%20of%20view" title="Twitter" rel="nofollow" target="_blank"></a><a class="a2a_button_google_plus" href="http://www.addtoany.com/add_to/google_plus?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcomparing-django-symfony-spring-angularjs-seo-point-view%2F&amp;linkname=Comparing%20Django%2C%20Symfony%2C%20Spring%20and%20AngularJS%20from%20a%20SEO%20point%20of%20view" title="Google+" rel="nofollow" target="_blank"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share_save"></a>
-<script type="text/javascript"><!--
-wpa2a.script_load();
-//--></script>
+  </div>
+  <h2>What have we learned</h2>
+  <p>If you&#8217;re like me, you probably skipped all the previous text and jumped directly into the conclusions. The conclusion is quite simple, for what I have seen Spring is the &#8220;cleanest&#8221; website because:</p>
+  <ul>
+    <li>It has the least percentage of not compliant URLs</li>
+    <li>It has the smallest average depth</li>
+    <li>Even when it&#8217;s not the fastest framework, it&#8217;s not slow neither</li>
+    <li>Almost 100% of 200 HTTP status code</li>
+    <li>Need some improvement on HTML tags, but slightly better compared to the rest of the frameworks</li>
+  </ul>
+  <p>Symfony, on the other hand, has really fast pages and it&#8217;s HTTP codes are not that bad, and Django makes an effort on the HTML tags but has a poor performance</p>
+  <h2>Some final words</h2>
+  <p>I&#8217;m not a SEO &#8220;expert&#8221;, but I&#8217;m learning, so this article might not be too accurate. You probably noticed that I&#8217;m currently working for Botify (that&#8217;s how I was able to make the crawls) and this article made me realize that our tool lack of some feature that we&#8217;re currently developing. Anyway, using Botify is quite easy to detect problems and navigate the website structure to find out the real cause of the problem. For that, the URL Explorer is quite useful.</p>
+  <p>If you want to test another framework go to <a href="http://www.botify.com" target="_blank">Botify.com</a> and launch a free crawl, and let me know the results<br />
+  <div class="addtoany_share_save_container addtoany_content_bottom"><div class="a2a_kit a2a_kit_size_32 addtoany_list a2a_target" id="wpa2a_1"><a class="a2a_button_facebook" href="http://www.addtoany.com/add_to/facebook?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcomparing-django-symfony-spring-angularjs-seo-point-view%2F&amp;linkname=Comparing%20Django%2C%20Symfony%2C%20Spring%20and%20AngularJS%20from%20a%20SEO%20point%20of%20view" title="Facebook" rel="nofollow" target="_blank"></a><a class="a2a_button_twitter" href="http://www.addtoany.com/add_to/twitter?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcomparing-django-symfony-spring-angularjs-seo-point-view%2F&amp;linkname=Comparing%20Django%2C%20Symfony%2C%20Spring%20and%20AngularJS%20from%20a%20SEO%20point%20of%20view" title="Twitter" rel="nofollow" target="_blank"></a><a class="a2a_button_google_plus" href="http://www.addtoany.com/add_to/google_plus?linkurl=http%3A%2F%2Fwww.pabloleanomartinet.com%2Fcomparing-django-symfony-spring-angularjs-seo-point-view%2F&amp;linkname=Comparing%20Django%2C%20Symfony%2C%20Spring%20and%20AngularJS%20from%20a%20SEO%20point%20of%20view" title="Google+" rel="nofollow" target="_blank"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share_save"></a>
+  <script type="text/javascript"><!--
+  wpa2a.script_load();
+  //--></script>
 </div></div>
 {% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'base_post.jinja2' %}
+
+{% block post_content %}
+<h2>Learning from the past</h2>
+<p>
+  I have been writing in this blog for a few years, even if you can only see a few posts. I started it with my own
+  PHP framework that I built and is now lost at the bottom of the sea. I realized that it was easier for me
+  if I just went using an already built framework that offered me all the possibilities needed to create a blog.
+  So I (silly me) installed a wordpress site and I lost a few posts in the migration progress.
+</p>
+
+<p>
+  As soon as I installed my blog, I had to install some security plugins to prevent my blog from drowning with
+  spam comments, xmlrpc.php attacks, what made my pages really slow (from 2 to 3 sec to load).
+  Until one day I decided to thow away WP's comments and install disqus, and of course I lost all my post comments,
+  but it was ok since I thought I would gain in performance... Fail... my pages were still slow.
+</p>
+
+<p>
+  Then a happy day I decided to change my domain name, and it was hell! Wp stores the domain name in database EVERYWHERE!.
+  The wp-options was already a mess (the plugins do whatever they want with that table) and now I had to replace text
+  inside jsons.. I was easier to manually copy/paste every post into a new wordpress.
+</p>
+
+<p>
+  The I left my blog alone for a few months. Once in a while I went to the admin and I saw a thousand notifications for
+  updating plugins, updating wordpress, a few errors on some plugins, and I didn't want to leave an open FTP connection
+  to my server for the automatic updates.. It looked too dangerous for me, specially when I see how easily a WP blog
+  gets hacked. So every time I wanted to update, I started temporally the sftp server or sometimes I tried to manually install
+  the updates.
+</p>
+
+<p>
+  My pages where really slow, so I decided to install a VarnishCache in front of my server to cache the request and
+  prevent the rendering of the page on each request. After a few tests, a few hours reading some tutorials and reading
+  the varnish docs, I realized that in order to cache my wordpress blog, I had to make it run in a different port (e.g. 8080).
+  It sounds easy, but not for wordpress; Adding a port was messing up a few plugins that stored the domain name in the database.
+  So that was it!.. It was time to throw away this messy CMS and start looking for something simpler.
+</p>
+
+<h2>Benchmarking</h2>
+
+<p>While searching for the right tool.I made a list of functionalities that I wanted:</p>
+
+<ul>
+  <li>
+    <b>No more web editors</b> I should be able to create and edit the content on Sublime Text. WYSIWYG is for noobs.
+    Specially when they add tags and classes that I don't need.
+  </li>
+  <li>
+    <b>Anyone can edit</b> Changes should be requested and content should be under versioning (git)
+  </li>
+  <li>
+    <b>No more DataBases</b> I should be able to git pull my site and have the exact same content as production.
+    But not only me, since the content is versioned, anyone can propose some changes on the content of my blog
+  </li>
+  <li>
+    <b>Separate Content from Presentation</b> my posts content should be as clean as possible so I could export them and
+    create new ones without any problem. I should be able to change the style of my blog without touching the content
+  </li>
+  <li>
+    <b>I will query my posts</b> I should be able to get, filter and paginate my posts. In order to create "Themes" for
+    my blog
+  </li>
+</ul>
+
+<p>
+  The first thing I saw was Jekill. I saw that the pages where actually files stored as HTML or Markdown and then the whole
+  site was generated after using a few command lines. I liked the basic idea, because that means that my posts could be
+  versioned with git. However I don't think it was meant to be used for blogs. It was really hard to change the page theme and I didn't
+  find a way to filter my pages, e.g I couldn't get a list of posts of the category "Project" sort by the publication date.
+  So I had to discard this option. Besides, Jekill is Ruby and Ruby is [insert your favorite troll here]
+</p>
+
+<p>
+  Then I consider using a django CMS. "I'm sure there are a few good ones out there" I said to my self. But I desisted
+  after installing and testing them. They were just ugly, besides the content was stored in the DB, and that just gave me
+  headaches in the past
+</p>
+
+<p>
+  I saw too that I could probably build a simple site using django and medusa or/and pipeline to generate some staticfiles
+  and maybe push them to AWS. But again, I needed a Database
+</p>
+
+<h2>My solution</h2>
+
+<p>
+  Finally, I thought that I could mix a few ideas from all the previous solutions.
+</p>
+
+<ul>
+  <li>My posts should be files and not rows in a DB. I decided to go with jinja2 templates</li>
+  <li>For each post, I should have a meta file (python) containing a few variables with the posts metadata (dates, title,
+    description, author, tags, etc)</li>
+  <li>I built a model and a manager class to simulate django's ORM in order to filter my posts using its' metadata</li>
+  <li>Instead of generating the static HTML pages, I decided to use cloudflare as CDN to catch all my requests. It was the
+    easiest and fastest solution for me</li>
+  <li>I separated my django site into 3 apps. One that manages the blog, the second one that just has the blog content and
+    the last one that defines the base templates and the style for the blog
+  </li>
+</ul>
+
+<p>If you want to take a look you could see the <a href="https://github.com/pleasedontbelong/pabloleanomartinet.com-static">source code for this site</a>.
+  And make a Pull Request if you want to change / fix something.
+</p>
+
+<p>
+  Since this is just a small blog, I don't need a complex process of deploying. I just ssh the server to git pull,
+  restart the service, and wait for cloudflare (or to manually discard the cache)
+</p>
+
+<h2>The roadmap</h2>
+
+<p>I think I will never end this blog. As you can see, I still need to make it beautiful. The style really sucks, but
+I'm aware that I'm not a designer so maybe I'll ask for help</p>
+
+<p>
+  I got some feedback and maybe I got a few ideas to improve the code. For example, instead of building an ORM, maybe I
+  could use a sqllite and sync it with the medatada files. But right now it's not needed, maybe if I had thousands of
+  posts yes. I made a list of issues on github so I could improve this site little by little. The most important thing
+  is that I already shipped the code
+</p>
+
+{% endblock %}

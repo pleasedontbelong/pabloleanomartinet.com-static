@@ -1,5 +1,14 @@
 .post-page{
     background: $main_dark;
+    font-size: 1.2em;
+    p, li{
+        font-size: 1.2em;
+    }
+    p.lead{
+        font-size: 1.3em;
+        color: $green_sea;
+        font-weight: bold;
+    }
 
     > .container{
         background-color: darken($main_dark, 15%);
@@ -10,8 +19,8 @@
         @include footer;
     }
 
-    .right-sidebar{
-        @include right_sidebar;
+    .other-posts{
+        @include other_posts;
     }
 
     #post-page-header{
@@ -19,36 +28,38 @@
     }
 
     .left-content{
-        padding-top: 20px;
-        background: url("../images/crossword.png") repeat 0 0;
+        padding: 20px 40px;
+        background-color: $white;
     }
 
     .brand{
         @include brand;
     }
 
-    .post-header-top-links{
-        @include post_header_links;
+    .post-date{
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 1.3em;
+        text-align: right;
     }
 
-    @media (min-width: $screen-md-min) {
-        #main-menu{
-            @include main_menu_vertical;
-        }
+    .post-external-links{
+        @include post_external_links;
+    }
+
+    #main-menu{
+        @include buttons_menu;
     }
 
     @media (max-width: $screen-md-min) {
         .brand{
             @include small_brand;
         }
-        .post-header-top-links{
-            @include small_post_header_links;
+        .post-external-links{
+            @include small_post_external_links;
         }
         #post-page-header{
             @include small_post_header;
-        }
-        #main-menu{
-            @include main_menu_horizontal;
         }
     }
 
@@ -56,8 +67,8 @@
         .brand{
             @include xsmall_brand;
         }
-        .post-header-top-links{
-            @include xsmall_post_header_links;
+        .post-external-links{
+            @include xsmall_post_external_links;
         }
     }
 }

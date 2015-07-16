@@ -1,9 +1,9 @@
 /* line 2, _typography.scss */
-.post-page > footer a:link, .post-page .right-sidebar a:link, .post-page > footer a:visited, .post-page .right-sidebar a:visited {
+.post-page > footer a:link, .post-page .other-posts a:link, .post-page > footer a:visited, .post-page .other-posts a:visited {
   color: #ecf0f1;
 }
 /* line 5, _typography.scss */
-.post-page > footer a:hover, .post-page .right-sidebar a:hover {
+.post-page > footer a:hover, .post-page .other-posts a:hover {
   color: white;
 }
 
@@ -91,12 +91,12 @@ a:hover, a:visited, a:active {
 .homepage-page .intro #main-menu ul li:hover {
   background-color: #2ecc71;
 }
-/* line 57, modules/main_menu/_mixins.scss */
+/* line 27, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul {
   display: flex;
   position: relative;
 }
-/* line 60, modules/main_menu/_mixins.scss */
+/* line 30, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li {
   flex: 1 1 auto;
   text-align: center;
@@ -109,11 +109,11 @@ a:hover, a:visited, a:active {
   -webkit-transition-duration: 0.8s;
   transition-duration: 0.8s;
 }
-/* line 65, modules/main_menu/_mixins.scss */
+/* line 35, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li a {
   padding: 1rem 0;
 }
-/* line 68, modules/main_menu/_mixins.scss */
+/* line 38, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li:hover {
   -moz-transform: scale(1.2, 1.2);
   -ms-transform: scale(1.2, 1.2);
@@ -124,31 +124,42 @@ a:hover, a:visited, a:active {
 /* line 1, layouts/_post_pages.scss */
 .post-page {
   background: #2c3e50;
+  font-size: 1.2em;
 }
 /* line 4, layouts/_post_pages.scss */
+.post-page p, .post-page li {
+  font-size: 1.2em;
+}
+/* line 7, layouts/_post_pages.scss */
+.post-page p.lead {
+  font-size: 1.3em;
+  color: #16a085;
+  font-weight: bold;
+}
+/* line 13, layouts/_post_pages.scss */
 .post-page > .container {
   background-color: #11181f;
   border-left: 1px solid #CCC3BA;
 }
-/* line 9, layouts/_post_pages.scss */
+/* line 18, layouts/_post_pages.scss */
 .post-page > footer {
   background-color: #080b0e;
   color: #bdc3c7;
 }
-/* line 13, layouts/_post_pages.scss */
-.post-page .right-sidebar {
+/* line 22, layouts/_post_pages.scss */
+.post-page .other-posts {
   color: #bdc3c7;
 }
-/* line 17, layouts/_post_pages.scss */
+/* line 26, layouts/_post_pages.scss */
 .post-page #post-page-header {
   background: url(../images/ricepaper2.png);
   border-bottom: 1px solid #ccc;
-  padding-bottom: 20px;
+  padding: 0 60px 20px;
 }
-/* line 21, layouts/_post_pages.scss */
+/* line 30, layouts/_post_pages.scss */
 .post-page .left-content {
-  padding-top: 20px;
-  background: url("../images/crossword.png") repeat 0 0;
+  padding: 20px 40px;
+  background-color: #ecf0f1;
 }
 /* line 3, modules/brand/_mixins.scss */
 .post-page .brand strong {
@@ -192,86 +203,87 @@ a:hover, a:visited, a:active {
 .post-page .brand a:hover span {
   top: -70px;
 }
-/* line 30, layouts/_post_pages.scss */
-.post-page .post-header-top-links {
+/* line 39, layouts/_post_pages.scss */
+.post-page .post-date {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-align: right;
+}
+/* line 46, layouts/_post_pages.scss */
+.post-page .post-external-links {
   margin-top: 45px;
 }
 /* line 9, modules/post_header/_mixins.scss */
-.post-page .post-header-top-links a {
+.post-page .post-external-links a {
   font-size: 1em;
   margin-left: 8px;
   color: #2c3e50;
 }
-@media (min-width: 992px) {
-  /* line 2, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul {
-    font-family: "Oswald", sans-serif;
-    font-size: 1.3em;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  /* line 8, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li {
-    background-color: #16a085;
-    display: block;
-  }
-  /* line 11, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li a {
-    color: #bdc3c7;
-    display: block;
-  }
-  /* line 14, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li a:hover {
-    color: #ecf0f1;
-  }
-  /* line 18, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li:hover {
-    background-color: #2ecc71;
-  }
-  /* line 26, modules/main_menu/_mixins.scss */
-  .post-page #main-menu li {
-    padding: 1.3em 0.5em;
-    width: 50%;
-    float: left;
-    text-align: center;
-    background-color: #2c3e50 !important;
-    -moz-transition-property: all;
-    -o-transition-property: all;
-    -webkit-transition-property: all;
-    transition-property: all;
-    -moz-transition-duration: 0.8s;
-    -o-transition-duration: 0.8s;
-    -webkit-transition-duration: 0.8s;
-    transition-duration: 0.8s;
-  }
-  /* line 34, modules/main_menu/_mixins.scss */
-  .post-page #main-menu li a {
-    color: #ecf0f1 !important;
-  }
-  /* line 37, modules/main_menu/_mixins.scss */
-  .post-page #main-menu li:first-child {
-    background-color: #1abc9c !important;
-  }
-  /* line 40, modules/main_menu/_mixins.scss */
-  .post-page #main-menu li:nth-child(2) {
-    background-color: #d35400 !important;
-  }
-  /* line 43, modules/main_menu/_mixins.scss */
-  .post-page #main-menu li:nth-child(3) {
-    background-color: #f39c12 !important;
-  }
-  /* line 46, modules/main_menu/_mixins.scss */
-  .post-page #main-menu li:last-child {
-    background-color: #9b59b6 !important;
-  }
-  /* line 49, modules/main_menu/_mixins.scss */
-  .post-page #main-menu li:hover {
-    -moz-transform: scale(1.2, 1.2);
-    -ms-transform: scale(1.2, 1.2);
-    -webkit-transform: scale(1.2, 1.2);
-    transform: scale(1.2, 1.2);
-  }
+/* line 46, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.3em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+  float: right;
+}
+/* line 54, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li {
+  border: 2px solid #16a085;
+  padding: 10px 20px;
+  display: inline-block;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  margin-left: 10px;
+}
+/* line 60, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li a {
+  color: #16a085;
+  display: block;
+}
+/* line 64, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:hover {
+  border-color: #1abc9c;
+}
+/* line 66, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:hover a {
+  color: #1abc9c;
+}
+/* line 70, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:first-child {
+  border-color: #1abc9c !important;
+}
+/* line 72, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:first-child a {
+  color: #1abc9c !important;
+}
+/* line 76, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:nth-child(2) {
+  border-color: #d35400 !important;
+}
+/* line 78, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:nth-child(2) a {
+  color: #d35400 !important;
+}
+/* line 82, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:nth-child(3) {
+  border-color: #f39c12 !important;
+}
+/* line 84, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:nth-child(3) a {
+  color: #f39c12 !important;
+}
+/* line 88, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:last-child {
+  border-color: #9b59b6 !important;
+}
+/* line 90, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li:last-child a {
+  color: #9b59b6 !important;
 }
 @media (max-width: 992px) {
   /* line 37, modules/brand/_mixins.scss */
@@ -319,78 +331,23 @@ a:hover, a:visited, a:active {
     color: #2c3e50;
     text-shadow: 1px 1px 0px #34495e;
   }
-  /* line 44, layouts/_post_pages.scss */
-  .post-page .post-header-top-links {
+  /* line 58, layouts/_post_pages.scss */
+  .post-page .post-external-links {
     margin-top: 5px;
   }
-  /* line 47, layouts/_post_pages.scss */
+  /* line 61, layouts/_post_pages.scss */
   .post-page #post-page-header {
     padding-bottom: 5px;
   }
-  /* line 2, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul {
-    font-family: "Oswald", sans-serif;
-    font-size: 1.3em;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  /* line 8, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li {
-    background-color: #16a085;
-    display: block;
-  }
-  /* line 11, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li a {
-    color: #bdc3c7;
-    display: block;
-  }
-  /* line 14, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li a:hover {
-    color: #ecf0f1;
-  }
-  /* line 18, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li:hover {
-    background-color: #2ecc71;
-  }
-  /* line 57, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul {
-    display: flex;
-    position: relative;
-  }
-  /* line 60, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li {
-    flex: 1 1 auto;
-    text-align: center;
-    -moz-transition-property: all;
-    -o-transition-property: all;
-    -webkit-transition-property: all;
-    transition-property: all;
-    -moz-transition-duration: 0.8s;
-    -o-transition-duration: 0.8s;
-    -webkit-transition-duration: 0.8s;
-    transition-duration: 0.8s;
-  }
-  /* line 65, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li a {
-    padding: 1rem 0;
-  }
-  /* line 68, modules/main_menu/_mixins.scss */
-  .post-page #main-menu ul li:hover {
-    -moz-transform: scale(1.2, 1.2);
-    -ms-transform: scale(1.2, 1.2);
-    -webkit-transform: scale(1.2, 1.2);
-    transform: scale(1.2, 1.2);
-  }
 }
 @media (max-width: 768px) {
-  /* line 56, layouts/_post_pages.scss */
+  /* line 67, layouts/_post_pages.scss */
   .post-page .brand {
     width: 100%;
     text-align: center;
   }
-  /* line 59, layouts/_post_pages.scss */
-  .post-page .post-header-top-links {
+  /* line 70, layouts/_post_pages.scss */
+  .post-page .post-external-links {
     float: none !important;
     width: 100%;
     text-align: center;
@@ -434,20 +391,17 @@ a:hover, a:visited, a:active {
 .posts-page .post-item p {
   color: #2c3e50;
 }
-/* line 18, layouts/_posts_page.scss */
-.posts-page #main-menu {
-  margin-top: 30px;
-}
-/* line 76, modules/main_menu/_mixins.scss */
+/* line 46, modules/main_menu/_mixins.scss */
 .posts-page #main-menu ul {
   font-family: "Oswald", sans-serif;
   font-size: 1.3em;
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-top: 20px;
   float: right;
 }
-/* line 83, modules/main_menu/_mixins.scss */
+/* line 54, modules/main_menu/_mixins.scss */
 .posts-page #main-menu ul li {
   border: 2px solid #16a085;
   padding: 10px 20px;
@@ -457,18 +411,50 @@ a:hover, a:visited, a:active {
   border-radius: 30px;
   margin-left: 10px;
 }
-/* line 89, modules/main_menu/_mixins.scss */
+/* line 60, modules/main_menu/_mixins.scss */
 .posts-page #main-menu ul li a {
   color: #16a085;
   display: block;
 }
-/* line 93, modules/main_menu/_mixins.scss */
+/* line 64, modules/main_menu/_mixins.scss */
 .posts-page #main-menu ul li:hover {
   border-color: #1abc9c;
 }
-/* line 95, modules/main_menu/_mixins.scss */
+/* line 66, modules/main_menu/_mixins.scss */
 .posts-page #main-menu ul li:hover a {
   color: #1abc9c;
+}
+/* line 70, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:first-child {
+  border-color: #1abc9c !important;
+}
+/* line 72, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:first-child a {
+  color: #1abc9c !important;
+}
+/* line 76, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:nth-child(2) {
+  border-color: #d35400 !important;
+}
+/* line 78, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:nth-child(2) a {
+  color: #d35400 !important;
+}
+/* line 82, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:nth-child(3) {
+  border-color: #f39c12 !important;
+}
+/* line 84, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:nth-child(3) a {
+  color: #f39c12 !important;
+}
+/* line 88, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:last-child {
+  border-color: #9b59b6 !important;
+}
+/* line 90, modules/main_menu/_mixins.scss */
+.posts-page #main-menu ul li:last-child a {
+  color: #9b59b6 !important;
 }
 
 /* No files to import found in fonts/* */

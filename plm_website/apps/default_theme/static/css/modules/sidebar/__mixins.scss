@@ -1,4 +1,4 @@
-@mixin right_sidebar() {
+@mixin other_posts() {
     color: $gray;
     a{
         @extend %white_link;

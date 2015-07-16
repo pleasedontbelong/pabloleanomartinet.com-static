@@ -1,10 +1,10 @@
 @mixin post_header(){
     background: url(../images/ricepaper2.png);
     border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
+    padding: 0 60px 20px;
 }
 
-@mixin post_header_links() {
+@mixin post_external_links() {
     margin-top: 45px;
     a{
         font-size: 1em;
@@ -13,7 +13,7 @@
     }
 }
 
-@mixin small_post_header_links() {
+@mixin small_post_external_links() {
     margin-top: 5px;
 }
 
@@ -21,7 +21,7 @@
     padding-bottom: 5px;
 }
 
-@mixin xsmall_post_header_links() {
+@mixin xsmall_post_external_links() {
     float: none !important;
     width: 100%;
     text-align: center;

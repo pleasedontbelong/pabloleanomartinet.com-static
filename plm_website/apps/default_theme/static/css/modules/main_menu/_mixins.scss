@@ -21,36 +21,6 @@
         }
     }
 }
-@mixin main_menu_vertical() {
-    @include _main_menu;
-    li{
-        padding: 1.3em 0.5em;
-        width: 50%;
-        float: left;
-        text-align: center;
-        background-color: $main_dark !important;
-        @include transition-property(all);
-        @include transition-duration(0.8s);
-        a{
-            color: $white !important;
-        }
-        &:first-child{
-            background-color: $turquoise !important;
-        }
-        &:nth-child(2){
-            background-color: $pumpkin !important;
-        }
-        &:nth-child(3){
-            background-color: $orange !important;
-        }
-        &:last-child{
-            background-color: $amethyst !important;
-        }
-        &:hover{
-            @include scale(1.2);
-        }
-    }
-}
 
 @mixin main_menu_horizontal(){
     @include _main_menu;
@@ -79,6 +49,7 @@
         list-style: none;
         margin: 0;
         padding: 0;
+        margin-top: 20px;
         float: right;
         li {
             border: 2px solid $green_sea;
@@ -94,6 +65,30 @@
                 border-color: $turquoise;
                 a {
                     color: $turquoise;
+                }
+            }
+            &:first-child{
+                border-color: $turquoise !important;
+                a{
+                    color: $turquoise !important;
+                }
+            }
+            &:nth-child(2){
+                border-color: $pumpkin !important;
+                a{
+                    color: $pumpkin !important;
+                }
+            }
+            &:nth-child(3){
+                border-color: $orange !important;
+                a{
+                    color: $orange !important;
+                }
+            }
+            &:last-child{
+                border-color: $amethyst !important;
+                a{
+                    color: $amethyst !important;
                 }
             }
         }

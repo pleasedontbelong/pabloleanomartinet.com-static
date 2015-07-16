@@ -1,6 +1,11 @@
 {% extends 'base_post.jinja2' %}
 
 {% block post_content %}
+<p class="lead">
+  After years using wordpress I finally decided to change of framework. I've been
+  benchmarking and having some experience using different frameworks and languages
+  I ended up building something homemade. This is my journey...
+</p>
 <h2>Learning from the past</h2>
 <p>
   I have been writing in this blog for a few years, even if you can only see a few posts. I started it with my own
@@ -18,22 +23,21 @@
 
 <p>
   Then a happy day I decided to change my domain name, and it was hell! Wp stores the domain name in database EVERYWHERE!.
-  The wp-options was already a mess (the plugins do whatever they want with that table) and now I had to replace text
-  inside jsons.. I was easier to manually copy/paste every post into a new wordpress.
+  The wp-options was already a mess (the plugins do whatever they want with that table) and now I had to replace text inside jsons in the DB.. In the end it was easier to manually copy/paste every post into a new wordpress.
+  Of course, by doing this, I lost all the comments I had on my blog
 </p>
 
 <p>
-  The I left my blog alone for a few months. Once in a while I went to the admin and I saw a thousand notifications for
+  Then I left my blog alone for a few months. Once in a while I went to the admin and I saw a thousand notifications for
   updating plugins, updating wordpress, a few errors on some plugins, and I didn't want to leave an open FTP connection
   to my server for the automatic updates.. It looked too dangerous for me, specially when I see how easily a WP blog
-  gets hacked. So every time I wanted to update, I started temporally the sftp server or sometimes I tried to manually install
-  the updates.
+  gets hacked. So every time I wanted to update, I started temporally the sftp server and launch the update... or sometimes I tried to manually install
+  the updates by downloading it to the folder.
 </p>
 
 <p>
-  My pages where really slow, so I decided to install a VarnishCache in front of my server to cache the request and
-  prevent the rendering of the page on each request. After a few tests, a few hours reading some tutorials and reading
-  the varnish docs, I realized that in order to cache my wordpress blog, I had to make it run in a different port (e.g. 8080).
+  Still my pages where slow, so I decided to install a VarnishCache in front of my server to cache the request and
+  prevent the rendering of the page on each request. After a few tests, hours and hours reading tutorials and the varnish docs, I realized that in order to cache my wordpress blog, I had to make it run in a different port (e.g. 8080).
   It sounds easy, but not for wordpress; Adding a port was messing up a few plugins that stored the domain name in the database.
   So that was it!.. It was time to throw away this messy CMS and start looking for something simpler.
 </p>

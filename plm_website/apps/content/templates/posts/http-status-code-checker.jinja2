@@ -1,4 +1,4 @@
-{% extends 'base_post.jinja2' %}
+{% extends 'post.jinja2' %}
 {% block post_content %}
   <p>A friend that I have, works with google adwords and oftenly he needs to check a list of urls to verify the Http status code of a list of urls. To verify that he&#8217;s not paying for a campaign that contain 404 pages.</p>
   <p>So I took a weekend and build a simple site using Django and Celery. A simple three-page-website that uses an asynchronous task (in celery) to get the http status code of every page.</p>

@@ -1,0 +1,25 @@
+{% extends 'base.jinja2' %}
+
+{% block meta_block %}{% endblock %}
+
+{% block body_class %}post-page{% endblock %}
+
+{% block body_content %}
+  <div class="container">
+    <div class="row content">
+      <div class="col-md-12" id="post-page-header">
+        {% include "partials/brand.jinja2" %}
+        {% include "partials/main_menu.jinja2" %}
+        <div class="clearfix"></div>
+      </div>
+      <div class="col-md-12 left-content">
+        {% block page_content %}{% endblock %}
+      </div>
+      {% block page_extra_content %}{% endblock %}
+    </div>
+
+  </div>
+  {% block footer %}
+    {% include "partials/footer.jinja2" %}
+  {% endblock %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base_page.jinja2' %}
+
+{% block meta_block %}
+  {% include "partials/post_meta_block.jinja2" %}
+{% endblock %}
+
+{% block page_content %}
+  <article class="post col-md-12" >
+    <div class="post-title">
+      <h1 class="title">
+        {% block post_title %}
+          {{ post.data.POST_TITLE }}
+        {% endblock %}
+      </h1>
+    </div>
+    <div class="post-content">
+      <div class="post-date">
+      {% block post_date %}
+        <div class="line"> <span> {{ post.data.PUBLISHED_DATE.strftime('%b. %d, %Y') }} by {{ post.data.AUTHOR }} </span> </div>
+      {% endblock %}
+      </div>
+      {% block post_content %}{% endblock %}
+    </div>
+    <div class="post-comments">
+      {% include "partials/disqus.jinja2" %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block page_extra_content %}
+<div class="col-md-12 other-posts">
+  {% include "partials/other_posts.jinja2" %}
+</div>
+{% endblock %}

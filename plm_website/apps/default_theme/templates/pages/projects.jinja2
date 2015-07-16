@@ -1,38 +1,21 @@
-{% extends 'base.jinja2' %}
+{% extends 'base_page.jinja2' %}
 
-{% block body_class %}posts-page{% endblock %}
-
-{% block body_content %}
-  <div class="page container">
-    <header class="clearfix">
-      <h1><i class="fa fa-wrench"></i> Projects</h1>
-      <nav id="main-menu" >
-        <ul class="menu">
-          <li>
-            <a href="{{ url('homepage')}}">Home</a>
-          </li>
-          <li>
-            <a href="{{ url('posts-list')}}">Posts</a>
-          </li>
-          <li>
-            <a href="{{ url('about-me') }}">About Me</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div class="row">
-    {% for project in projects_list() %}
-      <div class="col-md-8 col-md-offset-2">
-        <article class="post-item">
-            <h1>
-              <a href="{{ project.url }}">{{ project.data.POST_TITLE }}</a>
-              <small><a href="{{ project.url }}#disqus_thread">Comments</a></small>
-            </h1>
-            <p>{{ project.data.POST_DESCRIPTION }}</p>
-        </article>
-      </div>
-    {% endfor %}
+{% block page_content %}
+  <header class="clearfix">
+    <h1><i class="fa fa-wrench"></i> Projects</h1>
+  </header>
+  <div class="row">
+  {% for project in projects_list() %}
+    <div class="col-md-8 col-md-offset-2">
+      <article class="post-item">
+          <h1>
+            <a href="{{ project.url }}">{{ project.data.POST_TITLE }}</a>
+            <small><a href="{{ project.url }}#disqus_thread">Comments</a></small>
+          </h1>
+          <p>{{ project.data.POST_DESCRIPTION }}</p>
+      </article>
     </div>
+  {% endfor %}
   </div>
 {% endblock %}
 

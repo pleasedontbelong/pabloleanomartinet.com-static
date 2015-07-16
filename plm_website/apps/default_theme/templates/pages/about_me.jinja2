@@ -1,31 +1,14 @@
-{% extends 'base.jinja2' %}
+{% extends 'base_page.jinja2' %}
 
-{% block body_class %}posts-page{% endblock %}
-
-{% block body_content %}
-  <div class="page container">
-    <header class="clearfix">
-      <h1><i class="fa fa-newspaper-o"></i> About Me</h1>
-      <nav id="main-menu" >
-        <ul class="menu">
-          <li>
-            <a href="{{ url('homepage')}}">Home</a>
-          </li>
-          <li>
-            <a href="{{ url('projects-list')}}">Projects</a>
-          </li>
-          <li>
-            <a href="{{ url('posts-list')}}">Posts</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <article class="post-item">
-            <p>I'm sorry, I'm still working on this page.</p>
-        </article>
-      </div>
+{% block page_content %}
+  <header class="clearfix">
+    <h1><i class="fa fa-newspaper-o"></i> About Me</h1>
+  </header>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <article class="post-item">
+          <p>I'm sorry, I'm still working on this page.</p>
+      </article>
     </div>
   </div>
 {% endblock %}

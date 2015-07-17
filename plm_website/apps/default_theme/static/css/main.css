@@ -351,17 +351,17 @@ a:hover, a:visited, a:active {
   }
 }
 
-/* line 2, layouts/_posts_page.scss */
+/* line 2, layouts/_posts_list_page.scss */
 .posts-list .left-content {
   min-height: 75vh;
 }
-/* line 5, layouts/_posts_page.scss */
+/* line 5, layouts/_posts_list_page.scss */
 .posts-list .main-title h1 {
   color: #2c3e50;
   font-size: 5em;
   text-align: center;
 }
-/* line 12, layouts/_posts_page.scss */
+/* line 12, layouts/_posts_list_page.scss */
 .posts-list .post-item {
   margin-bottom: 20px;
 }
@@ -371,12 +371,23 @@ a:hover, a:visited, a:active {
   font-weight: bold;
   font-size: 1.3em;
   line-height: 1.23em;
+  margin-bottom: 5px;
 }
-/* line 8, modules/post_box/_mixins.scss */
-.posts-list .post-item h1 a {
-  color: #2c3e50;
+/* line 11, modules/post_box/_mixins.scss */
+.posts-list .post-item a {
+  color: #16a085;
 }
-/* line 14, modules/post_box/_mixins.scss */
+/* line 15, modules/post_box/_mixins.scss */
+.posts-list .post-item .post-item-data {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+/* line 18, modules/post_box/_mixins.scss */
+.posts-list .post-item .post-item-data a {
+  font-style: normal;
+  font-weight: bold;
+}
+/* line 24, modules/post_box/_mixins.scss */
 .posts-list .post-item p {
   color: #2c3e50;
 }

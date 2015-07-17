@@ -1,7 +1,7 @@
 from datetime import datetime
 from .constants import CATEGORIES
 
-CATEGORY = CATEGORIES.POST
+CATEGORY = CATEGORIES.PROJECT
 AUTHOR = "Pablo"
 POST_TITLE = "Databaseless blog in django. Built from scratch"
 POST_DESCRIPTION = "Why I decided to create a blog from scratch wihout a database" \

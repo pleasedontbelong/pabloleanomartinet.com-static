@@ -5,10 +5,20 @@
         font-weight: bold;
         font-size: 1.3em;
         line-height: 1.23em;
-        a{
-            color: $main_dark;
-        }
+        margin-bottom: 5px;
+    }
 
+    a{
+        color: $green_sea;
+    }
+
+    .post-item-data{
+        margin-bottom: 10px;
+        font-style: italic;
+        a{
+            font-style: normal;
+            font-weight: bold;
+        }
     }
 
     p{

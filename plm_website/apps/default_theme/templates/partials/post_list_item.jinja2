@@ -1,0 +1,11 @@
+<div class="col-md-8 col-md-offset-2">
+  <article class="post-item">
+      <h1>
+        <a href="{{ post.url }}">{{ post.data.POST_TITLE }}</a>
+      </h1>
+      <div class="post-item-data">
+        {{ post.data.PUBLISHED_DATE.strftime('%b. %d, %Y') }} by {{ post.data.AUTHOR }}. <a href="{{ post.url }}#disqus_thread">Comments</a>
+      </div>
+      <p>{{ post.data.POST_DESCRIPTION }}</p>
+  </article>
+</div>

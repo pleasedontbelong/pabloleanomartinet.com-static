@@ -150,6 +150,7 @@ a:hover, a:visited, a:active {
 /* line 22, layouts/_post_pages.scss */
 .post-page .other-posts {
   color: #bdc3c7;
+  padding: 20px 40px;
 }
 /* line 26, layouts/_post_pages.scss */
 .post-page #post-page-header {

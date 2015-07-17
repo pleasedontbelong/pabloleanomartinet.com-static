@@ -1,5 +1,6 @@
 @mixin other_posts() {
     color: $gray;
+    padding: 20px 40px;
     a{
         @extend %white_link;
     }

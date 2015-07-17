@@ -5,7 +5,7 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        margin-top: 20px;
+        margin-top: 40px;
         float: $float;
         li {
             border: 2px solid $green_sea;
@@ -47,6 +47,18 @@
                     color: $amethyst !important;
                 }
             }
+        }
+    }
+}
+
+@mixin small_buttons_menu() {
+    ul {
+        width: 100%;
+        text-align: center;
+        font-size: 1em;
+        margin-bottom: 20px;
+        li{
+            padding: 5px 15px;
         }
     }
 }

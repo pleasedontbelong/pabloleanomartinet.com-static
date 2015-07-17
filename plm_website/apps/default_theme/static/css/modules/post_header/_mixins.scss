@@ -1,5 +1,5 @@
 @mixin post_header(){
-    background: url(../images/ricepaper2.png);
+    background-color: $main-dark;
     border-bottom: 1px solid #ccc;
     padding: 0 60px 20px;
 }

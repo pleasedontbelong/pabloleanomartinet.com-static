@@ -1,10 +1,11 @@
 @mixin brand() {
+    float: left;
     @extend %title-text;
     strong {
-        @extend %white_header;
+        color: $main_light;
         display: block;
         font-size: 5.7em;
-        line-height: 1;
+        line-height: 1.1em;
         position: relative;
         top: 10px;
         @include transition-property(top, color);
@@ -12,7 +13,7 @@
     }
     span {
         font-size: 2.25em;
-        @extend %black_header;
+        color: $carrot;
         position: relative;
         top: 0px;
         @include transition-property(top, color);
@@ -22,32 +23,35 @@
         text-decoration: none;
         strong {
             top: 45px;
-            @extend %black_header;
+            color: $carrot;
 
         }
         span {
             top: -70px;
-            @extend %white_header;
+            color: $main_light;
         }
     }
 }
 
 
 @mixin small_brand(){
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
     strong{
         font-size: 2.25em;
         display: inline;
         top: 0;
         @include transition-property(none);
         @include transition-duration(0);
-        color: $main_dark;
+        color: $main_light;
         text-shadow: 1px 1px 0px $main_dark_shadow;
     }
 
     span{
         @include transition-property(none);
         @include transition-duration(0);
-        color: $main_dark;
+        color: $main_light;
         text-shadow: 1px 1px 0px $main_dark_shadow;
     }
 
@@ -55,18 +59,13 @@
         text-decoration: none;
         strong {
             top: 0;
-            color: $main_dark;
+            color: $turquoise;
             text-shadow: 1px 1px 0px $main_dark_shadow;
         }
         span {
             top: 0;
-            color: $main_dark;
+            color: $turquoise;
             text-shadow: 1px 1px 0px $main_dark_shadow;
         }
     }
-}
-
-@mixin xsmall_brand(){
-    width: 100%;
-    text-align: center;
 }

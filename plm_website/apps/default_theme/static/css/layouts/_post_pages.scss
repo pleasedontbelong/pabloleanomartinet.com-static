@@ -12,7 +12,6 @@
 
     > .container{
         background-color: darken($main_dark, 15%);
-        border-left: 1px solid #CCC3BA;
     }
 
     > footer{
@@ -58,11 +57,8 @@
         #post-page-header{
             @include small_post_header;
         }
-    }
-
-    @media (max-width: $screen-sm-min) {
-        .brand{
-            @include xsmall_brand;
+        #main-menu{
+            @include small_buttons_menu;
         }
     }
 }

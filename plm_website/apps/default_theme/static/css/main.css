@@ -15,13 +15,8 @@
 }
 
 /* line 1, modules/brand/_extends.scss */
-.homepage-page .intro h1, .post-page .brand strong, .post-page .brand a:hover span {
+.homepage-page .intro h1 {
   color: #16a085;
-}
-
-/* line 5, modules/brand/_extends.scss */
-.post-page .brand span, .post-page .brand a:hover strong {
-  color: #2c3e50;
 }
 
 /* No files to import found in buttons/** */
@@ -71,7 +66,7 @@ a:hover, a:visited, a:active {
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 40px;
   float: none;
 }
 /* line 10, modules/main_menu/_mixins.scss */
@@ -148,35 +143,39 @@ a:hover, a:visited, a:active {
 /* line 13, layouts/_post_pages.scss */
 .post-page > .container {
   background-color: #11181f;
-  border-left: 1px solid #CCC3BA;
 }
-/* line 18, layouts/_post_pages.scss */
+/* line 17, layouts/_post_pages.scss */
 .post-page > footer {
   color: #bdc3c7;
   padding: 40px 0;
   font-size: 1.3em;
 }
-/* line 22, layouts/_post_pages.scss */
+/* line 21, layouts/_post_pages.scss */
 .post-page .other-posts {
   color: #bdc3c7;
   padding: 20px 40px;
 }
-/* line 26, layouts/_post_pages.scss */
+/* line 25, layouts/_post_pages.scss */
 .post-page #post-page-header {
-  background: url(../images/ricepaper2.png);
+  background-color: #2c3e50;
   border-bottom: 1px solid #ccc;
   padding: 0 60px 20px;
 }
-/* line 30, layouts/_post_pages.scss */
+/* line 29, layouts/_post_pages.scss */
 .post-page .left-content {
   padding: 20px 40px;
   background-color: #ecf0f1;
 }
-/* line 3, modules/brand/_mixins.scss */
+/* line 34, layouts/_post_pages.scss */
+.post-page .brand {
+  float: left;
+}
+/* line 4, modules/brand/_mixins.scss */
 .post-page .brand strong {
+  color: #16a085;
   display: block;
   font-size: 5.7em;
-  line-height: 1;
+  line-height: 1.1em;
   position: relative;
   top: 10px;
   -moz-transition-property: top, color;
@@ -188,9 +187,10 @@ a:hover, a:visited, a:active {
   -webkit-transition-duration: 1.5s;
   transition-duration: 1.5s;
 }
-/* line 13, modules/brand/_mixins.scss */
+/* line 14, modules/brand/_mixins.scss */
 .post-page .brand span {
   font-size: 2.25em;
+  color: #e67e22;
   position: relative;
   top: 0px;
   -moz-transition-property: top, color;
@@ -202,19 +202,21 @@ a:hover, a:visited, a:active {
   -webkit-transition-duration: 1.5s;
   transition-duration: 1.5s;
 }
-/* line 21, modules/brand/_mixins.scss */
+/* line 22, modules/brand/_mixins.scss */
 .post-page .brand a:hover {
   text-decoration: none;
 }
-/* line 23, modules/brand/_mixins.scss */
+/* line 24, modules/brand/_mixins.scss */
 .post-page .brand a:hover strong {
   top: 45px;
+  color: #e67e22;
 }
-/* line 28, modules/brand/_mixins.scss */
+/* line 29, modules/brand/_mixins.scss */
 .post-page .brand a:hover span {
   top: -70px;
+  color: #16a085;
 }
-/* line 39, layouts/_post_pages.scss */
+/* line 38, layouts/_post_pages.scss */
 .post-page .post-date {
   margin-bottom: 20px;
   font-weight: bold;
@@ -234,7 +236,7 @@ a:hover, a:visited, a:active {
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 40px;
   float: right;
 }
 /* line 10, modules/main_menu/_mixins.scss */
@@ -293,7 +295,13 @@ a:hover, a:visited, a:active {
   color: #9b59b6 !important;
 }
 @media (max-width: 992px) {
-  /* line 37, modules/brand/_mixins.scss */
+  /* line 54, layouts/_post_pages.scss */
+  .post-page .brand {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  /* line 41, modules/brand/_mixins.scss */
   .post-page .brand strong {
     font-size: 2.25em;
     display: inline;
@@ -306,10 +314,10 @@ a:hover, a:visited, a:active {
     -o-transition-duration: 0;
     -webkit-transition-duration: 0;
     transition-duration: 0;
-    color: #2c3e50;
+    color: #16a085;
     text-shadow: 1px 1px 0px #34495e;
   }
-  /* line 47, modules/brand/_mixins.scss */
+  /* line 51, modules/brand/_mixins.scss */
   .post-page .brand span {
     -moz-transition-property: none;
     -o-transition-property: none;
@@ -319,35 +327,39 @@ a:hover, a:visited, a:active {
     -o-transition-duration: 0;
     -webkit-transition-duration: 0;
     transition-duration: 0;
-    color: #2c3e50;
+    color: #16a085;
     text-shadow: 1px 1px 0px #34495e;
   }
-  /* line 54, modules/brand/_mixins.scss */
+  /* line 58, modules/brand/_mixins.scss */
   .post-page .brand a:hover {
     text-decoration: none;
   }
-  /* line 56, modules/brand/_mixins.scss */
+  /* line 60, modules/brand/_mixins.scss */
   .post-page .brand a:hover strong {
     top: 0;
-    color: #2c3e50;
+    color: #1abc9c;
     text-shadow: 1px 1px 0px #34495e;
   }
-  /* line 61, modules/brand/_mixins.scss */
+  /* line 65, modules/brand/_mixins.scss */
   .post-page .brand a:hover span {
     top: 0;
-    color: #2c3e50;
+    color: #1abc9c;
     text-shadow: 1px 1px 0px #34495e;
   }
-  /* line 58, layouts/_post_pages.scss */
+  /* line 57, layouts/_post_pages.scss */
   .post-page #post-page-header {
     padding-bottom: 5px;
   }
-}
-@media (max-width: 768px) {
-  /* line 64, layouts/_post_pages.scss */
-  .post-page .brand {
+  /* line 55, modules/main_menu/_mixins.scss */
+  .post-page #main-menu ul {
     width: 100%;
     text-align: center;
+    font-size: 1em;
+    margin-bottom: 20px;
+  }
+  /* line 60, modules/main_menu/_mixins.scss */
+  .post-page #main-menu ul li {
+    padding: 5px 15px;
   }
 }
 
@@ -398,7 +410,7 @@ a:hover, a:visited, a:active {
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 40px;
   float: right;
 }
 /* line 10, modules/main_menu/_mixins.scss */

@@ -5,26 +5,13 @@
 }
 
 @mixin post_external_links() {
-    margin-top: 45px;
     a{
         font-size: 1em;
         margin-left: 8px;
-        color: $main_dark;
+        color: $green_sea;
     }
-}
-
-@mixin small_post_external_links() {
-    margin-top: 5px;
 }
 
 @mixin small_post_header(){
     padding-bottom: 5px;
-}
-
-@mixin xsmall_post_external_links() {
-    float: none !important;
-    width: 100%;
-    text-align: center;
-    font-size: 0.8em;
-    margin-top: 0;
 }

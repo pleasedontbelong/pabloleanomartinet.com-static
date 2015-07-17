@@ -1,9 +1,9 @@
 /* line 2, _typography.scss */
-.post-page > footer a:link, .post-page .other-posts a:link, .post-page > footer a:visited, .post-page .other-posts a:visited {
+.post-page .other-posts a:link, .post-page .other-posts a:visited {
   color: #ecf0f1;
 }
 /* line 5, _typography.scss */
-.post-page > footer a:hover, .post-page .other-posts a:hover {
+.post-page .other-posts a:hover {
   color: white;
 }
 
@@ -143,8 +143,9 @@ a:hover, a:visited, a:active {
 }
 /* line 18, layouts/_post_pages.scss */
 .post-page > footer {
-  background-color: #080b0e;
   color: #bdc3c7;
+  padding: 40px 0;
+  font-size: 1.3em;
 }
 /* line 22, layouts/_post_pages.scss */
 .post-page .other-posts {
@@ -210,15 +211,11 @@ a:hover, a:visited, a:active {
   font-size: 1.3em;
   text-align: right;
 }
-/* line 46, layouts/_post_pages.scss */
-.post-page .post-external-links {
-  margin-top: 45px;
-}
-/* line 9, modules/post_header/_mixins.scss */
+/* line 8, modules/post_header/_mixins.scss */
 .post-page .post-external-links a {
   font-size: 1em;
   margin-left: 8px;
-  color: #2c3e50;
+  color: #16a085;
 }
 /* line 46, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul {
@@ -332,27 +329,15 @@ a:hover, a:visited, a:active {
     text-shadow: 1px 1px 0px #34495e;
   }
   /* line 58, layouts/_post_pages.scss */
-  .post-page .post-external-links {
-    margin-top: 5px;
-  }
-  /* line 61, layouts/_post_pages.scss */
   .post-page #post-page-header {
     padding-bottom: 5px;
   }
 }
 @media (max-width: 768px) {
-  /* line 67, layouts/_post_pages.scss */
+  /* line 64, layouts/_post_pages.scss */
   .post-page .brand {
     width: 100%;
     text-align: center;
-  }
-  /* line 70, layouts/_post_pages.scss */
-  .post-page .post-external-links {
-    float: none !important;
-    width: 100%;
-    text-align: center;
-    font-size: 0.8em;
-    margin-top: 0;
   }
 }
 

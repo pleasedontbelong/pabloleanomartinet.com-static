@@ -55,9 +55,6 @@
         .brand{
             @include small_brand;
         }
-        .post-external-links{
-            @include small_post_external_links;
-        }
         #post-page-header{
             @include small_post_header;
         }
@@ -66,9 +63,6 @@
     @media (max-width: $screen-sm-min) {
         .brand{
             @include xsmall_brand;
-        }
-        .post-external-links{
-            @include xsmall_post_external_links;
         }
     }
 }

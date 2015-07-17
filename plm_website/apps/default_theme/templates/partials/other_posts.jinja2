@@ -1,6 +1,8 @@
 <div id="sidebar" class="row">
   <div class="col-md-6 sidebar-box">
-    <h3 class="title">Recent Posts</h3>
+    <h3 class="title">
+      <a href="{{ url('posts-list')}}">Recent Posts</a>
+    </h3>
     <ul>
       {% for post in posts_list(limit=5) %}
         <li>
@@ -12,7 +14,9 @@
     </ul>
   </div>
   <div class="col-md-6 sidebar-box">
-    <h3 class="title">Projects</h3>
+    <h3 class="title">
+      <a href="{{ url('projects-list')}}">Projects</a>
+    </h3>
     <ul>
       {% for project in projects_list(limit=5) %}
         <li>

@@ -1,48 +1,4 @@
-@mixin _main_menu() {
-    ul {
-        font-family: $fancy_font;
-        font-size: 1.3em;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        li {
-            background-color: $green_sea;
-            display: block;
-            a {
-                color: $gray;
-                display: block;
-                &:hover {
-                    color: $white;
-                }
-            }
-            &:hover {
-                background-color: $emerald;
-            }
-        }
-    }
-}
-
-@mixin main_menu_horizontal(){
-    @include _main_menu;
-    ul {
-        display: flex;
-        position: relative;
-        li {
-            flex: 1 1 auto;
-            text-align: center;
-            @include transition-property(all);
-            @include transition-duration(0.8s);
-            a {
-                padding: 1rem 0;
-            }
-            &:hover{
-                @include scale(1.2);
-            }
-        }
-    }
-}
-
-@mixin buttons_menu() {
+@mixin buttons_menu($float: right) {
     ul {
         font-family: $fancy_font;
         font-size: 1.3em;
@@ -50,7 +6,7 @@
         margin: 0;
         padding: 0;
         margin-top: 20px;
-        float: right;
+        float: $float;
         li {
             border: 2px solid $green_sea;
             padding: 10px 20px;
@@ -67,25 +23,25 @@
                     color: $turquoise;
                 }
             }
-            &:first-child{
+            &.home{
                 border-color: $turquoise !important;
                 a{
                     color: $turquoise !important;
                 }
             }
-            &:nth-child(2){
+            &.posts{
                 border-color: $pumpkin !important;
                 a{
                     color: $pumpkin !important;
                 }
             }
-            &:nth-child(3){
+            &.projects{
                 border-color: $orange !important;
                 a{
                     color: $orange !important;
                 }
             }
-            &:last-child{
+            &.about{
                 border-color: $amethyst !important;
                 a{
                     color: $amethyst !important;

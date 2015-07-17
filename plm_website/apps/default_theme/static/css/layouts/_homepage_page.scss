@@ -24,11 +24,10 @@
             width: 100%;
         }
         #main-menu{
-            background-color: rgba($main_dark, 1);
             width: 100%;
             position: absolute;
-            bottom: 0;
-            @include main_menu_horizontal;
+            top: 20px;
+            @include buttons_menu(none);
             text-align: center;
         }
     }

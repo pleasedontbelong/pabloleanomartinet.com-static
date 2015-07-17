@@ -59,10 +59,9 @@ a:hover, a:visited, a:active {
 }
 /* line 26, layouts/_homepage_page.scss */
 .homepage-page .intro #main-menu {
-  background-color: #2c3e50;
   width: 100%;
   position: absolute;
-  bottom: 0;
+  top: 20px;
   text-align: center;
 }
 /* line 2, modules/main_menu/_mixins.scss */
@@ -72,53 +71,63 @@ a:hover, a:visited, a:active {
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-top: 20px;
+  float: none;
 }
-/* line 8, modules/main_menu/_mixins.scss */
+/* line 10, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li {
-  background-color: #16a085;
-  display: block;
+  border: 2px solid #16a085;
+  padding: 10px 20px;
+  display: inline-block;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  margin-left: 10px;
 }
-/* line 11, modules/main_menu/_mixins.scss */
+/* line 16, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li a {
-  color: #bdc3c7;
+  color: #16a085;
   display: block;
 }
-/* line 14, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul li a:hover {
-  color: #ecf0f1;
-}
-/* line 18, modules/main_menu/_mixins.scss */
+/* line 20, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li:hover {
-  background-color: #2ecc71;
+  border-color: #1abc9c;
 }
-/* line 27, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul {
-  display: flex;
-  position: relative;
+/* line 22, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li:hover a {
+  color: #1abc9c;
 }
-/* line 30, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul li {
-  flex: 1 1 auto;
-  text-align: center;
-  -moz-transition-property: all;
-  -o-transition-property: all;
-  -webkit-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.8s;
-  -o-transition-duration: 0.8s;
-  -webkit-transition-duration: 0.8s;
-  transition-duration: 0.8s;
+/* line 26, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li.home {
+  border-color: #1abc9c !important;
 }
-/* line 35, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul li a {
-  padding: 1rem 0;
+/* line 28, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li.home a {
+  color: #1abc9c !important;
+}
+/* line 32, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li.posts {
+  border-color: #d35400 !important;
+}
+/* line 34, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li.posts a {
+  color: #d35400 !important;
 }
 /* line 38, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul li:hover {
-  -moz-transform: scale(1.2, 1.2);
-  -ms-transform: scale(1.2, 1.2);
-  -webkit-transform: scale(1.2, 1.2);
-  transform: scale(1.2, 1.2);
+.homepage-page .intro #main-menu ul li.projects {
+  border-color: #f39c12 !important;
+}
+/* line 40, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li.projects a {
+  color: #f39c12 !important;
+}
+/* line 44, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li.about {
+  border-color: #9b59b6 !important;
+}
+/* line 46, modules/main_menu/_mixins.scss */
+.homepage-page .intro #main-menu ul li.about a {
+  color: #9b59b6 !important;
 }
 
 /* line 1, layouts/_post_pages.scss */
@@ -218,7 +227,7 @@ a:hover, a:visited, a:active {
   margin-left: 8px;
   color: #16a085;
 }
-/* line 46, modules/main_menu/_mixins.scss */
+/* line 2, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul {
   font-family: "Oswald", sans-serif;
   font-size: 1.3em;
@@ -228,7 +237,7 @@ a:hover, a:visited, a:active {
   margin-top: 20px;
   float: right;
 }
-/* line 54, modules/main_menu/_mixins.scss */
+/* line 10, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li {
   border: 2px solid #16a085;
   padding: 10px 20px;
@@ -238,49 +247,49 @@ a:hover, a:visited, a:active {
   border-radius: 30px;
   margin-left: 10px;
 }
-/* line 60, modules/main_menu/_mixins.scss */
+/* line 16, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li a {
   color: #16a085;
   display: block;
 }
-/* line 64, modules/main_menu/_mixins.scss */
+/* line 20, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li:hover {
   border-color: #1abc9c;
 }
-/* line 66, modules/main_menu/_mixins.scss */
+/* line 22, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li:hover a {
   color: #1abc9c;
 }
-/* line 70, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li:first-child {
+/* line 26, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li.home {
   border-color: #1abc9c !important;
 }
-/* line 72, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li:first-child a {
+/* line 28, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li.home a {
   color: #1abc9c !important;
 }
-/* line 76, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li:nth-child(2) {
+/* line 32, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li.posts {
   border-color: #d35400 !important;
 }
-/* line 78, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li:nth-child(2) a {
+/* line 34, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li.posts a {
   color: #d35400 !important;
 }
-/* line 82, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li:nth-child(3) {
+/* line 38, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li.projects {
   border-color: #f39c12 !important;
 }
-/* line 84, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li:nth-child(3) a {
+/* line 40, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li.projects a {
   color: #f39c12 !important;
 }
-/* line 88, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li:last-child {
+/* line 44, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li.about {
   border-color: #9b59b6 !important;
 }
-/* line 90, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li:last-child a {
+/* line 46, modules/main_menu/_mixins.scss */
+.post-page #main-menu ul li.about a {
   color: #9b59b6 !important;
 }
 @media (max-width: 992px) {
@@ -371,7 +380,7 @@ a:hover, a:visited, a:active {
 .posts-list .post-item p {
   color: #2c3e50;
 }
-/* line 46, modules/main_menu/_mixins.scss */
+/* line 2, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul {
   font-family: "Oswald", sans-serif;
   font-size: 1.3em;
@@ -381,7 +390,7 @@ a:hover, a:visited, a:active {
   margin-top: 20px;
   float: right;
 }
-/* line 54, modules/main_menu/_mixins.scss */
+/* line 10, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li {
   border: 2px solid #16a085;
   padding: 10px 20px;
@@ -391,49 +400,49 @@ a:hover, a:visited, a:active {
   border-radius: 30px;
   margin-left: 10px;
 }
-/* line 60, modules/main_menu/_mixins.scss */
+/* line 16, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li a {
   color: #16a085;
   display: block;
 }
-/* line 64, modules/main_menu/_mixins.scss */
+/* line 20, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li:hover {
   border-color: #1abc9c;
 }
-/* line 66, modules/main_menu/_mixins.scss */
+/* line 22, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li:hover a {
   color: #1abc9c;
 }
-/* line 70, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li:first-child {
+/* line 26, modules/main_menu/_mixins.scss */
+.posts-list #main-menu ul li.home {
   border-color: #1abc9c !important;
 }
-/* line 72, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li:first-child a {
+/* line 28, modules/main_menu/_mixins.scss */
+.posts-list #main-menu ul li.home a {
   color: #1abc9c !important;
 }
-/* line 76, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li:nth-child(2) {
+/* line 32, modules/main_menu/_mixins.scss */
+.posts-list #main-menu ul li.posts {
   border-color: #d35400 !important;
 }
-/* line 78, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li:nth-child(2) a {
+/* line 34, modules/main_menu/_mixins.scss */
+.posts-list #main-menu ul li.posts a {
   color: #d35400 !important;
 }
-/* line 82, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li:nth-child(3) {
+/* line 38, modules/main_menu/_mixins.scss */
+.posts-list #main-menu ul li.projects {
   border-color: #f39c12 !important;
 }
-/* line 84, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li:nth-child(3) a {
+/* line 40, modules/main_menu/_mixins.scss */
+.posts-list #main-menu ul li.projects a {
   color: #f39c12 !important;
 }
-/* line 88, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li:last-child {
+/* line 44, modules/main_menu/_mixins.scss */
+.posts-list #main-menu ul li.about {
   border-color: #9b59b6 !important;
 }
-/* line 90, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li:last-child a {
+/* line 46, modules/main_menu/_mixins.scss */
+.posts-list #main-menu ul li.about a {
   color: #9b59b6 !important;
 }
 

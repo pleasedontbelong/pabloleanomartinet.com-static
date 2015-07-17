@@ -8,7 +8,7 @@
 }
 
 /* line 10, _typography.scss */
-.homepage-page .page h1, .homepage-page .intro h1, .post-page .brand, .posts-page .page > header h1 {
+.homepage-page .page h1, .homepage-page .intro h1, .post-page .brand, .posts-list .main-title h1 {
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   text-decoration: none;
@@ -342,43 +342,37 @@ a:hover, a:visited, a:active {
   }
 }
 
-/* line 1, layouts/_posts_page.scss */
-.posts-page {
-  background-color: #ecf0f1;
+/* line 2, layouts/_posts_page.scss */
+.posts-list .left-content {
+  min-height: 75vh;
 }
-/* line 3, layouts/_posts_page.scss */
-.posts-page .page {
-  height: 100vh;
-  position: relative;
-}
-/* line 6, layouts/_posts_page.scss */
-.posts-page .page > header h1 {
-  color: #16a085;
+/* line 5, layouts/_posts_page.scss */
+.posts-list .main-title h1 {
+  color: #2c3e50;
   font-size: 5em;
-  float: left;
-  width: 50%;
+  text-align: center;
 }
-/* line 14, layouts/_posts_page.scss */
-.posts-page .post-item {
+/* line 12, layouts/_posts_page.scss */
+.posts-list .post-item {
   margin-bottom: 20px;
 }
 /* line 3, modules/post_box/_mixins.scss */
-.posts-page .post-item h1 {
+.posts-list .post-item h1 {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.3em;
   line-height: 1.23em;
 }
 /* line 8, modules/post_box/_mixins.scss */
-.posts-page .post-item h1 a {
+.posts-list .post-item h1 a {
   color: #2c3e50;
 }
 /* line 14, modules/post_box/_mixins.scss */
-.posts-page .post-item p {
+.posts-list .post-item p {
   color: #2c3e50;
 }
 /* line 46, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul {
+.posts-list #main-menu ul {
   font-family: "Oswald", sans-serif;
   font-size: 1.3em;
   list-style: none;
@@ -388,7 +382,7 @@ a:hover, a:visited, a:active {
   float: right;
 }
 /* line 54, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li {
+.posts-list #main-menu ul li {
   border: 2px solid #16a085;
   padding: 10px 20px;
   display: inline-block;
@@ -398,48 +392,48 @@ a:hover, a:visited, a:active {
   margin-left: 10px;
 }
 /* line 60, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li a {
+.posts-list #main-menu ul li a {
   color: #16a085;
   display: block;
 }
 /* line 64, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:hover {
+.posts-list #main-menu ul li:hover {
   border-color: #1abc9c;
 }
 /* line 66, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:hover a {
+.posts-list #main-menu ul li:hover a {
   color: #1abc9c;
 }
 /* line 70, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:first-child {
+.posts-list #main-menu ul li:first-child {
   border-color: #1abc9c !important;
 }
 /* line 72, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:first-child a {
+.posts-list #main-menu ul li:first-child a {
   color: #1abc9c !important;
 }
 /* line 76, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:nth-child(2) {
+.posts-list #main-menu ul li:nth-child(2) {
   border-color: #d35400 !important;
 }
 /* line 78, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:nth-child(2) a {
+.posts-list #main-menu ul li:nth-child(2) a {
   color: #d35400 !important;
 }
 /* line 82, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:nth-child(3) {
+.posts-list #main-menu ul li:nth-child(3) {
   border-color: #f39c12 !important;
 }
 /* line 84, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:nth-child(3) a {
+.posts-list #main-menu ul li:nth-child(3) a {
   color: #f39c12 !important;
 }
 /* line 88, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:last-child {
+.posts-list #main-menu ul li:last-child {
   border-color: #9b59b6 !important;
 }
 /* line 90, modules/main_menu/_mixins.scss */
-.posts-page #main-menu ul li:last-child a {
+.posts-list #main-menu ul li:last-child a {
   color: #9b59b6 !important;
 }
 

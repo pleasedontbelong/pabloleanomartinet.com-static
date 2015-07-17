@@ -1,16 +1,14 @@
-.posts-page{
-    background-color: $white;
-    .page{
-        height: 100vh;
-        position: relative;
-        > header h1{
-            @extend %title-text;
-            color: $green_sea;
-            font-size: 5em;
-            float: left;
-            width: 50%;
-        }
+.posts-list{
+    .left-content{
+        min-height: 75vh;
     }
+    .main-title h1{
+        @extend %title-text;
+        color: $midnight_blue;
+        font-size: 5em;
+        text-align: center;
+    }
+
     .post-item{
         @include post_item;
     }

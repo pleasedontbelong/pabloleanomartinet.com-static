@@ -1,11 +1,25 @@
 {% extends 'post.jinja2' %}
 {% block post_content %}
-  <p>If I remember correctly, in the version 1.3 of Cake you could find a css.php file in the webroot folder. Using ccsspp, cake could compress the css files of your website.</p>
-  <p>However, I&#8217;ve just downloaded a copy of CakePHP v2.0.6Stable and to my surprise I&#8217;ve found that it doesn&#8217;t include the css.php file anymore. So I tried to use the old css.php found in the older versions and (obviously) it didn&#8217;t worked&#8230; anyway, the code of the css.php file wasn&#8217;t quite elegant, so I&#8217;ve decided to rewrite a new file.</p>
-  <p>Well, actually I could find the csspp Vendor mentioned in the core file (ln 211). I guess it was <a title="csspp" href="https://github.com/jeremyboles/csspp" target="_blank">this compressor found on github</a>&#8230; But i wanted to use a different compressor, like the <a title="YUI compressor" href="http://developer.yahoo.com/yui/compressor/" target="_blank">YUIcompressor</a>. So I kinda separated the compressor with the css.php file.</p>
-  <p>The git repository of this code is here: <a href="https://github.com/pleasedontbelong/cakephp2.x-static-compressor">https://github.com/pleasedontbelong/cakephp2.x-static-compressor</a></p>
+
+  <p>
+    If I remember correctly, in the version 1.3 of Cake you could find a css.php file in the webroot folder. Using ccsspp, cake could compress the css files of your website.
+  </p>
+
+  <p>
+    However, I&#8217;ve just downloaded a copy of CakePHP v2.0.6Stable and to my surprise I&#8217;ve found that it doesn&#8217;t include the css.php file anymore. So I tried to use the old css.php found in the older versions and (obviously) it didn&#8217;t worked&#8230; anyway, the code of the css.php file wasn&#8217;t quite elegant, so I&#8217;ve decided to rewrite a new file.
+  </p>
+
+  <p>
+    Well, actually I could find the csspp Vendor mentioned in the core file (ln 211). I guess it was <a title="csspp" href="https://github.com/jeremyboles/csspp"  class="external" target="_blank">this compressor found on github</a>&#8230; But i wanted to use a different compressor, like the <a title="YUI compressor"  class="external" href="http://developer.yahoo.com/yui/compressor/" target="_blank">YUIcompressor</a>. So I kinda separated the compressor with the css.php file.
+  </p>
+
+  <p>
+    The git repository of this code is here: <a href="https://github.com/pleasedontbelong/cakephp2.x-static-compressor"  class="external">https://github.com/pleasedontbelong/cakephp2.x-static-compressor</a>
+  </p>
+
   <h2>Download and install a compressor</h2>
-  <p>&#8211; <a href="https://github.com/jeremyboles/csspp/blob/master/csspp.php" target="_blank">Download csspp.php</a> and put it into the vendors folder or <a href="http://developer.yahoo.com/yui/compressor/" target="_blank">Download yuicompressor</a> and put it in the <strong>vendors</strong> folder</p>
+
+  <p>&#8211; <a class="external" href="https://github.com/jeremyboles/csspp/blob/master/csspp.php" target="_blank">Download csspp.php</a> and put it into the vendors folder or <a href="http://developer.yahoo.com/yui/compressor/" target="_blank" class="external">Download yuicompressor</a> and put it in the <strong>vendors</strong> folder</p>
   <h2>Configure CakePhp</h2>
   <p>&#8211; Change your &#8220;core.php&#8221; (inside the Config folder) file and add this line:</p>
 <pre class="brush: php;tab-size: 2;gutter: false;">Configure::write('Asset.filter.css', 'mini.php');</pre>

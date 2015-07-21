@@ -149,8 +149,8 @@ PIPELINE_CSS = {
 PIPELINE_JS = {
     'default': {
         'source_filenames': (
-            'vendors/jquery/dist/jquery.min.js'
-            'vendors/bootstrap/dist/js/bootstrap.min.js',
+            'vendors/jquery/dist/jquery.min.js',
+            'vendors/bootstrap/dist/js/bootstrap.min.js'
         ),
         'output_filename': 'js/script.js',
     }

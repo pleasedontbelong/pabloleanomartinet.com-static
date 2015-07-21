@@ -3,7 +3,11 @@
 {% block post_content %}
     <p>The other day I was asked to add a new page on the admin site of django that was like a list view for a model but with different actions, different columns to display and with a filter applied to the list. After hours of searching on the docs I ended up reading the source code of the contrib.admin package to understand how to do it.</p>
 <p>Feel free to skip all this text and inspect the code directly on github</p>
-<p class="text-center"><a href="https://github.com/pleasedontbelong/django-admin-view-example" class="btn btn-success">Source Code</a></p>
+<p class="text-center">
+  <a href="https://github.com/pleasedontbelong/django-admin-view-example" class="btn btn-success external" target="_blank">
+    Source Code
+  </a>
+</p>
 <h2>The goal</h2>
 <p>Let&#8217;s use the user model to create a new view on the admin. In this new view we want to display only the list of inactive users that are not admins of the site. And in this view we want to display the emails, date joined and last login. BUT we also want to keep our complete users page.</p>
 <p>We&#8217;ll need une view <strong>/users/</strong> to display the complete list and <strong>/users/inactive/</strong> to display only the inactive users</p>

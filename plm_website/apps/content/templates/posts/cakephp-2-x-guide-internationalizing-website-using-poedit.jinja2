@@ -1,9 +1,9 @@
 {% extends 'post.jinja2' %}
 {% block post_content %}
-  <p>Even if <a title="internationalization and localization" href="http://book.cakephp.org/2.0/en/core-libraries/internationalization-and-localization.html" target="_blank">the documentation</a> is quite complete, I find that its better to have a &#8220;step-by-step&#8221; basic guide for internationalizing your pages. So here it is:</p>
+  <p>Even if <a title="internationalization and localization" href="http://book.cakephp.org/2.0/en/core-libraries/internationalization-and-localization.html" class="external" target="_blank">the documentation</a> is quite complete, I find that its better to have a &#8220;step-by-step&#8221; basic guide for internationalizing your pages. So here it is:</p>
   <h2>Step 1 &#8211; Prepare your code:</h2>
   <p>
-    You need to use the <a href="http://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__" target="_blank">__()</a> function to translate your text, so instead of doing something like:
+    You need to use the <a href="http://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__" target="_blank" class="external">__()</a> function to translate your text, so instead of doing something like:
   </p>
 <pre class="brush: php;tab-size: 2;gutter: false;">&lt;h1&gt; Hi, my name is &lt;?php echo $name;?&gt;&lt;/h1&gt;</pre>
 <p>
@@ -54,7 +54,7 @@ here, cake is asking you where are your source files located, by default it will
 <p>
 Cake might ask you a few more questions,like if you already had a pot file or if you&#8217;re working with different domains. I&#8217;ll leave that to you. In the end you need to have the <strong>default.pot</strong> file inside <strong>app/Locale/</strong>
 </p>
-<h2>Step 3 &#8211; Translate your code using <a title="poedit" href="http://www.poedit.net/" target="_blank">poedit</a></h2>
+<h2>Step 3 &#8211; Translate your code using <a title="poedit" href="http://www.poedit.net/" class="external" target="_blank">poedit</a></h2>
 <p>
 Download and install poedit then go to: <strong>File-&gt;New Catalog from POT file</strong>. And select the default.pot file you&#8217;ve just created. Fill in the form to add some information about the translation (if you have the time to do it XD) and now poedit will ask you where you want to save your .po file. You should save it in:
 </p>
@@ -62,7 +62,7 @@ Download and install poedit then go to: <strong>File-&gt;New Catalog from POT fi
 <p>
 where &lt;locale&gt; is the three-character locale code. Go check the doc on cakephp for more info.
 </p>
-<h2>Step 4 &#8211; <a href="http://book.cakephp.org/2.0/en/core-libraries/internationalization-and-localization.html#localization-in-cakephp" target="_blank">Localization in Cakephp</a></h2>
+<h2>Step 4 &#8211; <a class="external" href="http://book.cakephp.org/2.0/en/core-libraries/internationalization-and-localization.html#localization-in-cakephp" target="_blank">Localization in Cakephp</a></h2>
 <p>RTFM!</p>
 <h2>Step 5 &#8211; Updating your pot files:</h2>
 <p>

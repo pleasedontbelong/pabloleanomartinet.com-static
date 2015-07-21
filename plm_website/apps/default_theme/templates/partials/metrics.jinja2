@@ -9,3 +9,22 @@
   ga('send', 'pageview');
 
 </script>
+
+<script>
+/**
+* Function that tracks a click on an outbound link in Google Analytics.
+* This function takes a valid URL string as an argument, and uses that URL string
+* as the event label.
+*/
+$("a.external").click(function(){
+  url = this.href;
+  target = this.target;
+  ga('send', 'event', 'outbound', 'click', url, {'hitCallback':
+    function () {
+      if (!target){
+        document.location = url;
+      }
+    }
+  });
+});
+</script>

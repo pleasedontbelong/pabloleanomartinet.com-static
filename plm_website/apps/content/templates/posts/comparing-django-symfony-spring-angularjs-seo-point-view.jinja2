@@ -5,7 +5,7 @@
   <p>Whenever I have some problems or when I have some doubts with a framework, the first thing I do is to google it, like most of us, but lately I realized that some questions on Stackoverflow are on the top of the results, while the official documentation pages are not. A bad website of a framework could change drastically it&#8217;s learning curve, changing also the number of developers using that framework and finally killing the framework</p>
   <p>This post is about analyzing the websites of those frameworks from a SEO point of view. I&#8217;ll try to detect some problems and try to find out who has the most clean website</p>
   <h2>Running the analysis</h2>
-  <p>I&#8217;m using <a href="http://www.botify.com" target="_blank">Botify</a> to crawl and analyze the different websites. The good thing about this service is that it gives you both macro and micro information about the websites.</p>
+  <p>I&#8217;m using <a href="http://www.botify.com" target="_blank" class="external">Botify</a> to crawl and analyze the different websites. The good thing about this service is that it gives you both macro and micro information about the websites.</p>
   <p>The crawl was limited to 100k URLs and has no information about sitemaps or robots.txt</p>
   <h2>Website Overviews</h2>
   <p>Let&#8217;s first compare the main metrics of the analyses:</p>
@@ -72,7 +72,7 @@
     </tbody>
   </table>
   <p>The first thing that pops out is the <strong>number of crawled URLs for AngularJS, only 54</strong>. After a quick navigation on Angular&#8217;s website I found out that they rely on JS for the navigation, so usually a crawler won&#8217;t be able to crawl all the available pages. I did a search on google to find out how many pages google has indexed for Angular and I found out that Google has indexed 2,550 URLs, probably thanks to sitemaps or because Angular belongs to Google and so they don&#8217;t really care about SEO problems. But hey! <strong>Bing was able to find 14K URLs on Angular&#8217;s website</strong>&#8230; Say Wut?&#8230; In that the case, Angular is out of the competition, just because I couldn&#8217;t get the correct information</p>
-  <p>Both Django and Spring have reached the limit of crawler URLs set for this experiment. However the crawler found more than 300K URLs on both. Probably there are some forums installed, or maybe there are some &#8220;code reference&#8221; pages that were automatically generated, displaying all the code and comments on each file, class, method, etc. Meanwhile Symfony stays with only 44K pages but Symfony also has the highest percentage of Not Compliant URLs, almost 30% (basically URLs that have no SEO value cf: <a href="https://www.botify.com/blog/seo-compliant-urls/" target="_blank">SEO Compliant URLs</a>)</p>
+  <p>Both Django and Spring have reached the limit of crawler URLs set for this experiment. However the crawler found more than 300K URLs on both. Probably there are some forums installed, or maybe there are some &#8220;code reference&#8221; pages that were automatically generated, displaying all the code and comments on each file, class, method, etc. Meanwhile Symfony stays with only 44K pages but Symfony also has the highest percentage of Not Compliant URLs, almost 30% (basically URLs that have no SEO value cf: <a href="https://www.botify.com/blog/seo-compliant-urls/" target="_blank" class="external">SEO Compliant URLs</a>)</p>
   <p>Seems that none of them really care about H1 and Description tags. However Django makes an effort setting a correct H1 tag on its pages. But we&#8217;ll see it in more detail later.</p>
   <h2>Distribution</h2>
   <p>This is about depth, content-type, protocol and language.</p>
@@ -248,5 +248,5 @@
   <p>Symfony, on the other hand, has really fast pages and it&#8217;s HTTP codes are not that bad, and Django makes an effort on the HTML tags but has a poor performance</p>
   <h2>Some final words</h2>
   <p>I&#8217;m not a SEO &#8220;expert&#8221;, but I&#8217;m learning, so this article might not be too accurate. You probably noticed that I&#8217;m currently working for Botify (that&#8217;s how I was able to make the crawls) and this article made me realize that our tool lack of some feature that we&#8217;re currently developing. Anyway, using Botify is quite easy to detect problems and navigate the website structure to find out the real cause of the problem. For that, the URL Explorer is quite useful.</p>
-  <p>If you want to test another framework go to <a href="http://www.botify.com" target="_blank">Botify.com</a> and launch a free crawl, and let me know the results</p>
+  <p>If you want to test another framework go to <a href="http://www.botify.com" target="_blank" class="external">Botify.com</a> and launch a free crawl, and let me know the results</p>
 {% endblock %}

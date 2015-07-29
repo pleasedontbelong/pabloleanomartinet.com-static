@@ -1,0 +1,79 @@
+{% extends 'post.jinja2' %}
+
+{% block post_content %}
+<p class="lead">
+  Following <a href="">an earlier post</a> describing how and why I rebuilt my
+  blog from scratch, I describe here the earlier results of performance using
+  <a href="http://www.botify.com" class="external" target="_blank">Botify</a>
+  to see the difference between the two versions.
+</p>
+
+<h2>Performance</h2>
+
+<p>
+  I think the charts speak for themselves. After removing WP and installing my home made blog
+  I got all my pages to respond in less than 500ms with the same server.
+</p>
+
+<p class="text-center">
+  <a href="http://d3f79bc9m1q83t.cloudfront.net/rebuilding-blog-python/Load_time_distribution.png" target="_blank">
+    <img class="size-full" title="Performance change" src="http://d3f79bc9m1q83t.cloudfront.net/rebuilding-blog-python/Load_time_distribution.png" alt="Performance change charts" width="80%"/>
+  </a>
+</p>
+
+<h2>Looks</h2>
+
+<p>
+  Ok, I know I am not a designer and one of the reasons I had for installing WP
+  is that I was able to download and install a theme for my blog in just a few minutes.
+  And you see some beautiful examples and live demos but, I don't know why, they didn't
+  seem so beautiful after installing them. Then I realized that the Themes were
+  not adapted to my content, and modifying a Theme was a nightmare, most of the
+  time the HTML was a mess, the PHP and/or the CSS was a mess too.
+</p>
+
+<p>
+  Now I have complete control over my pages. I decide what to display and
+  where to display it. For example, in WP I installed disqus, but the plugin added
+  the comments on EVERY SINGLE PAGE, even in the homepage, and even something
+  simple like updating the Google Analytics snippet code was hard, because the
+  plug-in that managed the snippet was not up to date I couldn't change it myself.
+</p>
+
+<h2>Lost Pages</h2>
+
+<p>
+  Yes, during the migration I have lost a few pages. All the tags, categories,
+  pagination, feeds, etc. And so maybe I was losing a few visits. 
+</p>
+
+<p class="text-center">
+  <a href="http://d3f79bc9m1q83t.cloudfront.net/rebuilding-blog-python/urls_distribution.png" target="_blank">
+    <img class="size-full" title="Urls Distribution" src="http://d3f79bc9m1q83t.cloudfront.net/rebuilding-blog-python/urls_distribution.png" alt="Distribution of urls" style="max-width:60%;"/>
+  </a>
+</p>
+
+<p>
+  However in my case, all of this pages where actually useless. I discovered using Botify that none
+  of those pages where actually generating visits to my site, and some of them
+  where redirects or had problems with the canonicals. So now I only have the
+  pages that I really want to index, the pages that have the "real" content.
+  Besides, I can always implement some of those features later.
+</p>
+
+<p class="text-center">
+  <a href="http://d3f79bc9m1q83t.cloudfront.net/rebuilding-blog-python/Disappeared_active_non_active.png" target="_blank">
+    <img class="size-full" title="Active vs Non Active Disappeared Urls" src="http://d3f79bc9m1q83t.cloudfront.net/rebuilding-blog-python/Disappeared_active_non_active.png" alt="Active vs Non Active Disappeared Urls" style="max-width:60%;"/>
+  </a>
+</p>
+
+<h2>Deploying</h2>
+
+<p>
+  It got easier to deploy. Since my website is quite small, I only have to git pull
+  on my server, and clear the cache on the CDN. Since my posts are static files,
+  I can work on them offline in my tablet and I'd still have the benefits of
+  versioning my content.
+</p>
+
+{% endblock %}

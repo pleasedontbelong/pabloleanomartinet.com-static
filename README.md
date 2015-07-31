@@ -48,3 +48,7 @@ make generate-dev
 git pull origin master
 make generate-prod
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/pleasedontbelong/pabloleanomartinet.com-static/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

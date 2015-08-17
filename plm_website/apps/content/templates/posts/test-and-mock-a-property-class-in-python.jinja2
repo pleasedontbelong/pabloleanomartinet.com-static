@@ -1,0 +1,63 @@
+{% extends 'post.jinja2' %}
+{% block post_content %}
+  <p>Let's say that you are using a class that comes from a vendor package
+  that you can't control. A class that helps you manage your video files:</p>
+<pre>
+    class VideoManager(object):
+    """
+    The class that we must mock
+    """
+    def __init__(self, file_obj):
+      self.file = file_obj
+
+    @property
+    def is_video(self):
+      return (self.file.content_type in VIDEO_CONTENT_TYPES and
+          self.file.content_type not in UNSUPPORTED_CONTENT_TYPES)
+
+    @property
+    def length(self):
+      """
+      length in milliseconds
+      """
+      return self.file.milliseconds * 1000
+</pre>
+<p>
+  Now you want to use that package to create a web form that allows your users
+  to upload and validate their videos:
+</p>
+<pre>
+  # file: forms.py
+  # import your external package
+  from video_tools import VideoManager
+
+  class UploadVideoForm(object):
+    def __init__(self, file_name, file_data):
+        self.file_manager = VideoManager(file_data)
+
+    def validate(self):
+      if not self.file_manager.is_video:
+        raise InvalidVideoFile()
+      if self.file_manager.length <= MIN_VIDEO_LENGTH:
+        raise VideoTooShort()
+      if self.file_manager.length > MAX_VIDEO_LENGTH:
+        raise VideoTooLong()
+</pre>
+<p>
+  when writing your unit tests you could have a sample of videos and upload them
+  to test them. Or you could mock the VideoManager class to easily test your form
+</p>
+
+<pre>
+
+  def test_invalid_video(self):
+    with patch("forms.VideoManager") as video_manager_mock:
+      type(video_manager_mock.return_value).is_video = PropertyMock(return_value=False)
+
+    with patch("forms.VideoManager") as video_manager_mock:
+      type(video_manager_mock.return_value).length = MIN_VIDEO_LENGTH - 1
+
+    with patch("forms.VideoManager") as video_manager_mock:
+      type(video_manager_mock.return_value).length = MAX_VIDEO_LENGTH + 1
+</pre>
+{% endblock %}

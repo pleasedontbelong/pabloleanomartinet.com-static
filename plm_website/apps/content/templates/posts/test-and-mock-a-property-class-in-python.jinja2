@@ -7,8 +7,8 @@
     """
     The class that we must mock
     """
-    def __init__(self, file_obj):
-      self.file = file_obj
+    def __init__(self, file_name):
+      self.file = open(file_name, 'r')
 
     @property
     def is_video(self):
@@ -33,7 +33,7 @@
 
   class UploadVideoForm(object):
     def __init__(self, file_name, file_data):
-        self.file_manager = VideoManager(file_data)
+        self.file_manager = VideoManager(file_name)
 
     def validate(self):
       if not self.file_manager.is_video:
@@ -45,19 +45,31 @@
 </pre>
 <p>
   when writing your unit tests you could have a sample of videos and upload them
-  to test them. Or you could mock the VideoManager class to easily test your form
+  to test them. Or you could mock the VideoManager class to easily test your form.
 </p>
 
 <pre>
-
-  def test_invalid_video(self):
+  # file: forms.py
+  def test_invalid_form(self):
     with patch("forms.VideoManager") as video_manager_mock:
       type(video_manager_mock.return_value).is_video = PropertyMock(return_value=False)
+      my_form = UploadVideoForm()
+      self.assertRaises(InvalidVideoFile, my_form.validate)
 
     with patch("forms.VideoManager") as video_manager_mock:
-      type(video_manager_mock.return_value).length = MIN_VIDEO_LENGTH - 1
+      type(video_manager_mock.return_value).length = PropertyMock(return_value=MIN_VIDEO_LENGTH - 1)
+      my_form = UploadVideoForm()
+      self.assertRaises(VideoTooShort, my_form.validate)
 
     with patch("forms.VideoManager") as video_manager_mock:
-      type(video_manager_mock.return_value).length = MAX_VIDEO_LENGTH + 1
+      type(video_manager_mock.return_value).length = PropertyMock(return_value=MAX_VIDEO_LENGTH + 1)
+      my_form = UploadVideoForm()
+      self.assertRaises(VideoTooLong, my_form.validate)
 </pre>
+
+<p>
+  Here I'm patching the VideoManager properties so we could test the logic of
+  the form validate method. This is the only way I found to mock a property.
+</p>
+<p>Hope this helps</p>
 {% endblock %}

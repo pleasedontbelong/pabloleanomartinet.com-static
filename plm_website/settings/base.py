@@ -144,6 +144,17 @@ PIPELINE_CSS = {
             'media': 'screen,projection',
         },
     },
+    'posts': {
+        'source_filenames': (
+            'vendors/bootstrap/dist/css/bootstrap.min.css',
+            'vendors/prism/themes/prism-twilight.css',
+            'css/main.css',
+        ),
+        'output_filename': 'css/posts.css',
+        'extra_context': {
+            'media': 'screen,projection',
+        }
+    }
 }
 
 PIPELINE_JS = {
@@ -153,6 +164,14 @@ PIPELINE_JS = {
             'vendors/bootstrap/dist/js/bootstrap.min.js'
         ),
         'output_filename': 'js/script.js',
+    },
+    'posts': {
+        'source_filenames': (
+            'vendors/jquery/dist/jquery.min.js',
+            'vendors/bootstrap/dist/js/bootstrap.min.js',
+            'vendors/prism/prism.js',
+        ),
+        'output_filename': 'js/posts.js',
     }
 }
 

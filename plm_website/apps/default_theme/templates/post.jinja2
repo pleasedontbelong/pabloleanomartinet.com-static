@@ -1,5 +1,13 @@
 {% extends 'base_page.jinja2' %}
 
+{% block style %}
+  {% stylesheet('posts') %}
+{% endblock %}
+
+{% block javascript %}
+  {% javascript('posts') %}
+{% endblock %}
+
 {% block meta_block %}
   {% include "partials/post_meta_block.jinja2" %}
 {% endblock %}

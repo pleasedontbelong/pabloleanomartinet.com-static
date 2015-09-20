@@ -2,7 +2,6 @@
 *.pot
 *.pyc
 *.swp
-local.py
 *.DS_Store
 .ven/
 .coverage
@@ -11,11 +10,10 @@ htmlcov/
 .sass-cache/
 Gemfile.lock
 node_modules
-db.sqlite3
+plmstatic.db
 venv/
 /static/
 /media/
 vendors
 .bundle
 bundle
-local.py

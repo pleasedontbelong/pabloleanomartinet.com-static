@@ -70,12 +70,15 @@ WSGI_APPLICATION = 'plm_website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'plm_static',
-        'USER': 'django_test',
-        'PASSWORD': '$ecret',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'plmstatic.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+        'TEST': {
+            'NAME': 'plmstatic_test.db',
+        },
     }
 }
 

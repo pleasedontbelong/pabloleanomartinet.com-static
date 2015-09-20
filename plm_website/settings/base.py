@@ -133,8 +133,9 @@ STATICFILES_FINDERS = (
     'pipeline.finders.PipelineFinder',
 )
 
-PIPELINE_YUGLIFY_BINARY = "node_modules/yuglify/bin/yuglify"
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
+PIPELINE_YUI_BINARY = "/usr/bin/yui-compressor"
 
 PIPELINE_CSS = {
     'default': {

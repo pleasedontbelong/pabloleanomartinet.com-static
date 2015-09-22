@@ -5,7 +5,7 @@ DJANGODIR=/code						              # Django project directory
 NUM_WORKERS=3                                     # how many worker processes should Gunicorn spawn
 DJANGO_SETTINGS_MODULE=plm_website.settings       # which settings file should Django use
 DJANGO_WSGI_MODULE=plm_website.wsgi               # WSGI module name
-PORT=8000
+PORT=80
 
 echo "Starting $NAME"
 

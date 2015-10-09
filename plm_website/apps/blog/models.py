@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.http import Http404
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from importlib import import_module
@@ -10,7 +11,11 @@ class Post(object):
         self.data = None
 
     def load_data(self):
-        self.data = import_module(settings.POST_TEMPLATES_APP.format(self.slug))
+        try:
+            self.data = import_module(settings.POST_TEMPLATES_APP.format(self.slug))
+        except ImportError:
+            raise Http404("Page or Post not found")
+
 
     @property
     def url(self):

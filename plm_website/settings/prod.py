@@ -3,9 +3,8 @@ import os
 from .base import *
 
 ALLOWED_HOSTS = [os.getenv('VIRTUAL_HOST', 'localhost')]
-DEBUG = True
-TEMPLATE_DEBUG = True
-
+DEBUG = False
+TEMPLATE_DEBUG = False
 
 LOGGING = {
     'version': 1,
@@ -17,9 +16,18 @@ LOGGING = {
         }
     },
     'loggers': {
-        '': {
+        'django': {
             'handlers': ['console'],
             'level': 'DEBUG',  # Not recommended.
         }
     },
 }
+
+
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

@@ -135,7 +135,11 @@ STATICFILES_FINDERS = (
 
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
 PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
-PIPELINE_YUI_BINARY = "/usr/bin/yui-compressor"
+# PIPELINE_YUI_BINARY = "/usr/bin/yui-compressor"
+
+PIPELINE_YUI_BINARY = '/usr/bin/java -jar {}'.format(
+    join(BASE_DIR, 'bin', 'yuicompressor-2.4.8.jar')
+)
 
 PIPELINE_CSS = {
     'default': {

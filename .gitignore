@@ -12,7 +12,10 @@ Gemfile.lock
 node_modules
 plmstatic.db
 venv/
-mediia/
+media/
+static/*
+!static/humans.txt
+staticfiles/
 vendors
 .bundle
 bundle

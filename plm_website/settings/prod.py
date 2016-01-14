@@ -3,8 +3,8 @@ import os
 from .base import *
 
 ALLOWED_HOSTS = [os.getenv('VIRTUAL_HOST', 'localhost')]
-DEBUG = False
-TEMPLATE_DEBUG = False
+DEBUG = True
+TEMPLATE_DEBUG = True
 
 
 LOGGING = {

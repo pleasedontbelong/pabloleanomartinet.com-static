@@ -15,3 +15,5 @@ django-model-utils==2.0
 gunicorn==19.4.5
 setproctitle
 whitenoise==2.0.6
+
+newrelic

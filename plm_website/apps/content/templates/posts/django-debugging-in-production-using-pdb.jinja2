@@ -10,9 +10,16 @@ without (hopefully) disturbing other users.
 <p>All I do is ssh my production server, connect to a <a href="http://django-extensions.readthedocs.org/en/latest/shell_plus.html">shell_plus</a> console or just a shell console using <code>manage.py</code>, and inside the shell I do:</p>
 
 <pre>
+pdb.run('func_I_want_to_debug()')
+</pre>
+
+<p>Sometimes I want to call different functions, make something more complex so I do:</p>
+
+<pre>
 In [1]: def test():
    ...:     import pdb;pdb.set_trace()
    ...:     func_I_want_to_debug()
+   ...:     something else()
    ...:     
 
 In [2]: test()

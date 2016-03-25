@@ -6,7 +6,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-import newrelic
+from newrelic import agent
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "plm_website.settings")
 
 from django.core.wsgi import get_wsgi_application
@@ -14,4 +14,5 @@ from whitenoise.django import DjangoWhiteNoise
 
 application = get_wsgi_application()
 application = DjangoWhiteNoise(application)
-application = newrelic.agent.WSGIApplicationWrapper(application)
+
+application = agent.WSGIApplicationWrapper(application)

@@ -1,0 +1,46 @@
+{% extends 'post.jinja2' %}
+
+{% block post_content %}
+<h2>Debugging</h2>
+
+<p>This is a small trick I use whenever I must debug something on production using pdb
+without (hopefully) disturbing other users.
+</p>
+
+<p>All I do is ssh my production server, connect to a <a href="http://django-extensions.readthedocs.org/en/latest/shell_plus.html">shell_plus</a> console or just a shell console using <code>manage.py</code>, and inside the shell I do:</p>
+
+<pre>
+In [1]: def test():
+   ...:     import pdb;pdb.set_trace()
+   ...:     func_I_want_to_debug()
+   ...:     
+
+In [2]: test()
+> <ipython-input-1-8b87adab2df3>(3)test()
+-> func_I_want_to_debug()
+(Pdb) s
+</pre>
+
+<p>And then the fun part begins :)</p>
+
+<p>Of course, you have to be careful! you could trigger some events you don't want to
+or save some thing you dont want to. I only proceed like this when It's hard (impossible)
+to reproduce the bug locally or on a pre-prod environment.</p>
+
+<h2>Explanation</h2>
+
+<p>If you're not familiar with pdb, it is an interactive module that allows you
+execute your code step by step, You can read more
+<a href="https://docs.python.org/2/library/pdb.html">here</a>, but the most
+important commands are:</p>
+
+<ul>
+<li><code>s (step)</code>: It will try to go inside the current function, property, class, etc.</li>
+<li><code>n (next)</code>: It will execute the current line and move to the next line.</li>
+<li><code>c (continue)</code>: Continue execution and stops only if there's another breakpoint.</li>
+<li><code>q (quit)</code>: Exits everything raising an exception.</li>
+<li><code>l (list)</code>: shows the code around the current line.</li>
+</ul>
+
+<p>Happy debugging!</p>
+{% endblock %}

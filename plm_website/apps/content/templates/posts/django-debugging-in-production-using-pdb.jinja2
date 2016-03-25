@@ -28,11 +28,13 @@ In [2]: test()
 (Pdb) s
 </pre>
 
-<p>And then the fun part begins :)</p>
-
-<p>Of course, you have to be careful! you could trigger some events you don't want to
+<p>And then the fun part begins :) Of course, you have to be careful! you could trigger some events you don't want to
 or save some thing you dont want to. I only proceed like this when It's hard (impossible)
 to reproduce the bug locally or on a pre-prod environment.</p>
+
+<p>Finally if you have a long process, and you don't want to spend your day
+pressing 'n' until you arrive to the exception, you can enable the pdb mode on ipython
+using <code>%pdb</code> and it will start the debugger on every uncaught exception</p>
 
 <h2>Explanation</h2>
 
@@ -48,6 +50,17 @@ important commands are:</p>
 <li><code>q (quit)</code>: Exits everything raising an exception.</li>
 <li><code>l (list)</code>: shows the code around the current line.</li>
 </ul>
+
+<h2>Hint</h2>
+
+<p>If you can, use <code>ipdb</code> instead of <code>pdb</code> like this:</p>
+
+<pre>
+  import ipdb
+  ipdb.set_trace()
+</pre>
+
+<p><code>ipdb</code> has an autocomplete!!! \o/</p>
 
 <p>Happy debugging!</p>
 {% endblock %}

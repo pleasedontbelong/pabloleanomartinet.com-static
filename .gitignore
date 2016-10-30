@@ -19,3 +19,4 @@ staticfiles/
 vendors
 .bundle
 bundle
+plm_website/settings/local.py

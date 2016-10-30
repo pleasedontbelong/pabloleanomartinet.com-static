@@ -1,0 +1,2 @@
+web: python ./manage.py runserver_plus localhost:8000
+scss: compass watch

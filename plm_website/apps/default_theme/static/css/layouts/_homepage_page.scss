@@ -1,6 +1,6 @@
 .homepage-page{
     .page{
-        height: 100vh;
+        height: 100%;
         overflow: hidden;
         position: relative;
         h1{
@@ -9,26 +9,66 @@
         }
     }
     .intro{
-        background-color: rgba(darken($main_dark, 15%), 1);
+        height: 100vh;
+        background: $main_light url("/static/images/home_bg.jpg") no-repeat top center fixed;
+        background-size: 100% auto;
         text-align: center;
+        @include background-size("cover");
         img{
             margin-top: 30vh;
-            border: 6px solid $main_dark;
+            border: 3px solid $main_light;
         }
         h1{
             @extend %title-text;
             font-size: 5em;
-            @extend %white_header;
+            color: #fff;
+            background-color: $main_light;
+            padding: 40px;
             position: absolute;
-            bottom: 20vh;
+            bottom: 0;
+            margin: 0;
             width: 100%;
         }
         #main-menu{
             width: 100%;
             position: absolute;
-            top: 20px;
+            top: 60px;
             @include buttons_menu(none);
             text-align: center;
         }
+    }
+    .affix{
+        position: fixed !important;
+        top: 0px !important;
+        text-align: right;
+        z-index: 100;
+        ul{
+            margin-top: 10px !important;
+        }
+
+    }
+    .thumbs{
+        padding: 0 40px;
+        text-align: center;
+        min-height: 400px;
+        i{
+            font-size: 5em;
+        }
+        .posts i, .posts h2{
+            color: $pumpkin;
+        }
+        .projects i, .projects h2{
+            color: $orange;
+        }
+        .about i, .about h2{
+            color: $amethyst;
+        }
+        h2{
+            @extend %title-text;
+        }
+
+    }
+    .features{
+        padding: 0 40px;
     }
 }

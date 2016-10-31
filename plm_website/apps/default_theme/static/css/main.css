@@ -8,15 +8,10 @@
 }
 
 /* line 10, _typography.scss */
-.homepage-page .page h1, .homepage-page .intro h1, .post-page .brand, .posts-list .main-title h1 {
+.homepage-page .page h1, .homepage-page .intro h1, .homepage-page .thumbs h2, .post-page .brand, .posts-list .main-title h1 {
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   text-decoration: none;
-}
-
-/* line 1, modules/brand/_extends.scss */
-.homepage-page .intro h1 {
-  color: #16a085;
 }
 
 /* No files to import found in buttons/** */
@@ -27,7 +22,7 @@ a:hover, a:visited, a:active {
 
 /* line 2, layouts/_homepage_page.scss */
 .homepage-page .page {
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -37,26 +32,36 @@ a:hover, a:visited, a:active {
 }
 /* line 11, layouts/_homepage_page.scss */
 .homepage-page .intro {
-  background-color: #11181f;
+  height: 100vh;
+  background: #16a085 url("/static/images/home_bg.jpg") no-repeat top center fixed;
+  background-size: 100% auto;
   text-align: center;
+  -moz-background-size: "cover";
+  -o-background-size: "cover";
+  -webkit-background-size: "cover";
+  background-size: "cover";
 }
-/* line 14, layouts/_homepage_page.scss */
+/* line 17, layouts/_homepage_page.scss */
 .homepage-page .intro img {
   margin-top: 30vh;
-  border: 6px solid #2c3e50;
+  border: 3px solid #16a085;
 }
-/* line 18, layouts/_homepage_page.scss */
+/* line 21, layouts/_homepage_page.scss */
 .homepage-page .intro h1 {
   font-size: 5em;
+  color: #fff;
+  background-color: #16a085;
+  padding: 40px;
   position: absolute;
-  bottom: 20vh;
+  bottom: 0;
+  margin: 0;
   width: 100%;
 }
-/* line 26, layouts/_homepage_page.scss */
+/* line 32, layouts/_homepage_page.scss */
 .homepage-page .intro #main-menu {
   width: 100%;
   position: absolute;
-  top: 20px;
+  top: 60px;
   text-align: center;
 }
 /* line 2, modules/main_menu/_mixins.scss */
@@ -81,48 +86,74 @@ a:hover, a:visited, a:active {
 }
 /* line 16, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li a {
-  color: #16a085;
+  color: #fff !important;
   display: block;
+  font-weight: bold;
 }
-/* line 20, modules/main_menu/_mixins.scss */
+/* line 21, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li:hover {
   border-color: #1abc9c;
 }
-/* line 22, modules/main_menu/_mixins.scss */
+/* line 23, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li:hover a {
   color: #1abc9c;
 }
-/* line 26, modules/main_menu/_mixins.scss */
+/* line 27, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li.home {
   border-color: #1abc9c !important;
+  background: rgba(40, 225, 189, 0.8) !important;
 }
-/* line 28, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul li.home a {
-  color: #1abc9c !important;
-}
-/* line 32, modules/main_menu/_mixins.scss */
+/* line 31, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li.posts {
   border-color: #d35400 !important;
+  background: rgba(255, 106, 7, 0.8) !important;
 }
-/* line 34, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul li.posts a {
-  color: #d35400 !important;
-}
-/* line 38, modules/main_menu/_mixins.scss */
+/* line 35, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li.projects {
   border-color: #f39c12 !important;
+  background: rgba(245, 176, 67, 0.8) !important;
 }
-/* line 40, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul li.projects a {
-  color: #f39c12 !important;
-}
-/* line 44, modules/main_menu/_mixins.scss */
+/* line 39, modules/main_menu/_mixins.scss */
 .homepage-page .intro #main-menu ul li.about {
   border-color: #9b59b6 !important;
+  background: rgba(176, 124, 198, 0.8) !important;
 }
-/* line 46, modules/main_menu/_mixins.scss */
-.homepage-page .intro #main-menu ul li.about a {
-  color: #9b59b6 !important;
+/* line 40, layouts/_homepage_page.scss */
+.homepage-page .affix {
+  position: fixed !important;
+  top: 0px !important;
+  text-align: right;
+  z-index: 100;
+}
+/* line 45, layouts/_homepage_page.scss */
+.homepage-page .affix ul {
+  margin-top: 10px !important;
+}
+/* line 50, layouts/_homepage_page.scss */
+.homepage-page .thumbs {
+  padding: 0 40px;
+  text-align: center;
+  min-height: 400px;
+}
+/* line 54, layouts/_homepage_page.scss */
+.homepage-page .thumbs i {
+  font-size: 5em;
+}
+/* line 57, layouts/_homepage_page.scss */
+.homepage-page .thumbs .posts i, .homepage-page .thumbs .posts h2 {
+  color: #d35400;
+}
+/* line 60, layouts/_homepage_page.scss */
+.homepage-page .thumbs .projects i, .homepage-page .thumbs .projects h2 {
+  color: #f39c12;
+}
+/* line 63, layouts/_homepage_page.scss */
+.homepage-page .thumbs .about i, .homepage-page .thumbs .about h2 {
+  color: #9b59b6;
+}
+/* line 71, layouts/_homepage_page.scss */
+.homepage-page .features {
+  padding: 0 40px;
 }
 
 /* line 1, layouts/_post_pages.scss */
@@ -251,48 +282,37 @@ a:hover, a:visited, a:active {
 }
 /* line 16, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li a {
-  color: #16a085;
+  color: #fff !important;
   display: block;
+  font-weight: bold;
 }
-/* line 20, modules/main_menu/_mixins.scss */
+/* line 21, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li:hover {
   border-color: #1abc9c;
 }
-/* line 22, modules/main_menu/_mixins.scss */
+/* line 23, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li:hover a {
   color: #1abc9c;
 }
-/* line 26, modules/main_menu/_mixins.scss */
+/* line 27, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li.home {
   border-color: #1abc9c !important;
+  background: rgba(40, 225, 189, 0.8) !important;
 }
-/* line 28, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li.home a {
-  color: #1abc9c !important;
-}
-/* line 32, modules/main_menu/_mixins.scss */
+/* line 31, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li.posts {
   border-color: #d35400 !important;
+  background: rgba(255, 106, 7, 0.8) !important;
 }
-/* line 34, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li.posts a {
-  color: #d35400 !important;
-}
-/* line 38, modules/main_menu/_mixins.scss */
+/* line 35, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li.projects {
   border-color: #f39c12 !important;
+  background: rgba(245, 176, 67, 0.8) !important;
 }
-/* line 40, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li.projects a {
-  color: #f39c12 !important;
-}
-/* line 44, modules/main_menu/_mixins.scss */
+/* line 39, modules/main_menu/_mixins.scss */
 .post-page #main-menu ul li.about {
   border-color: #9b59b6 !important;
-}
-/* line 46, modules/main_menu/_mixins.scss */
-.post-page #main-menu ul li.about a {
-  color: #9b59b6 !important;
+  background: rgba(176, 124, 198, 0.8) !important;
 }
 @media (max-width: 992px) {
   /* line 54, layouts/_post_pages.scss */
@@ -350,14 +370,14 @@ a:hover, a:visited, a:active {
   .post-page #post-page-header {
     padding-bottom: 5px;
   }
-  /* line 55, modules/main_menu/_mixins.scss */
+  /* line 48, modules/main_menu/_mixins.scss */
   .post-page #main-menu ul {
     width: 100%;
     text-align: center;
     font-size: 1em;
     margin-bottom: 20px;
   }
-  /* line 60, modules/main_menu/_mixins.scss */
+  /* line 53, modules/main_menu/_mixins.scss */
   .post-page #main-menu ul li {
     padding: 5px 15px;
   }
@@ -425,48 +445,37 @@ a:hover, a:visited, a:active {
 }
 /* line 16, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li a {
-  color: #16a085;
+  color: #fff !important;
   display: block;
+  font-weight: bold;
 }
-/* line 20, modules/main_menu/_mixins.scss */
+/* line 21, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li:hover {
   border-color: #1abc9c;
 }
-/* line 22, modules/main_menu/_mixins.scss */
+/* line 23, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li:hover a {
   color: #1abc9c;
 }
-/* line 26, modules/main_menu/_mixins.scss */
+/* line 27, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li.home {
   border-color: #1abc9c !important;
+  background: rgba(40, 225, 189, 0.8) !important;
 }
-/* line 28, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li.home a {
-  color: #1abc9c !important;
-}
-/* line 32, modules/main_menu/_mixins.scss */
+/* line 31, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li.posts {
   border-color: #d35400 !important;
+  background: rgba(255, 106, 7, 0.8) !important;
 }
-/* line 34, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li.posts a {
-  color: #d35400 !important;
-}
-/* line 38, modules/main_menu/_mixins.scss */
+/* line 35, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li.projects {
   border-color: #f39c12 !important;
+  background: rgba(245, 176, 67, 0.8) !important;
 }
-/* line 40, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li.projects a {
-  color: #f39c12 !important;
-}
-/* line 44, modules/main_menu/_mixins.scss */
+/* line 39, modules/main_menu/_mixins.scss */
 .posts-list #main-menu ul li.about {
   border-color: #9b59b6 !important;
-}
-/* line 46, modules/main_menu/_mixins.scss */
-.posts-list #main-menu ul li.about a {
-  color: #9b59b6 !important;
+  background: rgba(176, 124, 198, 0.8) !important;
 }
 
 /* No files to import found in fonts/* */

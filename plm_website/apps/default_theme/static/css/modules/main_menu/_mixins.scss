@@ -14,8 +14,9 @@
             @include border-radius(30px);
             margin-left: 10px;
             a {
-                color: $green_sea;
+                color: #fff !important;
                 display: block;
+                font-weight: bold;
             }
             &:hover {
                 border-color: $turquoise;
@@ -25,27 +26,19 @@
             }
             &.home{
                 border-color: $turquoise !important;
-                a{
-                    color: $turquoise !important;
-                }
+                background: lighten(rgba($turquoise, 0.8), 10%) !important;
             }
             &.posts{
                 border-color: $pumpkin !important;
-                a{
-                    color: $pumpkin !important;
-                }
+                background: lighten(rgba($pumpkin, 0.8), 10%) !important;
             }
             &.projects{
                 border-color: $orange !important;
-                a{
-                    color: $orange !important;
-                }
+                background: lighten(rgba($orange, 0.8), 10%) !important;
             }
             &.about{
                 border-color: $amethyst !important;
-                a{
-                    color: $amethyst !important;
-                }
+                background: lighten(rgba($amethyst, 0.8), 10%) !important;
             }
         }
     }

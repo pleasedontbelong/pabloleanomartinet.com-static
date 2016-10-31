@@ -3,33 +3,74 @@
 {% block body_class %}homepage-page{% endblock %}
 
 {% block body_content %}
-
-  <div class="page intro">
-    <nav id="main-menu" >
-      <ul class="menu">
-        <li class="posts">
-          <a href="{{ url('posts-list')}}">Posts</a>
-        </li>
-        <li class="projects">
-          <a href="{{ url('projects-list')}}">Projects</a>
-        </li>
-        <li class="about">
-          <a href="{{ url('about-me') }}">About Me</a>
-        </li>
-      </ul>
-    </nav>
-
-    <img src="http://www.gravatar.com/avatar/fe876b7f3f32966ceb8b4977feded6a7?s=200" class="img-circle"/>
-    <h1>Pablo Leano Martinet</h1>
-  </div>
-  {# <div class="page content-page">
-    <div class="row">
-      <div class="col-md-6">
-        <h1>Posts <i class="fa fa-newspaper-o"></i></h1>
-      </div>
-      <div class="col-md-6">
-        <p>This is just a simple text</p>
-      </div>
+<div class="page intro">
+  <nav id="main-menu" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+    <ul class="menu">
+      <li class="posts">
+        <a href="{{ url('posts-list')}}">Posts</a>
+      </li>
+      <li class="projects">
+        <a href="{{ url('projects-list')}}">Projects</a>
+      </li>
+      <li class="about">
+        <a href="{{ url('about-me') }}">About Me</a>
+      </li>
+    </ul>
+  </nav>
+  <img src="http://www.gravatar.com/avatar/fe876b7f3f32966ceb8b4977feded6a7?s=200" class="img-circle"/>
+  <h1>Pablo Leano Martinet</h1>
+</div>
+<div class="page thumbs">
+  <div class="row">
+    <div class="col-lg-4 posts">
+      <i class="fa fa-newspaper-o"></i>
+      <h2>Posts</h2>
+      <p>From time to time I like to write about some new technologie, something I just found and maybe something
+      that could be helpful for someone.</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 projects">
+      <i class="fa fa-wrench"></i>
+      <h2>Projects</h2>
+      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 about">
+      <i class="fa fa-id-card" aria-hidden="true"></i>
+      <h2>About Me</h2>
+      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+</div>
+<div class="page features">
+  <!-- START THE FEATURETTES -->
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
     </div>
-  </div> #}
+    <div class="col-md-5">
+      <img src="http://svgporn.com/logos/twitter.svg" alt="Twitter" class="twitter">
+    </div>
+  </div>
+
+  <div class="row featurette">
+    <div class="col-md-7 col-md-push-5">
+      <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5 col-md-pull-7">
+      <img src="http://svgporn.com/logos/stackoverflow.svg" alt="Stack Overflow" class="stackoverflow">
+    </div>
+  </div>
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+      <img src="http://svgporn.com/logos/github-icon.svg" alt="Github" class="github">
+    </div>
+  </div>
+
+</div>
 {% endblock %}

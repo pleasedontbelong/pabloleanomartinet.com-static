@@ -1,2 +1,2 @@
 web: python ./manage.py runserver_plus localhost:8000
-scss: compass watch
+scss: compass watch -c plm_website/apps/default_theme/static/config.rb --app-dir plm_website/apps/default_theme/static/

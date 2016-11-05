@@ -133,27 +133,43 @@ a:hover, a:visited, a:active {
 .homepage-page .thumbs {
   padding: 0 40px;
   text-align: center;
-  min-height: 400px;
+  min-height: 100vh;
+  background-color: #ecf0f1;
 }
-/* line 54, layouts/_homepage_page.scss */
+@media (min-width: 992px) {
+  /* line 56, layouts/_homepage_page.scss */
+  .homepage-page .thumbs .row {
+    margin-top: 30vh;
+  }
+}
+/* line 60, layouts/_homepage_page.scss */
 .homepage-page .thumbs i {
   font-size: 5em;
 }
-/* line 57, layouts/_homepage_page.scss */
+/* line 63, layouts/_homepage_page.scss */
 .homepage-page .thumbs .posts i, .homepage-page .thumbs .posts h2 {
   color: #d35400;
 }
-/* line 60, layouts/_homepage_page.scss */
+/* line 66, layouts/_homepage_page.scss */
 .homepage-page .thumbs .projects i, .homepage-page .thumbs .projects h2 {
   color: #f39c12;
 }
-/* line 63, layouts/_homepage_page.scss */
+/* line 69, layouts/_homepage_page.scss */
 .homepage-page .thumbs .about i, .homepage-page .thumbs .about h2 {
   color: #9b59b6;
 }
-/* line 71, layouts/_homepage_page.scss */
+/* line 77, layouts/_homepage_page.scss */
 .homepage-page .features {
-  padding: 0 40px;
+  padding: 40px;
+  background-color: #e3e9eb;
+}
+/* line 80, layouts/_homepage_page.scss */
+.homepage-page .features .featurette {
+  min-height: 400px;
+}
+/* line 82, layouts/_homepage_page.scss */
+.homepage-page .features .featurette > div:last-child {
+  text-align: center;
 }
 
 /* line 1, layouts/_post_pages.scss */

@@ -50,7 +50,13 @@
     .thumbs{
         padding: 0 40px;
         text-align: center;
-        min-height: 400px;
+        min-height: 100vh;
+        background-color: $white;
+        @include breakpoint($screen-md-min){
+            .row{
+                margin-top: 30vh;
+            }    
+        }
         i{
             font-size: 5em;
         }
@@ -69,6 +75,13 @@
 
     }
     .features{
-        padding: 0 40px;
+        padding: 40px;
+        background-color: darken($white, 3%);
+        .featurette{
+            min-height: 400px;
+            & > div:last-child{
+                text-align: center;
+            }
+        }
     }
 }

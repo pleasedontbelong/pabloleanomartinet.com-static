@@ -1,0 +1,109 @@
+{% extends 'post.jinja2' %}
+
+{% block post_content %}
+<p>
+  I spent the last couple of hours trying to extract the transation messages
+  from a django project that uses Jinja2 into a .PO file, so I decided to write
+  this small post to explain how I did it.
+</p>
+
+<p>
+  First, django does not extract the strings from Jinja2 templates (c.f. 
+  <a href="https://docs.djangoproject.com/en/2.0/topics/i18n/translation/#message-files">
+    Django Doc i18n/translation
+  </a>). The doc says you'll need <a href="http://babel.pocoo.org/en/latest/index.html">Babel</a> to extract them so I went and installed
+  it on my project.
+</p>
+
+<p>
+  Also, if you're using jinja2 templates in a django project, you're most 
+  probablly using the <a href="https://niwinz.github.io/django-jinja/latest/">django_jinja package</a>.
+  This package implements the most useful extensions from django templates in
+  your jinja2 templates, like: csrf tag, url resolver, static tag, cache, etc.
+  My settings for the templates looks something like:
+</p>
+
+<pre class="brush: python">
+from django_jinja.builtins import DEFAULT_EXTENSIONS
+
+TEMPLATES = [
+    ....
+    {
+        "NAME": "jinja2",
+        "BACKEND": "django_jinja.backend.Jinja2",
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "match_extension": ".jinja2",
+            "app_dirname": "jinja2",
+            "auto_reload": True,  # Set to False in prod
+            "extensions": DEFAULT_EXTENSIONS + ["pipeline.jinja2.PipelineExtension"],
+        }
+    },
+]
+</pre>
+
+<p>
+  The problem I had with babel is that it doesn't recognize the template tags
+  that were added by django_jinja or the tags and filters that I created myself.
+  To fix that, you need to add all the extensions into the <a href="http://babel.pocoo.org/en/latest/messages.html#extraction-method-mapping-and-configuration">babel.cfg</a> file:
+</p>
+
+<pre>
+# Extraction from Python source files
+[python: **.py]
+
+# Extraction from Jinja2 templates
+[jinja2: **.jinja2]
+extensions = jinja2.ext.i18n,pipeline.jinja2...., etc
+silent = False 
+</pre>
+
+<p>
+  ("silent = False" is quite useful, It will rise an exception if babel can't
+  parse a template file)
+</p>
+
+<p>
+  This will do the work, however you'll have a super-long-not-readable line
+  in you babel.cfg file. To make it prettier I defined a new extract function
+  that will read the template engine extensions and pass them to the Jinja2
+  extract function:
+</p>
+
+<pre>
+# babel.cfg
+
+[extractors]
+custom = somewhere.in.my.project:babel_extract
+
+[custom: **.jinja2]
+silent = False
+</pre>
+
+<pre>
+# somewhere/in/my/project.py
+
+import django
+from jinja2.ext import babel_extract as jinja_babel_extract
+
+django.setup()
+
+
+def babel_extract(fileobj, keywords, comment_tags, options):
+    from django.template import engines
+    options['extensions'] = ",".join(engines['jinja2'].env.extensions.keys())
+    return jinja_babel_extract(fileobj, keywords, comment_tags, options)
+</pre>
+
+<p>
+  This function will read the django settings and will extract the
+  configured jinja2 extensions used in your project. Now you can run 
+  <code>pybabel extract</code> and hopefully it will extract all the translation
+  strings.
+</p>
+
+<p>
+  Now all I need to learn how to use <a href="http://docs.translatehouse.org">Pootle</a> XD
+</p>
+
+{% endblock %}

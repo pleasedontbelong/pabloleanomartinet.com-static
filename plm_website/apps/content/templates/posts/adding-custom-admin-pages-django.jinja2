@@ -14,12 +14,80 @@
 <h2>The code</h2>
 <h3>Admin.py</h3>
 <p>This is where we customize the admin pages. It&#8217;s a single file</p>
-<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/django-admin-view-example/blob/master/django_admin_pages%2Fapps%2Fbase%2Fadmin.py?footer=minimal"></script></div></div>
+
+<pre><code class="python">
+  # -*- coding: utf-8 -*-
+'''
+Created on 2015-03-24 19:17
+@summary: custom admin page for users
+@author: pablo
+'''
+from django.contrib import admin
+from django.contrib.auth.models import User
+from django.conf.urls import patterns, url
+from functools import update_wrapper
+from .admin_views import InactiveUsersView
+
+
+class UserAdmin(admin.ModelAdmin):
+
+    list_display = ('username', 'email', 'is_active', 'is_staff', 'is_superuser')
+
+    def get_urls(self):
+        # this is just a copy paste from the admin code
+        def wrap(view):
+            def wrapper(*args, **kwargs):
+                return self.admin_site.admin_view(view)(*args, **kwargs)
+            return update_wrapper(wrapper, view)
+        # get the default urls
+        urls = super(UserAdmin, self).get_urls()
+        # define my own urls
+        my_urls = patterns(
+            '',
+            url(r'^inactive/$',
+                wrap(self.changelist_view),
+                name="inactive_users")
+        )
+        # return the complete list of urls
+        return my_urls + urls
+
+    def get_changelist(self, request):
+        """
+        This method must return the view to be used for listing the model
+        """
+        # for inactive users use the InactiveUsersView
+        if request.resolver_match.url_name == "inactive_users":
+            return InactiveUsersView
+        return super(UserAdmin, self).get_changelist(request)
+
+# we must unregister the default user model
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
+</code></pre>
 <h3>The custom views</h3>
 <p>I wanted to separate the code and have the admin views in a different file but you could put it in the <strong>admin.py</strong> file too</p>
-<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/django-admin-view-example/blob/master/django_admin_pages%2Fapps%2Fbase%2Fadmin_views.py?footer=minimal"></script></div></div>
+
+<pre><code class="python">
+from django.contrib.admin.views.main import ChangeList
+
+
+class InactiveUsersView(ChangeList):
+    """
+    This view displays the list of inactive users
+    """
+    def __init__(self, *args, **kwargs):
+        super(InactiveUsersView, self).__init__(*args, **kwargs)
+        self.list_display = ('username', 'email', 'date_joined', 'last_login')
+
+    def get_queryset(self, request):
+        qs = super(InactiveUsersView, self).get_queryset(request)
+        # filter inactive and admin users
+        return qs.filter(is_staff=False, is_active=False, is_superuser=False)  
+</code></pre>
+
 <h2>The result</h2>
 <h3>The default users list view</h3>
+
 <p class="text-center">
     <a href="http://d3f79bc9m1q83t.cloudfront.net/djangocustomadmin/default_users.png" target="_blank"><br />
         <img width="100%" src="http://d3f79bc9m1q83t.cloudfront.net/djangocustomadmin/default_users.png" alt="Default user list view on django"><br />

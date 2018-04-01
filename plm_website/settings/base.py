@@ -146,6 +146,8 @@ PIPELINE_CSS = {
         'source_filenames': (
             'vendors/bootstrap/dist/css/bootstrap.min.css',
             'css/main.css',
+            'vendors/highlightjs/styles/github.css',
+
         ),
         'output_filename': 'css/main.css',
         'extra_context': {
@@ -158,7 +160,8 @@ PIPELINE_JS = {
     'default': {
         'source_filenames': (
             'vendors/jquery/dist/jquery.min.js',
-            'vendors/bootstrap/dist/js/bootstrap.min.js'
+            'vendors/bootstrap/dist/js/bootstrap.min.js',
+            'vendors/highlightjs/highlight.pack.js',
         ),
         'output_filename': 'js/script.js',
     }

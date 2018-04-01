@@ -9,6 +9,7 @@
     {% block style %}
       {% stylesheet('default') %}
     {% endblock %}
+    {% block extra_style %}{% endblock %}
   </head>
   <body class="{% block body_class %}{% endblock %}" >
     {% block body_content %}{% endblock %}

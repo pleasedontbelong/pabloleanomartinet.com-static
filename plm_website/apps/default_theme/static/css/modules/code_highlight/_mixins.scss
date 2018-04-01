@@ -1,0 +1,6 @@
+@mixin code_highlight() {
+    padding: 0;
+    code {
+        padding: 5px 20px;
+    }
+}

@@ -6,13 +6,247 @@
   <h2>The Data-model</h2>
   <p>It&#8217;s a simple model to paginate a list of movies by the genre or the director. It will include a basic search on the title and description of the movie</p>
   <h2>The View (index.ctp)</h2>
-  <div style="font-size:10px; line-height:1.3em">
-    <div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.x-filter-search-example/blob/master/app/View/Movies/index.ctp?slice=6:28&footer=minimal"></script></div>
-  </div>
+
+  <pre><code class="html">
+&#x3C;?php
+$this-&#x3E;Html-&#x3E;css(&#x27;base&#x27;, null, array(&#x27;inline&#x27; =&#x3E; false));
+?&#x3E;
+&#x3C;div class=&#x22;movies index&#x22;&#x3E;
+  &#x3C;h2&#x3E;&#x3C;?php echo __(&#x27;Movies&#x27;); ?&#x3E;&#x3C;/h2&#x3E;
+  
+  &#x3C;div class=&#x22;filters&#x22;&#x3E;
+    &#x3C;h3&#x3E;Filters&#x3C;/h3&#x3E;
+    &#x3C;?php
+    // The base url is the url where we&#x27;ll pass the filter parameters
+    $base_url = array(&#x27;controller&#x27; =&#x3E; &#x27;movies&#x27;, &#x27;action&#x27; =&#x3E; &#x27;index&#x27;);
+    echo $this-&#x3E;Form-&#x3E;create(&#x22;Filter&#x22;,array(&#x27;url&#x27; =&#x3E; $base_url, &#x27;class&#x27; =&#x3E; &#x27;filter&#x27;));
+    // add a select input for each filter. It&#x27;s a good idea to add a empty value and set
+    // the default option to that.
+    echo $this-&#x3E;Form-&#x3E;input(&#x22;genre_id&#x22;, array(&#x27;label&#x27; =&#x3E; &#x27;Genre&#x27;, &#x27;options&#x27; =&#x3E; $genres, &#x27;empty&#x27; =&#x3E; &#x27;-- All genres --&#x27;, &#x27;default&#x27; =&#x3E; &#x27;&#x27;));
+    echo $this-&#x3E;Form-&#x3E;input(&#x22;director_id&#x22;, array(&#x27;label&#x27; =&#x3E; &#x27;Director&#x27;, &#x27;options&#x27; =&#x3E; $directors, &#x27;empty&#x27; =&#x3E; &#x27;-- All directors --&#x27;, &#x27;default&#x27; =&#x3E; &#x27;&#x27;));
+    // Add a basic search 
+    echo $this-&#x3E;Form-&#x3E;input(&#x22;search&#x22;, array(&#x27;label&#x27; =&#x3E; &#x27;Search&#x27;, &#x27;placeholder&#x27; =&#x3E; &#x22;Search...&#x22;));
+
+    echo $this-&#x3E;Form-&#x3E;submit(&#x22;Valider&#x22;);
+
+    // To reset all the filters we only need to redirect to the base_url
+    echo &#x22;&#x3C;div class=&#x27;submit actions&#x27;&#x3E;&#x22;;
+    echo $this-&#x3E;Html-&#x3E;link(&#x22;Reset&#x22;,$base_url);
+    echo &#x22;&#x3C;/div&#x3E;&#x22;;
+    echo $this-&#x3E;Form-&#x3E;end();
+    ?&#x3E;
+  &#x3C;/div&#x3E;
+
+  &#x3C;table cellpadding=&#x22;0&#x22; cellspacing=&#x22;0&#x22;&#x3E;
+  &#x3C;tr&#x3E;
+      &#x3C;th&#x3E;&#x3C;?php echo $this-&#x3E;Paginator-&#x3E;sort(&#x27;id&#x27;); ?&#x3E;&#x3C;/th&#x3E;
+      &#x3C;th&#x3E;Genre&#x3C;/th&#x3E;
+      &#x3C;th&#x3E;Director&#x3C;/th&#x3E;
+      &#x3C;th&#x3E;&#x3C;?php echo $this-&#x3E;Paginator-&#x3E;sort(&#x27;title&#x27;); ?&#x3E;&#x3C;/th&#x3E;
+      &#x3C;th&#x3E;Description&#x3C;/th&#x3E;
+      &#x3C;th class=&#x22;actions&#x22;&#x3E;&#x3C;?php echo __(&#x27;Actions&#x27;); ?&#x3E;&#x3C;/th&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;?php foreach ($movies as $movie): ?&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;&#x3C;?php echo h($movie[&#x27;Movie&#x27;][&#x27;id&#x27;]); ?&#x3E;&#x26;nbsp;&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;
+      &#x3C;?php echo $movie[&#x27;Genre&#x27;][&#x27;label&#x27;]; ?&#x3E;
+    &#x3C;/td&#x3E;
+    &#x3C;td&#x3E;
+      &#x3C;?php echo $movie[&#x27;Director&#x27;][&#x27;name&#x27;]; ?&#x3E;
+    &#x3C;/td&#x3E;
+
+    &#x3C;td&#x3E;&#x3C;?php echo $this-&#x3E;Text-&#x3E;highlight(h($movie[&#x27;Movie&#x27;][&#x27;title&#x27;]), $search); ?&#x3E;&#x26;nbsp;&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;&#x3C;?php echo $this-&#x3E;Text-&#x3E;highlight(h($movie[&#x27;Movie&#x27;][&#x27;description&#x27;]), $search); ?&#x3E;&#x26;nbsp;&#x3C;/td&#x3E;
+    &#x3C;td class=&#x22;actions&#x22;&#x3E;
+      &#x3C;?php echo $this-&#x3E;Html-&#x3E;link(__(&#x27;View&#x27;), array(&#x27;action&#x27; =&#x3E; &#x27;view&#x27;, $movie[&#x27;Movie&#x27;][&#x27;id&#x27;])); ?&#x3E;
+      &#x3C;?php echo $this-&#x3E;Html-&#x3E;link(__(&#x27;Edit&#x27;), array(&#x27;action&#x27; =&#x3E; &#x27;edit&#x27;, $movie[&#x27;Movie&#x27;][&#x27;id&#x27;])); ?&#x3E;
+      &#x3C;?php echo $this-&#x3E;Form-&#x3E;postLink(__(&#x27;Delete&#x27;), array(&#x27;action&#x27; =&#x3E; &#x27;delete&#x27;, $movie[&#x27;Movie&#x27;][&#x27;id&#x27;]), null, __(&#x27;Are you sure you want to delete # %s?&#x27;, $movie[&#x27;Movie&#x27;][&#x27;id&#x27;])); ?&#x3E;
+    &#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+&#x3C;?php endforeach; ?&#x3E;
+  &#x3C;/table&#x3E;
+  &#x3C;p&#x3E;
+  &#x3C;?php
+  echo $this-&#x3E;Paginator-&#x3E;counter(array(
+  &#x27;format&#x27; =&#x3E; __(&#x27;Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}&#x27;)
+  ));
+  ?&#x3E;  &#x3C;/p&#x3E;
+  &#x3C;div class=&#x22;paging&#x22;&#x3E;
+  &#x3C;?php
+    echo $this-&#x3E;Paginator-&#x3E;prev(&#x27;&#x3C; &#x27; . __(&#x27;previous&#x27;), array(), null, array(&#x27;class&#x27; =&#x3E; &#x27;prev disabled&#x27;));
+    echo $this-&#x3E;Paginator-&#x3E;numbers(array(&#x27;separator&#x27; =&#x3E; &#x27;&#x27;));
+    echo $this-&#x3E;Paginator-&#x3E;next(__(&#x27;next&#x27;) . &#x27; &#x3E;&#x27;, array(), null, array(&#x27;class&#x27; =&#x3E; &#x27;next disabled&#x27;));
+  ?&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;actions&#x22;&#x3E;
+  &#x3C;h3&#x3E;&#x3C;?php echo __(&#x27;Actions&#x27;); ?&#x3E;&#x3C;/h3&#x3E;
+  &#x3C;ul&#x3E;
+    &#x3C;li&#x3E;&#x3C;?php echo $this-&#x3E;Html-&#x3E;link(__(&#x27;New Movie&#x27;), array(&#x27;action&#x27; =&#x3E; &#x27;add&#x27;)); ?&#x3E;&#x3C;/li&#x3E;
+    
+  &#x3C;/ul&#x3E;
+&#x3C;/div&#x3E;
+</code></pre>
+
   <h2>The Controller (MoviesController.php)</h2>
-  <div style="font-size:10px; line-height:1.3em">
-    <div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.x-filter-search-example/blob/master/app/Controller/MoviesController.php?slice=15:70&footer=minimal"></script></div>
-  </div>
+ 
+<pre><code class="php">
+App::uses('AppController', 'Controller');
+App::uses('Sanitize', 'Utility');
+/**
+ * Movies Controller
+ *
+ * @property Movie $Movie
+ */
+class MoviesController extends AppController {
+
+/**
+ * index method
+ *
+ * @return void
+ */
+  public function index() {
+    $conditions = array();
+    //Transform POST into GET
+    if(($this->request->is('post') || $this->request->is('put')) && isset($this->data['Filter'])){
+      $filter_url['controller'] = $this->request->params['controller'];
+      $filter_url['action'] = $this->request->params['action'];
+      // We need to overwrite the page every time we change the parameters
+      $filter_url['page'] = 1;
+
+      // for each filter we will add a GET parameter for the generated url
+      foreach($this->data['Filter'] as $name => $value){
+        if($value){
+          // You might want to sanitize the $value here
+          // or even do a urlencode to be sure
+          $filter_url[$name] = urlencode($value);
+        }
+      } 
+      // now that we have generated an url with GET parameters, 
+      // we'll redirect to that page
+      return $this->redirect($filter_url);
+    } else {
+      // Inspect all the named parameters to apply the filters
+      foreach($this->params['named'] as $param_name => $value){
+        // Don't apply the default named parameters used for pagination
+        if(!in_array($param_name, array('page','sort','direction','limit'))){
+          // You may use a switch here to make special filters
+          // like "between dates", "greater than", etc
+          if($param_name == "search"){
+            $conditions['OR'] = array(
+              array('Movie.title LIKE' => '%' . $value . '%'),
+                array('Movie.description LIKE' => '%' . $value . '%')
+            );
+          } else {
+            $conditions['Movie.'.$param_name] = $value;
+          }         
+          $this->request->data['Filter'][$param_name] = $value;
+        }
+      }
+    }
+    $this->Movie->recursive = 0;
+    $this->paginate = array(
+      'limit' => 8,
+      'conditions' => $conditions
+    );
+    $this->set('movies', $this->paginate());
+
+    // get the possible values for the filters and 
+    // pass them to the view
+    $genres = $this->Movie->Genre->find('list');
+    $directors = $this->Movie->Director->find('list');
+    $this->set(compact('genres', 'directors'));
+
+    // Pass the search parameter to highlight the text
+    $this->set('search', isset($this->params['named']['search']) ? $this->params['named']['search'] : "");
+  }
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+  public function view($id = null) {
+    if (!$this->Movie->exists($id)) {
+      throw new NotFoundException(__('Invalid movie'));
+    }
+    $options = array('conditions' => array('Movie.' . $this->Movie->primaryKey => $id));
+    $this->set('movie', $this->Movie->find('first', $options));
+  }
+
+/**
+ * add method
+ *
+ * @return void
+ */
+  public function add() {
+    if ($this->request->is('post')) {
+      $this->Movie->create();
+      if ($this->Movie->save($this->request->data)) {
+        $this->Session->setFlash(__('The movie has been saved'));
+        $this->redirect(array('action' => 'index'));
+      } else {
+        $this->Session->setFlash(__('The movie could not be saved. Please, try again.'));
+      }
+    }
+    $genres = $this->Movie->Genre->find('list');
+    $directors = $this->Movie->Director->find('list');
+    $this->set(compact('genres', 'directors'));
+  }
+
+/**
+ * edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+  public function edit($id = null) {
+    if (!$this->Movie->exists($id)) {
+      throw new NotFoundException(__('Invalid movie'));
+    }
+    if ($this->request->is('post') || $this->request->is('put')) {
+      if ($this->Movie->save($this->request->data)) {
+        $this->Session->setFlash(__('The movie has been saved'));
+        $this->redirect(array('action' => 'index'));
+      } else {
+        $this->Session->setFlash(__('The movie could not be saved. Please, try again.'));
+      }
+    } else {
+      $options = array('conditions' => array('Movie.' . $this->Movie->primaryKey => $id));
+      $this->request->data = $this->Movie->find('first', $options);
+    }
+    $genres = $this->Movie->Genre->find('list');
+    $directors = $this->Movie->Director->find('list');
+    $this->set(compact('genres', 'directors'));
+  }
+
+/**
+ * delete method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+  public function delete($id = null) {
+    $this->Movie->id = $id;
+    if (!$this->Movie->exists()) {
+      throw new NotFoundException(__('Invalid movie'));
+    }
+    $this->request->onlyAllow('post', 'delete');
+    if ($this->Movie->delete()) {
+      $this->Session->setFlash(__('Movie deleted'));
+      $this->redirect(array('action' => 'index'));
+    }
+    $this->Session->setFlash(__('Movie was not deleted'));
+    $this->redirect(array('action' => 'index'));
+  }
+}
+</code></pre>
+
   <h2>A few notes</h2>
   <ul>
     <li>I&#8217;m using a very simple search here, just a like. But all I wanted was to show you the basic algorithm for filtering.</li>

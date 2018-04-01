@@ -330,8 +330,16 @@ a:hover, a:visited, a:active {
   border-color: #9b59b6 !important;
   background: rgba(176, 124, 198, 0.8) !important;
 }
+/* line 53, layouts/_post_pages.scss */
+.post-page pre {
+  padding: 0;
+}
+/* line 3, modules/code_highlight/_mixins.scss */
+.post-page pre code {
+  padding: 5px 20px;
+}
 @media (max-width: 992px) {
-  /* line 54, layouts/_post_pages.scss */
+  /* line 58, layouts/_post_pages.scss */
   .post-page .brand {
     margin-top: 20px;
     width: 100%;
@@ -382,7 +390,7 @@ a:hover, a:visited, a:active {
     color: #1abc9c;
     text-shadow: 1px 1px 0px #34495e;
   }
-  /* line 57, layouts/_post_pages.scss */
+  /* line 61, layouts/_post_pages.scss */
   .post-page #post-page-header {
     padding-bottom: 5px;
   }

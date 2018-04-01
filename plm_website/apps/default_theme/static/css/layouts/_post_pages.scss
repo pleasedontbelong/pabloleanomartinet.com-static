@@ -50,6 +50,10 @@
         @include buttons_menu;
     }
 
+    pre{
+        @include code_highlight;
+    }
+
     @media (max-width: $screen-md-min) {
         .brand{
             @include small_brand;

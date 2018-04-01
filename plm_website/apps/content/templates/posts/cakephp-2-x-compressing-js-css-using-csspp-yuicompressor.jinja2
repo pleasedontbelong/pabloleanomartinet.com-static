@@ -33,14 +33,201 @@
   </ul>
 
   <h2>Configure CakePhp</h2>
-  <p>&#8211; Change your &#8220;core.php&#8221; (inside the Config folder) file and add this line:</p>
-<pre class="brush: php;tab-size: 2;gutter: false;">Configure::write('Asset.filter.css', 'mini.php');</pre>
-<p>(optionally, uncomment the Asset.filter.js and change it to mini.php)</p>
-<p>&#8211; Create the <code>app/tmp/cache/css</code> and the <code>app/tmp/cache/js</code> folder, both folder must be writable like the other tmp folders</p>
-<p>&#8211; Create the file mini.php in the <code>app/webroot</code> folder. This file will check if there&#8217;s already the file compressed in cache and call the Compressor class to compress the code:</p>
-<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.x-static-compressor/blob/master/mini.php?footer=minimal"></script></div></div>
-<p>&#8211; Finally create the Compressor.php file in the <code>vendors/</code> folder. This file will select the defined compressor (yuicompressor, csspp , or any other library that you want):</p>
-<div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.x-static-compressor/blob/master/Compressor.php?footer=minimal"></script></div></div>
+  
+<ul>
+  <li>
+    Change your &#8220;core.php&#8221; (inside the Config folder) file and add this line:
+    <code class="php">Configure::write('Asset.filter.css', 'mini.php');</code>
+    (optionally, uncomment the Asset.filter.js and change it to mini.php)</p
+  </li>
+  <li>
+    Create the <code>app/tmp/cache/css</code> and the <code>app/tmp/cache/js</code> folder, both folder must be writable like the other tmp folders
+  </li>
+  <li>
+    Create the file mini.php in the <code>app/webroot</code> folder. This file will check if there&#8217;s already the file compressed in cache and call the Compressor class to compress the code:
+<pre><code class="php">
+/**
+* JS / CSS minifier
+*
+* PHP versions 4 and 5
+*
+* CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+* Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+*
+* @author Pablo Leano
+*/
+App::uses('File', 'Utility');
+class Mini {
+  
+  const CSS = "css";
+  const JS = "js";
+  
+  private $response;
+  private $filename;
+  private $path;
+  private $type;
+  
+  public function __construct($url,CakeResponse $response,$isCss = false,$isJs = false) {
+    $this->url = $url;
+    $this->response = $response;
+    //get the type of file (js or css)
+    if($isCss){
+      $this->type = Mini::CSS;
+      $this->path = CSS;
+    }
+    if($isJs){
+      $this->type = Mini::JS;
+      $this->path = JS;
+    }
+    if(!$this->type){
+      throw new Exception("Incorrect type of file");
+    }
+    
+    //extract the filename from the url
+    if (preg_match('|\.\.|', $url) || !preg_match('#^(ccss|cjs)/(.+)$#i', $url, $matches)) {
+      throw new Exception('Wrong file name');
+    }
+    $this->filename = $matches[2];
+  }
+  
+  public function process(){
+    
+    //checks if the file exist in the webroot/css , or if it's in cache (case of merged files)
+    // if the file is found on cache, changes the $this->cachename
+    $this->_validates();
+    
+    $cachefile = CACHE . $this->type . DS . str_replace(array('/','\\'), '-', $this->filename);
+    
+    //the the compressed file either from cache or from using a compressor
+    if (file_exists($cachefile)) {
+      $templateModified = filemtime($this->path . $this->filename);
+      $cacheModified = filemtime($cachefile);
+      
+      //if the file is more recent than the cache, compress it
+      if ($templateModified > $cacheModified) {
+        $output = $this->_getCompressed();
+        $this->_writeToCache($cachefile, $output);
+      } else {
+        $output = file_get_contents($cachefile);
+      }
+    } else {
+      $output = $this->_getCompressed();
+      $this->_writeToCache($cachefile, $output);
+      $templateModified = time();
+    }
+    //create the response body and headers
+    $this->response->header('Date',date("D, j M Y G:i:s ", $templateModified) . 'GMT');
+    //set the correct content type
+    //$this->response->header('Content-Type',($this->type == Mini::CSS ? "text/css" : "application/x-javascript"));
+    $this->response->type(($this->type == Mini::CSS ? "text/css" : "application/x-javascript"));
+    $this->response->header('Expires', gmdate("D, d M Y H:i:s", time() + DAY) . " GMT");
+    $this->response->header('Cache-Control','max-age=86400, must-revalidate'); // HTTP/1.1
+    $this->response->header('Pragma: cache');        // HTTP/1.0
+    $this->response->body($output);
+    $this->response->send();
+  }
+  
+  /**
+   * Gets the compressed content of the current file
+   */
+  private function _getCompressed(){
+    App::import('Vendor', 'Compressor');
+    // here i'm using csspp but you could also use Yuicompressor
+    $compressor = new Compressor($this->filename, $this->path, $this->type);
+    return $compressor->process();
+  }
+  
+  /**
+   * Write the content to a file
+   * @param string $cachefile path for the cache file
+   * @param string $content file's content
+   * @throws Exception
+   */
+  private function _writeToCache($cachefile, $content){
+    $cache = new File($cachefile);
+    if(!$cache->write($content)){
+      throw new Exception('Could not write cache file');
+    } 
+  }
+  
+  private function _validates(){
+    if (($this->type == Mini::CSS && !file_exists(CSS . $this->filename)) || ($this->type == Mini::JS && !file_exists(JS . $this->filename))) {
+      //check file exists on cache
+      if(!file_exists(CACHE . $this->type . DS . $this->filename)){
+        throw new Exception('File not found');
+      }
+    }
+  }
+  
+}
+
+$mini = new Mini($url,$response,$isCss,$isJs);
+try {
+  $mini->process();
+} catch (Exception $e) {
+  exit($e->getMessage());
+}
+</code></pre>
+  </li>
+  <li>
+    Finally create the Compressor.php file in the <code>vendors/</code> folder. This file will select the defined compressor (yuicompressor, csspp , or any other library that you want):
+<pre><code class="php">
+/**
+ * compresses the file using the selected library
+ *  
+ * @author Juan Pablo Leano
+ *
+ */
+class Compressor {
+  
+  /**
+   * The compressor (library) to be used
+   */
+  private $vendor;
+  private $file;
+  private $path;
+  
+  function __construct($file,$path,$type,$vendor = 'yuicompressor') {
+    $this->file = $file;
+    $this->path = $path;
+    $this->vendor = $vendor;
+    $this->type = $type;
+  }
+  
+  public function process(){
+    switch ($this->vendor) {
+      case 'yuicompressor':
+        exec('java -jar ' . APP . 'Vendor/yuicompressor/build/yuicompressor-2.4.7.jar --line-break 8000 --type ' . $this->type . " " . $this->path . $this->file , $output, $return);
+        if($return != 0){
+          throw new Exception("Yuicompressor could not compress the file");
+        } 
+        return implode("\n", $output);
+        break;
+      case 'csspp':
+        if($this->type == "css"){
+          App::import('Vendor', 'csspp' . DS . 'csspp');
+          $filename = $this->path . $this->file;
+          $data = file_get_contents($filename);
+          $csspp = new csspp($filename,'');
+          $output = $csspp->process();
+          $ratio = 100 - (round(strlen($output) / strlen($data), 3) * 100);
+          $output = " /* file: " . $this->file . ", ratio: $ratio% */ \n " . $output;
+          return $output;
+        } else {
+          // csspp can only compress css files
+          return file_get_contents($this->path . $this->file);
+        }
+        break;
+      default:
+        throw new Exception("Compressor not found");
+      break;
+    }
+  }
+}
+</code></pre>
+  </li>
+</ul>
+
 <p>and that&#8217;s it&#8230; I&#8217;ve tested it at the same time that I&#8217;m writing this post, and it&#8217;s working like a charm =)</p>
 <p>If you have any problems using this code, feel free to write an issue on github, or if you want to improve it you could write an make a pull request. I&#8217;ve created this class rapidly so it&#8217;s not perfect</p>
 

@@ -8,17 +8,251 @@
   <p><em>Read the <a class="external" href="http://book.cakephp.org/2.0/en/getting-started/cakephp-conventions.html#model-and-database-conventions">naming conventions</a></em></p>
   <h2>The Model</h2>
   <h3>Post.php</h3>
-  <div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.2-habtm-example/blob/master/app/Model/Post.php?footer=minimal"></script></div></div>
+
+<pre><code class="php">
+  App::uses('AppModel', 'Model');
+/**
+ * Post Model
+ *
+ * @property Tag $Tag
+ */
+class Post extends AppModel {
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+  public $displayField = 'name';
+
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+  public $validate = array(
+    'name' => array(
+      'notempty' => array(
+        'rule' => array('notempty'),
+      ),
+    ),
+    'Tag' => array(
+      'multiple' => array(
+        'rule' => array('multiple', array('min' => 1)),
+        'message' => 'You need to select at least one tag',
+        'required' => true,
+      ),
+    ),
+  );
+
+/**
+ * hasAndBelongsToMany associations
+ *
+ * @var array
+ */
+  public $hasAndBelongsToMany = array(
+    'Tag' => array(
+      'className' => 'Tag',
+      'joinTable' => 'posts_tags',
+      'foreignKey' => 'post_id',
+      'associationForeignKey' => 'tag_id',
+      'unique' => 'keepExisting',
+    )
+  );
+  
+/**
+ * Transforms the data array to save the HABTM relation
+ */
+  public function beforeSave($options = array()){
+    foreach (array_keys($this->hasAndBelongsToMany) as $model){
+      if(isset($this->data[$this->name][$model])){
+        $this->data[$model][$model] = $this->data[$this->name][$model];
+        unset($this->data[$this->name][$model]);
+      }
+    }
+    return true;
+  }
+
+}
+</code></pre>
+
   <h3>Tag.php</h3>
-  <div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.2-habtm-example/blob/master/app/Model/Tag.php?footer=minimal"></script></div></div>
+<pre><code class="php">
+App::uses('AppModel', 'Model');
+/**
+ * Tag Model
+ *
+ */
+class Tag extends AppModel {
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+  public $displayField = 'label';
+
+}
+</code></pre>
+
   <h3>PostController.php</h3>
-  <div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.2-habtm-example/blob/master/app/Controller/PostsController.php?slice=39:53&footer=minimal"></script></div></div>
+<pre><code class="php">
+App::uses('AppController', 'Controller');
+/**
+ * Posts Controller
+ *
+ * @property Post $Post
+ */
+class PostsController extends AppController {
+
+/**
+ * index method
+ *
+ * @return void
+ */
+  public function index() {
+    $this->Post->recursive = 0;
+    $this->set('posts', $this->paginate());
+  }
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+  public function view($id = null) {
+    $this->Post->id = $id;
+    if (!$this->Post->exists()) {
+      throw new NotFoundException(__('Invalid post'));
+    }
+    $this->set('post', $this->Post->read(null, $id));
+  }
+
+/**
+ * add method
+ *
+ * @return void
+ */
+  public function add() {
+    if ($this->request->is('post')) {
+      $this->Post->create();
+      $this->Post->validator()->remove('Tag');
+      if ($this->Post->save($this->request->data)) {
+        $this->Session->setFlash(__('The post has been saved'));
+        return $this->redirect(array('action' => 'index'));
+      } else {
+        $this->Session->setFlash(__('The post could not be saved. Please, try again.'));
+      }
+    }
+    $tags = $this->Post->Tag->find('list');
+    $this->set(compact('tags'));
+  }
+  
+  /**
+ * add method
+ *
+ * @return void
+ */
+  public function add_with_validation() {
+    if ($this->request->is('post')) {
+      $this->Post->create();
+      if ($this->Post->save($this->request->data)) {
+        $this->Session->setFlash(__('The post has been saved'));
+        return $this->redirect(array('action' => 'index'));
+      } else {
+        $this->Session->setFlash(__('The post could not be saved. Please, try again.'));
+      }
+      
+    }
+    $tags = $this->Post->Tag->find('list');
+    $this->set(compact('tags'));
+  }
+
+/**
+ * edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+  public function edit($id = null) {
+    $this->Post->id = $id;
+    if (!$this->Post->exists()) {
+      throw new NotFoundException(__('Invalid post'));
+    }
+    if ($this->request->is('post') || $this->request->is('put')) {
+      if ($this->Post->save($this->request->data)) {
+        $this->Session->setFlash(__('The post has been saved'));
+        return $this->redirect(array('action' => 'index'));
+      } else {
+        $this->Session->setFlash(__('The post could not be saved. Please, try again.'));
+      }
+    } else {
+      $this->request->data = $this->Post->read(null, $id);
+    }
+    $tags = $this->Post->Tag->find('list');
+    $this->set(compact('tags'));
+  }
+
+/**
+ * delete method
+ *
+ * @throws MethodNotAllowedException
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+  public function delete($id = null) {
+    if (!$this->request->is('post')) {
+      throw new MethodNotAllowedException();
+    }
+    $this->Post->id = $id;
+    if (!$this->Post->exists()) {
+      throw new NotFoundException(__('Invalid post'));
+    }
+    if ($this->Post->delete()) {
+      $this->Session->setFlash(__('Post deleted'));
+      return $this->redirect(array('action' => 'index'));
+    }
+    $this->Session->setFlash(__('Post was not deleted'));
+    return $this->redirect(array('action' => 'index'));
+  }
+}
+</code></pre>
+
   <h3>Post/add.ctp</h3>
-  <div style="font-size: 12px; line-height: 1.3em;"><div class="wrap_githubgist" style="width:100%"><script src = "http://gist-it.sudarmuthu.com/github/pleasedontbelong/cakephp2.2-habtm-example/blob/master/app/View/Posts/add.ctp?footer=minimal"></script></div></div>
+<pre><code class="html">
+&#x3C;div class=&#x22;posts form&#x22;&#x3E;
+&#x3C;p&#x3E;
+  This form allows you to add a new Post and select multiple Tags for this post.
+  Here I&#x27;m using the basic &#x22;multiple select&#x22; input, so  you&#x27;ll need to Ctrl + Click
+  to select multiple Tags.
+&#x3C;/p&#x3E;
+&#x3C;?php echo $this-&#x3E;Form-&#x3E;create(&#x27;Post&#x27;); ?&#x3E;
+  &#x3C;fieldset&#x3E;
+    &#x3C;legend&#x3E;&#x3C;?php echo __(&#x27;Add Post&#x27;); ?&#x3E;&#x3C;/legend&#x3E;
+  &#x3C;?php
+    echo $this-&#x3E;Form-&#x3E;input(&#x27;name&#x27;);
+    echo $this-&#x3E;Form-&#x3E;input(&#x27;Post.Tag&#x27;,array(&#x27;label&#x27;=&#x3E;&#x27;Tags&#x27;, &#x27;type&#x27;=&#x3E;&#x27;select&#x27;, &#x27;multiple&#x27;=&#x3E;true));
+  ?&#x3E;
+  &#x3C;/fieldset&#x3E;
+&#x3C;?php echo $this-&#x3E;Form-&#x3E;end(__(&#x27;Submit&#x27;)); ?&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;actions&#x22;&#x3E;
+  &#x3C;h3&#x3E;&#x3C;?php echo __(&#x27;Actions&#x27;); ?&#x3E;&#x3C;/h3&#x3E;
+  &#x3C;ul&#x3E;
+    &#x3C;li&#x3E;&#x3C;?php echo $this-&#x3E;Html-&#x3E;link(__(&#x27;List Posts&#x27;), array(&#x27;action&#x27; =&#x3E; &#x27;index&#x27;)); ?&#x3E;&#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+&#x3C;/div&#x3E;
+</code></pre>
+
   <h2>Where’s the magic?</h2>
   <p>If you look closely, you’ll find that almost everything is in the Model. The add() method on the Controller is just a simple (baked) method used to save the Post model and its associated Tags.</p>
   <p>Basically to save a HABTM relation you need the data to be structured like this:</p>
 <pre>
+<code class="php">
 Array
   (
   [Post] => Array
@@ -34,10 +268,12 @@ Array
       )
     )
   )
+</code>
 </pre>
     <p><em>(Why does the Tag array needs to be formatted like that??? I really have no idea.)</em></p>
     <p>If you want to validate the number of tags that can be added to a post, you could use the “<a href="http://book.cakephp.org/2.0/en/models/data-validation.html#Validation::multiple" class="external">multiple validator</a>”. But in order to be able to use the multiple validator, the data must be structured like this:</p>
 <pre>
+<code class="php">
 Array
   (
   [Post] => Array
@@ -50,6 +286,7 @@ Array
       )
     )
   )
+</code>
 </pre>
       <p><em>(Again: Why does the Tag array needs to be formatted like that??? I really have no idea.)</em></p>
       <p>As you can see, the HABTM relationship needs the data in a different way that the validator, clearly it is a contradiction between the validation and the data saving. The validator needs the Tag array inside the Post, and the save method needs the Tags at the same level of the Post. Surely you could transform the data inside the controller, but where’s the fun in that? Let’s better use the <strong>before save</strong> callback, because maybe you have multiple HABTM relations and you want to preserve a skinny controller and a fat model. In this case I used the <strong>before save</strong> on the Post Model, but you could also define it in the AppModel so it will work for all models.</p>

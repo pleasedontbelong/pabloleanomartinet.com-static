@@ -23,7 +23,8 @@
   My settings for the templates looks something like:
 </p>
 
-<pre class="brush: python">
+<pre>
+<code class="python">
 from django_jinja.builtins import DEFAULT_EXTENSIONS
 
 TEMPLATES = [
@@ -40,6 +41,7 @@ TEMPLATES = [
         }
     },
 ]
+</code>
 </pre>
 
 <p>
@@ -49,6 +51,7 @@ TEMPLATES = [
 </p>
 
 <pre>
+<code class="yaml">
 # Extraction from Python source files
 [python: **.py]
 
@@ -56,6 +59,7 @@ TEMPLATES = [
 [jinja2: **.jinja2]
 extensions = jinja2.ext.i18n,pipeline.jinja2...., etc
 silent = False 
+</code>
 </pre>
 
 <p>
@@ -71,6 +75,7 @@ silent = False
 </p>
 
 <pre>
+<code class="yaml">
 # babel.cfg
 
 [extractors]
@@ -78,9 +83,11 @@ custom = somewhere.in.my.project:babel_extract
 
 [custom: **.jinja2]
 silent = False
+</code>
 </pre>
 
 <pre>
+<code class="python">
 # somewhere/in/my/project.py
 
 import django
@@ -93,6 +100,7 @@ def babel_extract(fileobj, keywords, comment_tags, options):
     from django.template import engines
     options['extensions'] = ",".join(engines['jinja2'].env.extensions.keys())
     return jinja_babel_extract(fileobj, keywords, comment_tags, options)
+</code>
 </pre>
 
 <p>

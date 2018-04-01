@@ -1,13 +1,13 @@
 boto==2.34.0
-Django==1.8
-django-extensions==1.4.9
+Django==1.11.11
+django-extensions==2.0.6
 django-medusa==0.3.0
-django-pipeline==1.4.2
+django-pipeline==1.6.14
 django-storages==1.1.8
-git+git://github.com/jbalogh/jingo.git@f8472bcac6ba206271135021b65c25db553297b7
+django-jinja==2.2.1
 Jinja2==2.7.3
 MarkupSafe==0.23
-Werkzeug==0.9.6
+Werkzeug==0.14.1
 ipython==3.1.0
 django-model-utils==2.0
 honcho==0.7.1
@@ -15,6 +15,5 @@ honcho==0.7.1
 # production
 gunicorn==19.4.5
 setproctitle
-whitenoise==2.0.6
-
+whitenoise==3.3.1
 newrelic

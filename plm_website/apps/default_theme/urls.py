@@ -1,9 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from plm_website.core.generic import TemplateView
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$',
         TemplateView.as_view(template_name='pages/homepage.jinja2'),
         name='homepage'),
@@ -16,4 +15,4 @@ urlpatterns = patterns(
     url(r'^about-me/?$',
         TemplateView.as_view(template_name='pages/about_me.jinja2'),
         name='about-me')
-)
+]

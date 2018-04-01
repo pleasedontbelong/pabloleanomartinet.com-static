@@ -1,8 +1,7 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^', include('default_theme.urls')),
     url(r'^', include('blog.urls')),
-)
+]

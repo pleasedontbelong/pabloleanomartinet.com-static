@@ -1,10 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from .views import PostView
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^(?P<slug>[\w\-]+)/$',
         PostView.as_view(),
         name='post_view')
-)
+]

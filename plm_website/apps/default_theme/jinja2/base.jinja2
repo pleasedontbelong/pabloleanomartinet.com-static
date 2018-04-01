@@ -7,14 +7,14 @@
     <link href='//fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% block style %}
-      {% stylesheet('default') %}
+      {% stylesheet('main') %}
     {% endblock %}
     {% block extra_style %}{% endblock %}
   </head>
   <body class="{% block body_class %}{% endblock %}" >
     {% block body_content %}{% endblock %}
     {% block javascript %}
-      {% javascript('default') %}
+      {% javascript('main') %}
     {% endblock %}
     {% block extra_javascript %}{% endblock %}
     {% block metrics %}

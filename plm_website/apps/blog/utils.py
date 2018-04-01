@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from .managers import PostManager
-from content.templates.posts.constants import CATEGORIES
+from content.jinja2.posts.constants import CATEGORIES
 
 
 def list_posts(limit=None):

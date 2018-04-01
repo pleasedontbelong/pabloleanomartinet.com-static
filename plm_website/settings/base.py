@@ -167,6 +167,7 @@ PIPELINE_JS = {
     }
 }
 
+PIPELINE_DISABLE_WRAPPER = False
 
 # needed for django suit
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP

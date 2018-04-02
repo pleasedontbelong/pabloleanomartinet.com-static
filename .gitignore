@@ -17,6 +17,7 @@ static/*
 !static/humans.txt
 staticfiles/
 vendors
+!plm_website/apps/default_theme/static/vendors
 .bundle
 bundle
 plm_website/settings/local.py

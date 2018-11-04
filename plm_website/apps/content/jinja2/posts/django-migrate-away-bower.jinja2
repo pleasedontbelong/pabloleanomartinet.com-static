@@ -46,17 +46,23 @@
   <code>STATICFILES_DIRS</code> variable in my settings. 
 </p>
 
+<p>
+  But now bower is deprecated and I had a warning saying that it might not
+  work one day. So I started contemplating the possible solutions.
+</p>
+
 <h1>Three solutions</h1>
 
-<h2>1.- Use a CDN instead of downloading serving the files</h2>
+<h2>1.- Use a CDN instead of downloading and serving the files myself</h2>
 <p>
   Probably the easiest solution, the only thing I need to do is search the
-  urls and add them to my base template. But I couldn't find an url for one of
-  my jquery plugins. I could maybe upload it to S3 or add it to my repository,
-  but then I'd have to decentralize my assets. The best of using pipeline is
+  urls and add them to my base template directly. The problem is that I 
+  couldn't find an url for one of my jquery plugins. I could maybe upload it to
+  S3 or add it to my repository, I don't like that idea.
+  Also, using a CDN means that I'd have to decentralize my assets. The best of using pipeline is
   that I can group my assets (JS, CSS files) into different groups and use them
   easily in my templates, then upgrading or modifying one of them is not a 
-  problem.
+  problem. An everything is defined in my settings file.
 </p>
 <h3>Pros</h3>
 <ul>

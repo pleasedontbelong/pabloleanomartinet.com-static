@@ -1,0 +1,298 @@
+{% extends 'post.jinja2' %}
+
+{% block post_content %}
+<p>
+  Life was good, everything was going ok until one day I recieved a warning
+  on one of my django projects: <cite>...psst! While Bower is maintained, we
+  recommend yarn and webpack for new front-end projects!</cite>
+</p>
+<p>
+  I thought it was going to be easy, just a couple of packages to install and
+  that would be it, I took this as a chance to learn more about npm and webpack.
+  But I underestimated JS again.
+ </p>
+
+<h1>How it was before</h1>
+
+<p>
+  I was using npm and bower to download all the assets I needed for my django
+  project (jquery, bootstrap, fontawesome, some jquery plugins, etc.), those
+  were downloaded on the <code>bower_components</code> folder. My 
+  <code>package.json</code> had a <code>postinstall</code> script that would
+  do the work. I'm using heroku so that would be done automatically on each
+  deployment.
+</p>
+<pre>
+<code class="json">
+{
+  "name": "quizz",
+  "version": "1.0.0",
+  "description": "Quizz maker",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "author": "Pablo Leano",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.8.2"
+  }
+}
+</code>
+</pre>
+<p>
+  I use django-pipeline to group those assets and collect them for production.
+  To do so, I needed the <code>bower_components</code> in the 
+  <code>STATICFILES_DIRS</code> variable in my settings. 
+</p>
+
+<h1>Three solutions</h1>
+
+<h2>1.- Use a CDN instead of downloading serving the files</h2>
+<p>
+  Probably the easiest solution, the only thing I need to do is search the
+  urls and add them to my base template. But I couldn't find an url for one of
+  my jquery plugins. I could maybe upload it to S3 or add it to my repository,
+  but then I'd have to decentralize my assets. The best of using pipeline is
+  that I can group my assets (JS, CSS files) into different groups and use them
+  easily in my templates, then upgrading or modifying one of them is not a 
+  problem.
+</p>
+<h3>Pros</h3>
+<ul>
+  <li>It's easy to do (hard to maintain).</li>
+  <li>I'll have less dependencies. I no longer need node at all</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+  <li>
+    It's slow on development env. Sometimes I work with a 4G connection, and
+    usually with the cache disabled.
+  </li>
+  <li>It gets complicated if you can't find your plugin in a CDN.</li>
+  <li>
+    I cannot bundle all the assets them into a single file (or multiple 
+    files).
+  </li>
+</ul>
+
+<h2>2.- Use webpack like a big JS boy</h2>
+
+<p>
+  Bower recommends yarn, but I already have npm and it works as expected so
+  I don't see why should I change it. I have never used webpack so I started
+  reading and testing it.
+</p>
+
+<p>
+  I changed my <code>package.json</code> file into something like this:
+</p>
+
+<pre>
+<code class="json">
+{
+  "name": "quizz",
+  "version": "1.0.0",
+  "description": "Quizz maker",
+  "main": "index.js",
+  "author": "Pablo Leano",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.4.2",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "jquery-sortable": "^0.9.13",
+    ... // other plugins
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.4",
+    "file-loader": "^2.0.0",
+    "sass-loader": "^7.1.0"
+    "css-loader": "^1.0.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2"
+  }
+}  
+</code>
+</pre>
+
+<p>
+  Then I spent a lot of time trying to create my <code>webpack.config.js</code>
+  that would bundle correctly everything (css files, font files and js files).
+</p>
+<pre><code class="js">
+var webpack = require('webpack');
+const path = require('path');
+
+module.exports = {
+  entry: './app.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+         test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+         use: [{
+           loader: 'file-loader',
+           options: {
+             name: '[name].[ext]',
+             outputPath: 'fonts/',    // where the fonts will go
+             publicPath: '../'       // override the default path
+           }
+         }]
+       }
+    ]
+  },
+  plugins: [
+      new webpack.ProvidePlugin({
+         $: "jquery",
+         jQuery: "jquery"
+     })
+  ]
+};
+</code></pre>
+
+<p>And an entrypoint to import everything</p>
+
+<pre><code class="js">
+// app.js
+
+import 'jquery';
+import 'bootstrap';
+import '@fortawesome/fontawesome-free/js/all';
+import 'jquery-sortable';
+import 'bootstrap/dist/css/bootstrap.min.css';
+</code></pre>
+
+<p>
+  After changing my django-pipeline configuration I was ready to test it
+  and it was working great! I had a single file <code>bundle.js</code> that
+  was injecting all the css needed on the page and the needed js files. But 
+  then I clicked on a link and changed the page; since the CSS (bootstrap) is
+  being injected into the header of the page, when loading the page first you'll
+  see the raw content for a brief period of time until bootstrap is loaded and
+  then you'll see your page correctly displayed. It's ugly ugly ugly!
+</p>
+
+<p>
+  Possible solutions to that problem came to my mind: display a loader while
+  bootstrap is getting ready. Or maybe see if webpack can just copy the damn
+  css files and fonts to a different folder. In the end I realized that using
+  webpack was an overkill, the only thing I wanted was something like bower,
+  something to download the package into a folder that I could then use with
+  django-pipeline.
+</p>
+
+<h3>Pros</h3>
+<ul>
+  <li>It's what bower recommends.</li>
+  <li>I can learn something new</li>
+  <li>I can brag about my new aquired JS skills</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+  <li>A complete overkill.</li>
+  <li>
+    Since CSS is injected by JS, it takes a visible small amount of time to 
+    load and the page blinks whenever you change pages.
+  </li>
+</ul>
+
+<p>
+  It was nice though, but I think I will only use webpack on a SPA.
+</p>
+
+<h2>3.- Use npm and a small js script to copy them to a different folder</h2>
+
+<p>
+  Bower used to download the packages and place them into the <code>bower_components</code>
+  folder. Now I download them using npm and they are in the <code>node_modules</code>
+  folder along with many other node packages. So all I need is a simple JS 
+  script to read my packages.json file, extract the dependencies and copy those
+  folders into a <code>assets</code> folder that I will add to my <code>STATICFILES_DIRS</code>
+  in my django settings.
+</p>
+
+<pre><code class="json">
+// package.json
+{
+  "name": "quizz",
+  "version": "1.0.0",
+  "description": "Quizz maker",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node django-assets.js"
+  },
+  "author": "Pablo Leano",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.4.2",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "jquery-sortable": "^0.9.13",
+    "popper.js": "^1.14.4"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0"
+  }
+}
+</code></pre>
+
+<pre><code class="js">
+// django-assets.js
+
+const util = require('util');
+const cpx = require("cpx");
+const fs = require('fs');
+
+let rawdata = fs.readFileSync('package.json');  
+let packageJson = JSON.parse(rawdata);
+
+Object.keys(packageJson.dependencies).forEach(function (packageName){
+  cpx.copy(
+    util.format("node_modules/%s/**", packageName),
+    util.format("assets/%s", packageName),
+    {
+      "update": true
+    },
+    function(err){
+      if(err) {
+        console.log(util.format("cpx error for %s: %s", packageName, err));
+        process.exit(1);
+      } else {
+        console.log(util.format("copied %s to assets", packageName));
+      }
+    }
+  );
+});
+</code></pre>
+
+<h3>Pros</h3>
+<ul>
+  <li>It's something similar to what I had before with bower</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+  <li>It doesn't handle the requirements of the node packages, but it's ok.</li>
+  <li>JS devs gonna hate.</li>
+</ul>
+
+<h1>Conclusion</h1>
+
+<p>
+  I'm staying with the last solution because it's the closest to what I had before,
+  but I will certainly discuss it with my JS friends. They might have a better 
+  solution.
+</p>
+
+{% endblock %}

@@ -175,6 +175,7 @@ a:hover, a:visited, a:active {
 /* line 1, layouts/_post_pages.scss */
 .post-page {
   background: #2c3e50;
+  /* fix text style */
 }
 /* line 3, layouts/_post_pages.scss */
 .post-page p, .post-page li {
@@ -338,8 +339,32 @@ a:hover, a:visited, a:active {
 .post-page pre code {
   padding: 5px 20px;
 }
+/* line 58, layouts/_post_pages.scss */
+.post-page article.post {
+  max-width: 690px;
+  float: none;
+  margin: auto;
+}
+/* line 63, layouts/_post_pages.scss */
+.post-page article.post h1 {
+  font-size: 42px;
+  line-height: 62px;
+  margin: 26px 0;
+  font-weight: 900;
+  color: #212121;
+}
+/* line 70, layouts/_post_pages.scss */
+.post-page article.post p, .post-page article.post li {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 400;
+  letter-spacing: -0.05px;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #757575;
+}
 @media (max-width: 992px) {
-  /* line 58, layouts/_post_pages.scss */
+  /* line 82, layouts/_post_pages.scss */
   .post-page .brand {
     margin-top: 20px;
     width: 100%;
@@ -390,7 +415,7 @@ a:hover, a:visited, a:active {
     color: #1abc9c;
     text-shadow: 1px 1px 0px #34495e;
   }
-  /* line 61, layouts/_post_pages.scss */
+  /* line 85, layouts/_post_pages.scss */
   .post-page #post-page-header {
     padding-bottom: 5px;
   }

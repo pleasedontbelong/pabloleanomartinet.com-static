@@ -54,6 +54,30 @@
         @include code_highlight;
     }
 
+    /* fix text style */
+    article.post{
+        max-width: 690px;
+        float: none;
+        margin: auto;
+
+        h1{
+            font-size: 42px;
+            line-height: 62px;
+            margin: 26px 0;
+            font-weight: 900;
+            color: #212121;
+        }
+        p, li{
+            font-size: 18px;
+            line-height: 30px;
+            font-weight: 400;
+            letter-spacing: -0.05px;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #757575;
+        }
+    }
+
     @media (max-width: $screen-md-min) {
         .brand{
             @include small_brand;
